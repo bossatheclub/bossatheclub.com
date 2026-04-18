@@ -186,7 +186,7 @@
 
     .mobile-menu a {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 48px;
+      font-size: 44px;
       letter-spacing: .08em;
       color: var(--white);
       text-decoration: none;
@@ -212,8 +212,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 28% 24% at 50% 47%, rgba(220,20,60,.18) 0%, rgba(220,20,60,.08) 30%, transparent 72%),
-        radial-gradient(ellipse 22% 18% at 18% 82%, rgba(220,20,60,.03) 0%, transparent 72%);
+        radial-gradient(ellipse 24% 20% at 50% 46%, rgba(220,20,60,.20) 0%, rgba(220,20,60,.09) 28%, transparent 72%),
+        radial-gradient(ellipse 18% 16% at 18% 82%, rgba(220,20,60,.03) 0%, transparent 72%);
       pointer-events: none;
       transition: transform .35s ease-out;
       will-change: transform;
@@ -231,11 +231,11 @@
 
     .hero-logo-scene {
       position: absolute;
-      top: 46.5%;
+      top: 45.5%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: min(430px, 52vw);
-      perspective: 1600px;
+      width: min(360px, 44vw);
+      perspective: 1800px;
       z-index: 2;
       will-change: transform;
     }
@@ -244,8 +244,8 @@
       width: 100%;
       transform-style: preserve-3d;
       opacity: 0;
-      filter: drop-shadow(0 10px 22px rgba(220,20,60,.14));
-      animation: logoReveal 1.8s var(--transition-smooth) .05s forwards;
+      filter: drop-shadow(0 10px 20px rgba(220,20,60,.14));
+      animation: logoReveal 2.1s var(--transition-smooth) .05s forwards;
       will-change: transform, filter, opacity;
     }
 
@@ -255,15 +255,26 @@
       position: relative;
     }
 
+    .hero-logo-3d-inner::before {
+      content: '';
+      position: absolute;
+      inset: -8% -6%;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,.03) 0%, transparent 56%);
+      filter: blur(20px);
+      z-index: -2;
+      pointer-events: none;
+      opacity: .6;
+    }
+
     .hero-logo-3d-inner::after {
       content: '';
       position: absolute;
-      inset: 12% 14% 14% 14%;
-      background: radial-gradient(circle, rgba(220,20,60,.14) 0%, rgba(220,20,60,.05) 38%, transparent 74%);
-      filter: blur(30px);
+      inset: 14% 16% 14% 16%;
+      background: radial-gradient(circle, rgba(220,20,60,.16) 0%, rgba(220,20,60,.05) 38%, transparent 74%);
+      filter: blur(34px);
       z-index: -1;
       pointer-events: none;
-      opacity: .85;
+      opacity: .9;
       transition: opacity .35s ease, transform .35s ease;
     }
 
@@ -278,22 +289,26 @@
     @keyframes logoReveal {
       0% {
         opacity: 0;
-        transform: translateZ(-180px) rotateX(28deg) rotateY(-18deg) scale(.68);
-        filter: blur(14px) drop-shadow(0 0 0 rgba(220,20,60,0));
+        transform: translateZ(-240px) rotateX(34deg) rotateY(-22deg) scale(.60);
+        filter: blur(16px) drop-shadow(0 0 0 rgba(220,20,60,0));
       }
-      38% {
+      24% {
         opacity: 1;
-        transform: translateZ(58px) rotateX(-8deg) rotateY(8deg) scale(1.05);
-        filter: blur(0) drop-shadow(0 0 52px rgba(220,20,60,.34));
+        transform: translateZ(90px) rotateX(-10deg) rotateY(10deg) scale(1.08);
+        filter: blur(0) drop-shadow(0 0 60px rgba(220,20,60,.40));
       }
-      64% {
-        transform: translateZ(10px) rotateX(1.8deg) rotateY(-1.6deg) scale(.995);
-        filter: blur(0) drop-shadow(0 0 40px rgba(220,20,60,.22));
+      48% {
+        transform: translateZ(22px) rotateX(4deg) rotateY(-4deg) scale(.99);
+        filter: blur(0) drop-shadow(0 0 52px rgba(220,20,60,.28));
+      }
+      74% {
+        transform: translateZ(8px) rotateX(-1deg) rotateY(1deg) scale(1.01);
+        filter: blur(0) drop-shadow(0 0 26px rgba(220,20,60,.18));
       }
       100% {
         opacity: 1;
         transform: translateZ(0) rotateX(0deg) rotateY(0deg) scale(1);
-        filter: blur(0) drop-shadow(0 8px 20px rgba(220,20,60,.14));
+        filter: blur(0) drop-shadow(0 8px 18px rgba(220,20,60,.14));
       }
     }
 
@@ -928,8 +943,8 @@
       }
 
       .hero-logo-scene {
-        top: 44%;
-        width: min(300px, 74vw);
+        top: 43.5%;
+        width: min(250px, 66vw);
       }
 
       section {
@@ -983,12 +998,12 @@
       }
 
       .hero-logo-scene {
-        top: 43%;
-        width: 78vw;
+        top: 42.8%;
+        width: 64vw;
       }
 
       .mobile-menu a {
-        font-size: 42px;
+        font-size: 40px;
       }
 
       .evento-card-info {
@@ -1138,7 +1153,7 @@
     <div class="eventos-grid reveal">
       <div class="evento-card">
         <div class="evento-card-poster">
-          <img src="POST19ABRIL.png" alt="BOSSA · Evento" loading="lazy" />
+          <img src="POST19ABRIL.webp" alt="BOSSA · Evento" loading="lazy" />
         </div>
         <div class="evento-card-info">
           <div class="evento-card-fecha">Dom 19 · Abr 2026 · 18:00h</div>
@@ -1150,7 +1165,7 @@
 
       <div class="evento-card">
         <div class="evento-card-poster">
-          <img src="POST26ABRIL.png" alt="BOSSA · Evento" loading="lazy" />
+          <img src="POST26ABRIL.webp" alt="BOSSA · Evento" loading="lazy" />
         </div>
         <div class="evento-card-info">
           <div class="evento-card-fecha">Dom 26 · Abr 2026 · 18:00h</div>
@@ -1162,7 +1177,7 @@
 
       <div class="evento-card">
         <div class="evento-card-poster">
-          <img src="POST03MAYO.png" alt="BOSSA · Evento" loading="lazy" />
+          <img src="POST03MAYO.webp" alt="BOSSA · Evento" loading="lazy" />
         </div>
         <div class="evento-card-info">
           <div class="evento-card-fecha">Dom 03 · May 2026 · 18:00h</div>
@@ -1195,27 +1210,27 @@
     </div>
 
     <div class="archivo-hero reveal">
-      <img src="FOTO0.jpg" alt="Archivo BOSSA principal" loading="lazy" />
+      <img src="FOTO0.webp" alt="Archivo BOSSA principal" loading="lazy" />
     </div>
 
     <div class="archivo-grid reveal">
       <div class="archivo-item">
-        <img src="FOTO1.jpg" alt="Archivo BOSSA 1" loading="lazy" />
+        <img src="FOTO1.webp" alt="Archivo BOSSA 1" loading="lazy" />
       </div>
       <div class="archivo-item">
-        <img src="FOTO2.jpg" alt="Archivo BOSSA 2" loading="lazy" />
+        <img src="FOTO2.webp" alt="Archivo BOSSA 2" loading="lazy" />
       </div>
       <div class="archivo-item">
-        <img src="FOTO3.jpg" alt="Archivo BOSSA 3" loading="lazy" />
+        <img src="FOTO3.webp" alt="Archivo BOSSA 3" loading="lazy" />
       </div>
       <div class="archivo-item">
-        <img src="FOTO4.jpg" alt="Archivo BOSSA 4" loading="lazy" />
+        <img src="FOTO4.webp" alt="Archivo BOSSA 4" loading="lazy" />
       </div>
       <div class="archivo-item">
-        <img src="FOTO5.jpg" alt="Archivo BOSSA 5" loading="lazy" />
+        <img src="FOTO5.webp" alt="Archivo BOSSA 5" loading="lazy" />
       </div>
       <div class="archivo-item">
-        <img src="FOTO6.jpg" alt="Archivo BOSSA 6" loading="lazy" />
+        <img src="FOTO6.webp" alt="Archivo BOSSA 6" loading="lazy" />
       </div>
     </div>
   </section>
@@ -1254,7 +1269,6 @@
   </footer>
 
   <script>
-    // CURSOR
     const cursor = document.getElementById('cursor');
     const isTouch = window.matchMedia('(hover:none)').matches;
 
@@ -1270,7 +1284,6 @@
       });
     }
 
-    // MOBILE MENU
     const burger = document.getElementById('burger');
     const mobileMenu = document.getElementById('mobileMenu');
 
@@ -1288,7 +1301,6 @@
       });
     });
 
-    // HERO 3D
     const logo3d = document.getElementById('logo3d');
     const heroBg = document.getElementById('heroBg');
     const heroEl = document.querySelector('.hero');
@@ -1304,15 +1316,15 @@
     let scrollProgress = 0;
 
     function animateLogo() {
-      currentX += (targetX - currentX) * 0.06;
-      currentY += (targetY - currentY) * 0.06;
-      currentScale += (targetScale - currentScale) * 0.06;
-      currentZ += (targetZ - currentZ) * 0.06;
+      currentX += (targetX - currentX) * 0.055;
+      currentY += (targetY - currentY) * 0.055;
+      currentScale += (targetScale - currentScale) * 0.055;
+      currentZ += (targetZ - currentZ) * 0.055;
 
-      const scrollRotX = scrollProgress * 16;
-      const scrollRotY = -scrollProgress * 6;
-      const scrollScale = 1 - scrollProgress * 0.06;
-      const scrollZ = scrollProgress * -12;
+      const scrollRotX = scrollProgress * 18;
+      const scrollRotY = -scrollProgress * 7;
+      const scrollScale = 1 - scrollProgress * 0.07;
+      const scrollZ = scrollProgress * -16;
 
       const finalRotX = currentY + scrollRotX;
       const finalRotY = currentX + scrollRotY;
@@ -1327,24 +1339,22 @@
       `;
 
       logo3d.style.filter = `
-        drop-shadow(0 ${8 + scrollProgress * 18}px ${22 + scrollProgress * 34}px rgba(220,20,60,${0.14 + scrollProgress * 0.10}))
+        drop-shadow(0 ${8 + scrollProgress * 18}px ${20 + scrollProgress * 34}px rgba(220,20,60,${0.14 + scrollProgress * 0.12}))
       `;
 
-      if (!isTouch) {
-        heroBg.style.transform = `translate(${currentX * 1.2}px, ${currentY * 0.8}px)`;
-      }
+      heroBg.style.transform = `translate(${currentX * 1.2}px, ${currentY * 0.8}px)`;
 
       requestAnimationFrame(animateLogo);
     }
 
+    animateLogo();
+
+    window.addEventListener('scroll', () => {
+      const heroH = heroEl.offsetHeight;
+      scrollProgress = Math.min(window.scrollY / (heroH * 0.72), 1);
+    }, { passive: true });
+
     if (!isTouch) {
-      animateLogo();
-
-      window.addEventListener('scroll', () => {
-        const heroH = heroEl.offsetHeight;
-        scrollProgress = Math.min(window.scrollY / (heroH * 0.72), 1);
-      }, { passive: true });
-
       heroEl.addEventListener('mousemove', e => {
         if (window.scrollY > 140) return;
 
@@ -1352,10 +1362,10 @@
         const dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
         const dy = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
 
-        targetX = dx * 8;
-        targetY = -dy * 5;
-        targetScale = 1.014;
-        targetZ = 8;
+        targetX = dx * 10;
+        targetY = -dy * 6;
+        targetScale = 1.018;
+        targetZ = 12;
       });
 
       heroEl.addEventListener('mouseleave', () => {
@@ -1364,9 +1374,18 @@
         targetScale = 1;
         targetZ = 0;
       });
+    } else {
+      window.addEventListener('deviceorientation', (e) => {
+        const gamma = Math.max(-12, Math.min(12, e.gamma || 0));
+        const beta = Math.max(-12, Math.min(12, e.beta || 0));
+
+        targetX = gamma * 0.28;
+        targetY = (beta - 4) * -0.16;
+        targetScale = 1.01;
+        targetZ = 4;
+      }, true);
     }
 
-    // SCROLL REVEAL
     const reveals = document.querySelectorAll('.reveal');
     const obs = new IntersectionObserver(entries => {
       entries.forEach(entry => {
