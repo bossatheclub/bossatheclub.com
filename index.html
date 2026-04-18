@@ -129,10 +129,11 @@
       opacity:.12;
     }
 
+    /* LOGO: más pequeño y sin margen negro */
     .hero-logo-scene {
       position:absolute; top:50%; left:50%;
-      transform:translate(-50%,-50%);
-      width:min(520px,62vw);
+      transform:translate(-50%, -50%);
+      width:min(380px, 48vw);
       perspective:1200px;
       z-index:2;
     }
@@ -143,15 +144,17 @@
       animation:logoReveal 2s cubic-bezier(0.16,1,0.3,1) .1s forwards;
       will-change:transform,filter,opacity;
     }
-    /* El PNG tiene ~27% de negro arriba. Lo cortamos con overflow hidden + margin negativo */
+    /* Recorta el negro: el PNG tiene ~47% de alto ocupado por negro arriba y abajo */
     .hero-logo-3d-inner {
       overflow: hidden;
-      margin-top: -27%;
-      padding-bottom: 2%;
+      /* Recorta desde arriba: sube el margen negativo para eliminar negro superior */
+      margin-top: -44%;
+      /* Recorta desde abajo: limita la altura visible al logo */
+      height: 58%;
     }
     .hero-logo-3d img {
       display:block; width:100%; height:auto;
-      margin-top: 27%;
+      margin-top: 44%;
     }
 
     @keyframes logoReveal {
@@ -399,9 +402,27 @@
 
     /* FOOTER */
     footer {
-      padding:28px 48px; border-top:1px solid var(--gray-mid);
+      padding:24px 48px;
+      border-top:1px solid var(--gray-mid);
       display:flex; justify-content:space-between; align-items:center;
-      font-size:9px; letter-spacing:.22em; text-transform:uppercase; opacity:.2;
+    }
+    .footer-logo {
+      font-family:'Bebas Neue',sans-serif;
+      font-size:18px; letter-spacing:.3em;
+      color:var(--white); opacity:.3;
+      text-decoration:none;
+    }
+    .footer-links {
+      display:flex; gap:24px; list-style:none;
+    }
+    .footer-links a {
+      font-size:9px; letter-spacing:.22em; text-transform:uppercase;
+      color:var(--white); text-decoration:none; opacity:.2;
+      transition:opacity .2s;
+    }
+    .footer-links a:hover { opacity:.6; }
+    .footer-copy {
+      font-size:9px; letter-spacing:.18em; text-transform:uppercase; opacity:.2;
     }
 
     /* REVEAL */
@@ -419,7 +440,7 @@
 
       .hero { padding:0 24px 56px; }
       .hero-line { left:24px; }
-      .hero-logo-scene { width:min(340px,80vw); }
+      .hero-logo-scene { width:min(300px,72vw); }
 
       section { padding:72px 24px; }
 
@@ -431,12 +452,13 @@
       .eventos-header { flex-direction:column; align-items:flex-start; gap:14px; }
       .eventos-grid { grid-template-columns:1fr 1fr; gap:14px; }
 
-      footer { flex-direction:column; gap:10px; text-align:center; padding:24px; }
+      footer { flex-direction:column; gap:12px; text-align:center; padding:24px; }
+      .footer-links { display:none; }
     }
 
     @media (max-width:480px) {
       .eventos-grid { grid-template-columns:1fr; }
-      .hero-logo-scene { width:88vw; }
+      .hero-logo-scene { width:78vw; }
     }
   </style>
 </head>
@@ -568,14 +590,13 @@
 
     <div class="evento-card">
       <div class="evento-card-poster">
-        <!-- Cartel del evento: sube POST.png a GitHub y deja src="POST.jpg" -->
         <img src="POST19ABRIL.png" alt="BOSSA · Evento" />
       </div>
       <div class="evento-card-info">
-        <div class="evento-card-fecha">Dom 19 · Abr 2026 · 18:00h</div>  <!-- ← cambia la fecha -->
-        <div class="evento-card-nombre">BOSSA</div>                        <!-- ← nombre del artista/sesión -->
-        <div class="evento-card-venue">El Sótano · Madrid</div>            <!-- ← venue -->
-        <a href="https://es.ra.co/events/2389462" target="_blank" class="evento-card-cta">Entradas</a>  <!-- ← link RA -->
+        <div class="evento-card-fecha">Dom 19 · Abr 2026 · 18:00h</div>
+        <div class="evento-card-nombre">BOSSA</div>
+        <div class="evento-card-venue">El Sótano · Madrid</div>
+        <a href="https://es.ra.co/events/2389462" target="_blank" class="evento-card-cta">Entradas</a>
       </div>
     </div>
 
@@ -596,7 +617,7 @@
         <img src="POST03MAYO.png" alt="BOSSA · Evento" />
       </div>
       <div class="evento-card-info">
-        <div class="evento-card-fecha">Dom 03 · Abr 2026 · 18:00h</div>
+        <div class="evento-card-fecha">Dom 03 · May 2026 · 18:00h</div>
         <div class="evento-card-nombre">BOSSA</div>
         <div class="evento-card-venue">El Sótano · Madrid</div>
         <a href="https://es.ra.co/events/2416015" target="_blank" class="evento-card-cta">Entradas</a>
@@ -645,8 +666,14 @@
 
 <!-- FOOTER -->
 <footer>
-  <span>© 2025 BOSSA — Madrid</span>
-  <span>bossatheclub.com</span>
+  <a href="#" class="footer-logo">BOSSA</a>
+  <ul class="footer-links">
+    <li><a href="#concepto">Concepto</a></li>
+    <li><a href="#identidad">Identidad</a></li>
+    <li><a href="#eventos">Eventos</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 bossatheclub.com</span>
 </footer>
 
 <script>
