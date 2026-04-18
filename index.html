@@ -12,25 +12,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
-
   <style>
     :root {
       --red: #dc143c;
       --black: #080808;
       --white: #f0ece4;
-      --gray: #1a1a1a;
-      --gray-mid: #2e2e2e;
+      --gray: #111111;
+      --gray-mid: #2a2a2a;
     }
 
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       background: var(--black);
@@ -43,677 +35,638 @@
 
     body::before {
       content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-      opacity: 0.035;
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.03;
       pointer-events: none;
-      z-index: 9998;
+      z-index: 9997;
     }
 
+    /* CURSOR */
     .cursor {
-      width: 8px;
-      height: 8px;
-      background: var(--red);
-      border-radius: 50%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
+      width:8px; height:8px;
+      background:var(--red); border-radius:50%;
+      position:fixed; top:0; left:0;
+      pointer-events:none; z-index:9999;
+      transform:translate(-50%,-50%);
+      transition: width .18s ease, height .18s ease, background .18s ease;
     }
+    .cursor.hover { width:26px; height:26px; background:transparent; border:1px solid var(--red); }
+    @media (hover:none) { .cursor { display:none; } body { cursor:auto; } }
 
-    .cursor.hover {
-      width: 28px;
-      height: 28px;
-      background: transparent;
-      border: 1px solid var(--red);
-    }
-
+    /* NAV */
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      padding: 28px 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      position:fixed; top:0; left:0; right:0;
+      z-index:200; padding:24px 48px;
+      display:flex; justify-content:space-between; align-items:center;
     }
-
     nav::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(8,8,8,0.9) 0%, transparent 100%);
-      z-index: -1;
+      content:''; position:absolute; inset:0;
+      background:linear-gradient(to bottom, rgba(8,8,8,.95) 0%, transparent 100%);
+      z-index:-1;
     }
-
     .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px;
-      letter-spacing: 0.3em;
-      color: var(--white);
-      text-decoration: none;
+      font-family:'Bebas Neue',sans-serif;
+      font-size:20px; letter-spacing:.3em;
+      color:var(--white); text-decoration:none;
     }
-
-    .nav-links {
-      display: flex;
-      gap: 40px;
-      list-style: none;
-    }
-
+    .nav-links { display:flex; gap:36px; list-style:none; }
     .nav-links a {
-      font-size: 11px;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--white);
-      text-decoration: none;
-      opacity: 0.6;
-      transition: opacity 0.2s ease;
+      font-size:10px; letter-spacing:.28em; text-transform:uppercase;
+      color:var(--white); text-decoration:none; opacity:.55;
+      transition:opacity .2s;
     }
+    .nav-links a:hover { opacity:1; }
 
-    .nav-links a:hover {
-      opacity: 1;
+    .nav-burger {
+      display:none; flex-direction:column; gap:5px;
+      cursor:pointer; background:none; border:none; padding:4px;
     }
+    .nav-burger span {
+      display:block; width:24px; height:1px; background:var(--white);
+      transition:transform .3s ease, opacity .3s ease;
+    }
+    .nav-burger.open span:nth-child(1) { transform:translateY(6px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity:0; }
+    .nav-burger.open span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
 
+    .mobile-menu {
+      position:fixed; inset:0;
+      background:rgba(8,8,8,.97);
+      z-index:190;
+      display:flex; flex-direction:column;
+      justify-content:center; align-items:center; gap:40px;
+      opacity:0; pointer-events:none;
+      transition:opacity .35s ease;
+    }
+    .mobile-menu.open { opacity:1; pointer-events:all; }
+    .mobile-menu a {
+      font-family:'Bebas Neue',sans-serif;
+      font-size:52px; letter-spacing:.08em;
+      color:var(--white); text-decoration:none;
+      transition:color .2s;
+    }
+    .mobile-menu a:hover { color:var(--red); }
+
+    /* HERO */
     .hero {
-      min-height: 100vh;
-      padding: 0 48px 72px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+      min-height:100vh;
+      padding:0 48px 72px;
+      position:relative; overflow:hidden;
+      display:flex; flex-direction:column; justify-content:flex-end;
     }
-
     .hero-bg {
-      position: absolute;
-      inset: 0;
+      position:absolute; inset:0;
       background:
-        radial-gradient(ellipse 34% 30% at 50% 50%, rgba(220,20,60,0.22) 0%, rgba(220,20,60,0.12) 26%, transparent 70%),
-        radial-gradient(ellipse 22% 18% at 18% 82%, rgba(220,20,60,0.04) 0%, transparent 70%);
-      pointer-events: none;
+        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(220,20,60,.12) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 25% at 15% 85%, rgba(220,20,60,.04) 0%, transparent 70%);
+      pointer-events:none;
     }
-
     .hero-line {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 48px;
-      width: 1px;
-      background: linear-gradient(to bottom, transparent 0%, var(--red) 30%, var(--red) 70%, transparent 100%);
-      opacity: 0.15;
+      position:absolute; top:0; bottom:0; left:48px;
+      width:1px;
+      background:linear-gradient(to bottom, transparent 0%, var(--red) 25%, var(--red) 75%, transparent 100%);
+      opacity:.12;
     }
 
-    .hero-logo-wrap {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: min(560px, 62vw);
-      transform: translate(-50%, -50%);
-      z-index: 2;
-      opacity: 0;
-      animation: heroLogoAppear 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
+    .hero-logo-scene {
+      position:absolute; top:50%; left:50%;
+      transform:translate(-50%,-50%);
+      width:min(680px,74vw);
+      perspective:900px;
+      z-index:2;
     }
+    .hero-logo-3d {
+      width:100%;
+      transform-style:preserve-3d;
+      opacity:0;
+      animation:logoReveal 1.4s cubic-bezier(0.16,1,0.3,1) .2s forwards;
+      will-change:transform;
+      filter:drop-shadow(0 0 40px rgba(220,20,60,.15));
+    }
+    .hero-logo-3d img { display:block; width:100%; height:auto; }
 
-    .hero-logo-wrap img {
-      display: block;
-      width: 100%;
-      height: auto;
+    @keyframes logoReveal {
+      from { opacity:0; transform:rotateX(18deg) rotateY(-8deg) scale(.88); }
+      to   { opacity:1; transform:rotateX(0deg)  rotateY(0deg)  scale(1);   }
     }
 
     .hero-bottom {
-      position: relative;
-      z-index: 3;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      opacity: 0;
-      animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+      position:relative; z-index:3;
+      display:flex; justify-content:space-between; align-items:flex-end;
+      opacity:0;
+      animation:fadeUp 1s cubic-bezier(0.16,1,0.3,1) .9s forwards;
     }
-
     .hero-tagline {
-      font-style: italic;
-      font-size: clamp(13px, 1.5vw, 16px);
-      letter-spacing: 0.12em;
-      opacity: 0.5;
-      line-height: 1.8;
+      font-style:italic;
+      font-size:clamp(12px,1.4vw,15px);
+      letter-spacing:.12em; opacity:.45; line-height:1.9;
     }
-
     .hero-tagline strong {
-      font-style: normal;
-      font-weight: 400;
-      opacity: 1;
-      color: var(--red);
+      font-style:normal; font-weight:400; opacity:1; color:var(--red);
+      display:block; letter-spacing:.2em; font-size:.9em;
     }
-
     .hero-scroll {
-      font-size: 10px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      opacity: 0.3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
+      font-size:9px; letter-spacing:.32em; text-transform:uppercase;
+      opacity:.3; display:flex; flex-direction:column; align-items:center; gap:10px;
     }
-
     .hero-scroll::after {
-      content: '';
-      width: 1px;
-      height: 48px;
-      background: var(--white);
-      display: block;
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes heroLogoAppear {
-      from {
-        opacity: 0;
-        transform: translate(-50%, calc(-50% + 24px));
-      }
-      to {
-        opacity: 1;
-        transform: translate(-50%, -50%);
-      }
+      content:''; width:1px; height:44px;
+      background:var(--white); display:block;
+      animation:scrollPulse 2.2s ease-in-out infinite;
     }
 
     @keyframes scrollPulse {
-      0%, 100% {
-        opacity: 0.3;
-        transform: scaleY(1);
-      }
-      50% {
-        opacity: 0.7;
-        transform: scaleY(1.1);
-      }
+      0%,100% { opacity:.3; transform:scaleY(1); }
+      50%      { opacity:.65; transform:scaleY(1.08); }
     }
-
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity:0; transform:translateY(28px); }
+      to   { opacity:1; transform:translateY(0); }
     }
 
-    section {
-      padding: 120px 48px;
-    }
+    /* SECTIONS */
+    section { padding:120px 48px; }
 
     .section-label {
-      font-size: 10px;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 48px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
+      font-size:10px; letter-spacing:.35em; text-transform:uppercase;
+      color:var(--red); margin-bottom:48px;
+      display:flex; align-items:center; gap:14px;
     }
+    .section-label::before { content:''; width:28px; height:1px; background:var(--red); }
 
-    .section-label::before {
-      content: '';
-      width: 32px;
-      height: 1px;
-      background: var(--red);
-    }
-
+    /* CONCEPTO */
     #concepto {
-      border-top: 1px solid var(--gray-mid);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
+      border-top:1px solid var(--gray-mid);
+      display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;
     }
-
     .concepto-text h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(52px, 7vw, 96px);
-      line-height: 0.92;
-      letter-spacing: 0.02em;
-      margin-bottom: 40px;
+      font-family:'Bebas Neue',sans-serif;
+      font-size:clamp(52px,7vw,96px);
+      line-height:.92; letter-spacing:.02em; margin-bottom:40px;
     }
+    .concepto-text h2 em { font-style:normal; color:var(--red); }
+    .concepto-text p { font-size:15px; line-height:1.85; opacity:.62; max-width:480px; }
+    .concepto-text p+p { margin-top:20px; }
 
-    .concepto-text h2 em {
-      font-style: normal;
-      color: var(--red);
-    }
-
-    .concepto-text p {
-      font-size: 15px;
-      line-height: 1.85;
-      opacity: 0.65;
-      max-width: 480px;
-    }
-
-    .concepto-text p + p {
-      margin-top: 20px;
-    }
-
-    .concepto-right {
-      padding-top: 20px;
-    }
-
-    .sound-tags {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-    }
-
+    .sound-tags { display:flex; flex-direction:column; }
     .sound-tag {
-      padding: 20px 0;
-      border-bottom: 1px solid var(--gray-mid);
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 32px;
-      letter-spacing: 0.08em;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      opacity: 0.3;
-      transition: opacity 0.3s ease;
+      padding:22px 0; border-bottom:1px solid var(--gray-mid);
+      font-family:'Bebas Neue',sans-serif; font-size:34px; letter-spacing:.07em;
+      display:flex; justify-content:space-between; align-items:center;
+      opacity:.25; transition:opacity .3s, padding-left .3s;
     }
-
-    .sound-tag:hover {
-      opacity: 1;
-    }
-
+    .sound-tag:hover { opacity:1; padding-left:12px; }
     .sound-tag span {
-      font-family: 'Barlow', sans-serif;
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--red);
+      font-family:'Barlow',sans-serif; font-size:10px; font-weight:300;
+      letter-spacing:.25em; text-transform:uppercase; color:var(--red);
     }
 
-    #eventos {
-      border-top: 1px solid var(--gray-mid);
-      background: var(--gray);
+    /* IDENTIDAD */
+    #identidad { border-top:1px solid var(--gray-mid); background:var(--gray); }
+
+    .identidad-header { margin-bottom:72px; }
+    .identidad-header h2 {
+      font-family:'Bebas Neue',sans-serif;
+      font-size:clamp(44px,5.5vw,76px);
+      line-height:.93; letter-spacing:.02em; max-width:620px;
     }
+    .identidad-header h2 em { font-style:normal; color:var(--red); }
+
+    .identidad-grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:1px; background:var(--gray-mid);
+    }
+    .identidad-card {
+      background:var(--gray); padding:40px 36px;
+      position:relative; overflow:hidden;
+      transition:background .3s;
+    }
+    .identidad-card::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:2px;
+      background:var(--red); transform:scaleX(0); transform-origin:left;
+      transition:transform .4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .identidad-card:hover::before { transform:scaleX(1); }
+    .identidad-card:hover { background:#161616; }
+    .identidad-card .card-num {
+      font-family:'Bebas Neue',sans-serif; font-size:13px; letter-spacing:.25em;
+      color:var(--red); opacity:.6; margin-bottom:24px;
+    }
+    .identidad-card h3 {
+      font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:.05em; margin-bottom:16px;
+    }
+    .identidad-card p { font-size:13px; line-height:1.8; opacity:.5; }
+
+    .identidad-bottom {
+      margin-top:72px;
+      display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;
+    }
+    .identidad-quote {
+      font-family:'Bebas Neue',sans-serif;
+      font-size:clamp(30px,3.8vw,50px);
+      line-height:1.06; letter-spacing:.03em; opacity:.85;
+    }
+    .identidad-quote em { font-style:normal; color:var(--red); }
+
+    .identidad-values { display:flex; flex-direction:column; }
+    .identidad-value {
+      padding:15px 0; border-bottom:1px solid var(--gray-mid);
+      font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+      opacity:.4; display:flex; align-items:center; gap:14px;
+      transition:opacity .2s;
+    }
+    .identidad-value:hover { opacity:1; }
+    .identidad-value::before {
+      content:''; width:4px; height:4px;
+      background:var(--red); border-radius:50%; flex-shrink:0;
+    }
+
+    /* EVENTOS */
+    #eventos { border-top:1px solid var(--gray-mid); }
 
     .eventos-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 64px;
+      display:flex; justify-content:space-between; align-items:flex-end;
+      margin-bottom:56px;
     }
-
     .eventos-header h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(40px, 5vw, 72px);
-      line-height: 1;
-      letter-spacing: 0.03em;
+      font-family:'Bebas Neue',sans-serif;
+      font-size:clamp(40px,5vw,72px); line-height:1; letter-spacing:.03em;
     }
-
     .eventos-header a {
-      font-size: 11px;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--red);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(220,20,60,0.3);
-      padding-bottom: 2px;
-      transition: border-color 0.2s ease;
+      font-size:10px; letter-spacing:.28em; text-transform:uppercase;
+      color:var(--red); text-decoration:none;
+      border-bottom:1px solid rgba(220,20,60,.3); padding-bottom:2px;
+      transition:border-color .2s;
+    }
+    .eventos-header a:hover { border-color:var(--red); }
+
+    .eventos-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
+      gap:24px;
+    }
+    .evento-card {
+      background:var(--gray); overflow:hidden;
+      display:flex; flex-direction:column;
+      transition:transform .3s cubic-bezier(0.16,1,0.3,1);
+    }
+    .evento-card:hover { transform:translateY(-4px); }
+
+    .evento-card-poster {
+      aspect-ratio:3/4; overflow:hidden;
+      background:var(--gray-mid); position:relative;
+    }
+    .evento-card-poster img {
+      width:100%; height:100%; object-fit:cover;
+      transition:transform .6s ease;
+    }
+    .evento-card:hover .evento-card-poster img { transform:scale(1.04); }
+
+    .evento-card-poster.placeholder {
+      display:flex; align-items:center; justify-content:center;
+    }
+    .evento-card-poster.placeholder::after {
+      content:'BOSSA';
+      font-family:'Bebas Neue',sans-serif; font-size:48px; letter-spacing:.2em;
+      color:var(--gray-mid);
     }
 
-    .eventos-header a:hover {
-      border-color: var(--red);
+    .evento-card-info {
+      padding:20px 20px 24px;
+      display:flex; flex-direction:column; gap:8px; flex:1;
     }
-
-    .eventos-list {
-      display: flex;
-      flex-direction: column;
+    .evento-card-fecha {
+      font-size:10px; letter-spacing:.25em; text-transform:uppercase;
+      color:var(--red); opacity:.8;
     }
-
-    .evento-item {
-      display: grid;
-      grid-template-columns: 100px 1fr auto;
-      gap: 40px;
-      align-items: center;
-      padding: 32px 0;
-      border-bottom: 1px solid var(--gray-mid);
-      text-decoration: none;
-      color: inherit;
-      position: relative;
-      overflow: hidden;
+    .evento-card-nombre {
+      font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:.05em;
     }
-
-    .evento-item::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--red);
-      transform: scaleY(0);
-      transform-origin: bottom;
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    .evento-card-venue {
+      font-size:11px; letter-spacing:.18em; text-transform:uppercase; opacity:.35;
     }
-
-    .evento-item:hover::before {
-      transform: scaleY(1);
+    .evento-card-cta {
+      margin-top:auto; padding-top:20px;
+      display:block;
+      padding:13px 0;
+      background:var(--red);
+      color:#fff; font-size:10px; letter-spacing:.3em; text-transform:uppercase;
+      text-decoration:none; text-align:center;
+      transition:background .2s;
     }
-
-    .evento-fecha {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 42px;
-      line-height: 1;
-      opacity: 0.3;
-      letter-spacing: 0.02em;
-    }
-
-    .evento-fecha small {
-      display: block;
-      font-family: 'Barlow', sans-serif;
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      opacity: 0.7;
-      margin-top: 4px;
-    }
-
-    .evento-info h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 28px;
-      letter-spacing: 0.05em;
-      margin-bottom: 6px;
-    }
-
-    .evento-info p {
-      font-size: 12px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      opacity: 0.4;
-    }
-
-    .evento-cta {
-      font-size: 10px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--red);
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-
-    .evento-item:hover .evento-cta {
-      opacity: 1;
-    }
+    .evento-card-cta:hover { background:#b01030; }
 
     .no-eventos {
-      padding: 64px 0;
-      text-align: center;
-      opacity: 0.3;
-      font-size: 13px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+      grid-column:1/-1; padding:80px 0; text-align:center;
+      font-size:12px; letter-spacing:.25em; text-transform:uppercase; opacity:.25;
     }
 
+    /* CONTACTO */
     #contacto {
-      border-top: 1px solid var(--gray-mid);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
+      border-top:1px solid var(--gray-mid); background:var(--gray);
+      display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;
     }
-
     #contacto h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(48px, 6vw, 88px);
-      line-height: 0.9;
-      letter-spacing: 0.02em;
+      font-family:'Bebas Neue',sans-serif;
+      font-size:clamp(48px,6vw,88px); line-height:.9; letter-spacing:.02em;
     }
+    .contact-right { padding-top:8px; display:flex; flex-direction:column; gap:32px; }
+    .contact-item { display:flex; flex-direction:column; gap:8px; }
+    .contact-item label { font-size:10px; letter-spacing:.3em; text-transform:uppercase; opacity:.35; }
+    .contact-item a { font-size:16px; color:var(--white); text-decoration:none; transition:color .2s; }
+    .contact-item a:hover { color:var(--red); }
 
-    .contact-right {
-      padding-top: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-    }
-
-    .contact-item {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .contact-item label {
-      font-size: 10px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      opacity: 0.4;
-    }
-
-    .contact-item a {
-      font-size: 16px;
-      color: var(--white);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .contact-item a:hover {
-      color: var(--red);
-    }
-
-    .social-links {
-      display: flex;
-      gap: 24px;
-      margin-top: 16px;
-      flex-wrap: wrap;
-    }
-
+    .social-links { display:flex; gap:16px; flex-wrap:wrap; margin-top:8px; }
     .social-link {
-      font-size: 10px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--white);
-      text-decoration: none;
-      opacity: 0.5;
-      transition: opacity 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-      padding: 12px 20px;
-      border: 1px solid var(--gray-mid);
+      font-size:10px; letter-spacing:.28em; text-transform:uppercase;
+      color:var(--white); text-decoration:none; opacity:.45;
+      padding:12px 18px; border:1px solid var(--gray-mid);
+      transition:opacity .2s, color .2s, border-color .2s;
     }
+    .social-link:hover { opacity:1; color:var(--red); border-color:var(--red); }
 
-    .social-link:hover {
-      opacity: 1;
-      color: var(--red);
-      border-color: var(--red);
-    }
-
+    /* FOOTER */
     footer {
-      padding: 32px 48px;
-      border-top: 1px solid var(--gray-mid);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      opacity: 0.25;
+      padding:28px 48px; border-top:1px solid var(--gray-mid);
+      display:flex; justify-content:space-between; align-items:center;
+      font-size:9px; letter-spacing:.22em; text-transform:uppercase; opacity:.2;
     }
 
+    /* REVEAL */
     .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity:0; transform:translateY(22px);
+      transition:opacity .9s cubic-bezier(0.16,1,0.3,1), transform .9s cubic-bezier(0.16,1,0.3,1);
     }
+    .reveal.visible { opacity:1; transform:translateY(0); }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    /* MOBILE */
+    @media (max-width:768px) {
+      nav { padding:20px 24px; }
+      .nav-links { display:none; }
+      .nav-burger { display:flex; }
 
-    @media (max-width: 768px) {
-      nav {
-        padding: 24px;
-      }
+      .hero { padding:0 24px 56px; }
+      .hero-line { left:24px; }
+      .hero-logo-scene { width:min(420px,84vw); }
 
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        padding: 0 24px 56px;
-      }
-
-      .hero-line {
-        left: 24px;
-      }
-
-      .hero-logo-wrap {
-        width: min(440px, 78vw);
-      }
-
-      section {
-        padding: 80px 24px;
-      }
+      section { padding:72px 24px; }
 
       #concepto,
-      #contacto {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
+      #contacto,
+      .identidad-bottom { grid-template-columns:1fr; gap:48px; }
 
-      .eventos-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-      }
+      .identidad-grid { grid-template-columns:1fr; }
+      .eventos-header { flex-direction:column; align-items:flex-start; gap:14px; }
+      .eventos-grid { grid-template-columns:1fr 1fr; gap:14px; }
 
-      .evento-item {
-        grid-template-columns: 72px 1fr;
-      }
+      footer { flex-direction:column; gap:10px; text-align:center; padding:24px; }
+    }
 
-      .evento-cta {
-        display: none;
-      }
-
-      footer {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-        padding: 24px;
-      }
+    @media (max-width:480px) {
+      .eventos-grid { grid-template-columns:1fr; }
+      .hero-logo-scene { width:88vw; }
     }
   </style>
 </head>
 <body>
 
-  <div class="cursor" id="cursor"></div>
+<div class="cursor" id="cursor"></div>
 
-  <nav>
-    <a href="#" class="nav-logo">BOSSA</a>
-    <ul class="nav-links">
-      <li><a href="#concepto">Concepto</a></li>
-      <li><a href="#eventos">Eventos</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </nav>
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">BOSSA</a>
+  <ul class="nav-links">
+    <li><a href="#concepto">Concepto</a></li>
+    <li><a href="#identidad">Identidad</a></li>
+    <li><a href="#eventos">Eventos</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-line"></div>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#concepto" class="menu-link">Concepto</a>
+  <a href="#identidad" class="menu-link">Identidad</a>
+  <a href="#eventos" class="menu-link">Eventos</a>
+  <a href="#contacto" class="menu-link">Contacto</a>
+</div>
 
-    <div class="hero-logo-wrap">
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-line"></div>
+
+  <div class="hero-logo-scene">
+    <div class="hero-logo-3d" id="logo3d">
       <img src="BOUNDING-WHITE.png" alt="BOSSA" />
     </div>
+  </div>
 
-    <div class="hero-bottom">
-      <div class="hero-tagline">
-        Música electrónica en Madrid<br />
-        <strong>Minimal Deep Tech · Tech House</strong>
-      </div>
-      <div class="hero-scroll">scroll</div>
+  <div class="hero-bottom">
+    <div class="hero-tagline">
+      Música electrónica en Madrid<br />
+      <strong>Minimal Deep Tech · Tech House</strong>
     </div>
-  </section>
+    <div class="hero-scroll">scroll</div>
+  </div>
+</section>
 
-  <section id="concepto">
-    <div class="concepto-text reveal">
-      <div class="section-label">Concepto</div>
-      <h2>Un sonido.<br /><em>Una identidad.</em></h2>
-      <p>BOSSA es un concepto de música electrónica nacido en Madrid con una premisa clara: el sonido manda. Minimal, deep tech y tech house construidos con criterio, donde cada sesión es una declaración de intenciones.</p>
-      <p>No es una fiesta más. Es un espacio para quienes entienden la diferencia entre poner música y crear un viaje.</p>
+<!-- CONCEPTO -->
+<section id="concepto">
+  <div class="concepto-text reveal">
+    <div class="section-label">Concepto</div>
+    <h2>Un sonido.<br /><em>Una identidad.</em></h2>
+    <p>BOSSA nace desde una idea simple: hacer eventos donde el sonido, la selección y la dirección estética tengan el mismo peso. Minimal deep tech y tech house tratados con criterio, sin exceso, sin artificio y sin fórmulas vacías.</p>
+    <p>Una propuesta construida desde la elegancia, la tensión y el detalle. Un punto de encuentro para quienes buscan algo más preciso que una fiesta genérica.</p>
+  </div>
+  <div class="concepto-right reveal">
+    <div class="section-label">Sonido</div>
+    <div class="sound-tags">
+      <div class="sound-tag">Minimal Deep Tech <span>Base</span></div>
+      <div class="sound-tag">Tech House <span>Grooves</span></div>
     </div>
+  </div>
+</section>
 
-    <div class="concepto-right reveal">
-      <div class="section-label">Sonido</div>
-      <div class="sound-tags">
-        <div class="sound-tag">Minimal Deep Tech <span>Base</span></div>
-        <div class="sound-tag">Tech House <span>Grooves</span></div>
-      </div>
+<!-- IDENTIDAD -->
+<section id="identidad">
+  <div class="identidad-header reveal">
+    <div class="section-label">Identidad</div>
+    <h2>Más que música.<br/><em>Una forma de entender el club.</em></h2>
+  </div>
+
+  <div class="identidad-grid reveal">
+    <div class="identidad-card">
+      <div class="card-num">01</div>
+      <h3>El Sonido</h3>
+      <p>Minimal, deep tech y tech house tratados con criterio, sin exceso, sin artificio y sin fórmulas vacías. Grooves hipnóticos construidos capa a capa, donde el criterio musical es la línea que no se cruza.</p>
     </div>
-  </section>
-
-  <section id="eventos">
-    <div class="eventos-header reveal">
-      <h2>Próximos<br />Eventos</h2>
-      <a href="https://es.ra.co/promoters/177842" target="_blank" rel="noopener">Ver en Resident Advisor →</a>
+    <div class="identidad-card">
+      <div class="card-num">02</div>
+      <h3>La Selección</h3>
+      <p>Cada artista pasa por un filtro de coherencia. No se trata de nombres, se trata de viajes. BOSSA programa con intención, no con trending.</p>
     </div>
-
-    <div class="eventos-list reveal">
-      <div class="no-eventos">Próximas fechas en breve</div>
+    <div class="identidad-card">
+      <div class="card-num">03</div>
+      <h3>El Espacio</h3>
+      <p>Locales con carácter, no salas genéricas. El entorno forma parte del lenguaje sonoro de cada evento. El espacio no es un contenedor — es parte de la propuesta.</p>
     </div>
-  </section>
+  </div>
 
-  <section id="contacto">
-    <div class="reveal">
-      <div class="section-label">Contacto</div>
-      <h2>Trabajemos<br />juntos</h2>
+  <div class="identidad-bottom reveal">
+    <div class="identidad-quote">
+      "El sonido es la identidad.<br/>
+      Todo lo demás<br/>
+      <em>es consecuencia."</em>
     </div>
+    <div class="identidad-values">
+      <div class="identidad-value">Criterio sobre tendencia</div>
+      <div class="identidad-value">Coherencia sonora</div>
+      <div class="identidad-value">Comunidad antes que consumo</div>
+      <div class="identidad-value">Elegancia, tensión y detalle</div>
+      <div class="identidad-value">Sonido, selección y dirección estética</div>
+    </div>
+  </div>
+</section>
 
-    <div class="contact-right reveal">
-      <div class="contact-item">
-        <label>Booking & Colaboraciones</label>
-        <a href="mailto:contacto@bossatheclub.com">contacto@bossatheclub.com</a>
-      </div>
+<!-- EVENTOS -->
+<section id="eventos">
+  <div class="eventos-header reveal">
+    <h2>Próximos<br />Eventos</h2>
+    <a href="https://es.ra.co/promoters/177842" target="_blank" rel="noopener">Ver en Resident Advisor →</a>
+  </div>
 
-      <div class="contact-item">
-        <label>Redes</label>
-        <div class="social-links">
-          <a href="https://instagram.com/bossatheclub" target="_blank" rel="noopener" class="social-link">Instagram</a>
-          <a href="https://es.ra.co/promoters/177842" target="_blank" rel="noopener" class="social-link">Resident Advisor</a>
+  <div class="eventos-grid reveal">
+    <!--
+      CÓMO AÑADIR UN EVENTO:
+      Copia este bloque dentro de .eventos-grid, encima del div.no-eventos:
+
+      <div class="evento-card">
+        <div class="evento-card-poster">
+          <img src="cartel-nombre.jpg" alt="Nombre evento" />
+        </div>
+        <div class="evento-card-info">
+          <div class="evento-card-fecha">Vie 25 Abr 2025 · 23:00h</div>
+          <div class="evento-card-nombre">NOMBRE ARTISTA</div>
+          <div class="evento-card-venue">El Sótano · Madrid</div>
+          <a href="https://link-entradas-ra" target="_blank" class="evento-card-cta">Entradas</a>
         </div>
       </div>
+
+      El cartel debe estar en la misma carpeta que index.html.
+      Cuando haya eventos activos, borra el div.no-eventos.
+    -->
+    <div class="no-eventos">Próximas fechas en breve</div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="reveal">
+    <div class="section-label">Contacto</div>
+    <h2>Trabajemos<br />juntos</h2>
+  </div>
+  <div class="contact-right reveal">
+    <div class="contact-item">
+      <label>Booking & Colaboraciones</label>
+      <a href="mailto:contacto@bossatheclub.com">contacto@bossatheclub.com</a>
     </div>
-  </section>
+    <div class="contact-item">
+      <label>Redes</label>
+      <div class="social-links">
+        <a href="https://instagram.com/bossatheclub" target="_blank" rel="noopener" class="social-link">Instagram</a>
+        <a href="https://es.ra.co/promoters/177842" target="_blank" rel="noopener" class="social-link">Resident Advisor</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <footer>
-    <span>© 2025 BOSSA — Madrid</span>
-    <span>bossatheclub.com</span>
-  </footer>
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 BOSSA — Madrid</span>
+  <span>bossatheclub.com</span>
+</footer>
 
-  <script>
-    const cursor = document.getElementById('cursor');
-
-    document.addEventListener('mousemove', (e) => {
+<script>
+  // CURSOR
+  const cursor = document.getElementById('cursor');
+  const isTouch = window.matchMedia('(hover:none)').matches;
+  if (!isTouch) {
+    document.addEventListener('mousemove', e => {
       cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
+      cursor.style.top  = e.clientY + 'px';
     });
-
-    document.querySelectorAll('a, button, .sound-tag').forEach((el) => {
+    document.querySelectorAll('a, button, .sound-tag, .identidad-card').forEach(el => {
       el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
     });
+  }
 
-    const reveals = document.querySelectorAll('.reveal');
+  // MOBILE MENU
+  const burger     = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  document.querySelectorAll('.menu-link').forEach(link => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
+  // 3D LOGO — scroll
+  const logo3d = document.getElementById('logo3d');
+  let ticking = false;
+  function updateLogo() {
+    const heroH   = document.querySelector('.hero').offsetHeight;
+    const prog    = Math.min(window.scrollY / (heroH * 0.65), 1);
+    const rotX    =  prog * 16;
+    const rotY    = -prog * 7;
+    const sc      = 1 - prog * 0.09;
+    logo3d.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) scale(${sc})`;
+    logo3d.style.filter    = `drop-shadow(0 ${4 + prog*22}px ${20 + prog*44}px rgba(220,20,60,${.13 + prog*.18}))`;
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(updateLogo); ticking = true; }
+  }, { passive:true });
 
-    reveals.forEach((el) => observer.observe(el));
-  </script>
+  // 3D LOGO — mouse parallax
+  const heroEl = document.querySelector('.hero');
+  heroEl.addEventListener('mousemove', e => {
+    if (window.scrollY > 80) return;
+    const r  = heroEl.getBoundingClientRect();
+    const dx = (e.clientX - (r.left + r.width/2))  / (r.width/2);
+    const dy = (e.clientY - (r.top  + r.height/2)) / (r.height/2);
+    logo3d.style.transform = `rotateX(${-dy*5}deg) rotateY(${dx*7}deg) scale(1.015)`;
+  });
+  heroEl.addEventListener('mouseleave', () => {
+    if (window.scrollY < 80) logo3d.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+  });
+
+  // SCROLL REVEAL
+  const reveals = document.querySelectorAll('.reveal');
+  new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold:.08 }).observe
+  ? new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold:.08 }).observe(reveals[0])
+  : null;
+
+  // Reinit observer properly
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold:.08 });
+  reveals.forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
