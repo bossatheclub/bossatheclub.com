@@ -1244,75 +1244,83 @@
     });
 
     // HERO 3D
-    const logo3d = document.getElementById('logo3d');
-    const logoScene = document.getElementById('logoScene');
-    const heroBg = document.getElementById('heroBg');
-    const heroEl = document.querySelector('.hero');
+  const logo3d = document.getElementById('logo3d');
+const heroBg = document.getElementById('heroBg');
+const heroEl = document.querySelector('.hero');
 
-    let currentX = 0;
-    let currentY = 0;
-    let targetX = 0;
-    let targetY = 0;
-    let currentScale = 1;
-    let targetScale = 1;
-    let scrollProgress = 0;
+let currentX = 0;
+let currentY = 0;
+let targetX = 0;
+let targetY = 0;
+let currentScale = 1;
+let targetScale = 1;
+let currentZ = 0;
+let targetZ = 0;
+let scrollProgress = 0;
 
-    function animateLogo() {
-      currentX += (targetX - currentX) * 0.08;
-      currentY += (targetY - currentY) * 0.08;
-      currentScale += (targetScale - currentScale) * 0.08;
+function animateLogo() {
+  currentX += (targetX - currentX) * 0.07;
+  currentY += (targetY - currentY) * 0.07;
+  currentScale += (targetScale - currentScale) * 0.07;
+  currentZ += (targetZ - currentZ) * 0.07;
 
-      const scrollRotX = scrollProgress * 18;
-      const scrollRotY = -scrollProgress * 7;
-      const scrollScale = 1 - scrollProgress * 0.08;
-      const scrollZ = scrollProgress * -10;
+  const scrollRotX = scrollProgress * 24;
+  const scrollRotY = -scrollProgress * 9;
+  const scrollScale = 1 - scrollProgress * 0.09;
+  const scrollZ = scrollProgress * -22;
 
-      const finalRotX = currentY + scrollRotX;
-      const finalRotY = currentX + scrollRotY;
-      const finalScale = currentScale * scrollScale;
+  const finalRotX = currentY + scrollRotX;
+  const finalRotY = currentX + scrollRotY;
+  const finalScale = currentScale * scrollScale;
+  const finalZ = currentZ + scrollZ;
 
-      logo3d.style.transform = `
-        translateZ(${scrollZ}px)
-        rotateX(${finalRotX}deg)
-        rotateY(${finalRotY}deg)
-        scale(${finalScale})
-      `;
+  logo3d.style.transform = `
+    translateZ(${finalZ}px)
+    rotateX(${finalRotX}deg)
+    rotateY(${finalRotY}deg)
+    scale(${finalScale})
+  `;
 
-      logo3d.style.filter = `
-        drop-shadow(0 ${8 + scrollProgress * 20}px ${24 + scrollProgress * 40}px rgba(220,20,60,${0.18 + scrollProgress * 0.12}))
-      `;
+  logo3d.style.filter = `
+    drop-shadow(0 ${10 + scrollProgress * 24}px ${28 + scrollProgress * 50}px rgba(220,20,60,${0.18 + scrollProgress * 0.14}))
+  `;
 
-      heroBg.style.transform = `translate(${currentX * 1.2}px, ${currentY * 1.2}px)`;
+  heroBg.style.transform = `
+    translate(${currentX * 1.8}px, ${currentY * 1.2}px)
+    scale(${1 + scrollProgress * 0.04})
+  `;
 
-      requestAnimationFrame(animateLogo);
-    }
+  requestAnimationFrame(animateLogo);
+}
 
-    animateLogo();
+animateLogo();
 
-    window.addEventListener('scroll', () => {
-      const heroH = heroEl.offsetHeight;
-      scrollProgress = Math.min(window.scrollY / (heroH * 0.7), 1);
-    }, { passive: true });
+window.addEventListener('scroll', () => {
+  const heroH = heroEl.offsetHeight;
+  scrollProgress = Math.min(window.scrollY / (heroH * 0.72), 1);
+}, { passive: true });
 
-    if (!isTouch) {
-      heroEl.addEventListener('mousemove', e => {
-        if (window.scrollY > 120) return;
+if (!isTouch) {
+  heroEl.addEventListener('mousemove', e => {
+    if (window.scrollY > 140) return;
 
-        const r = heroEl.getBoundingClientRect();
-        const dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
-        const dy = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
+    const r = heroEl.getBoundingClientRect();
+    const dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+    const dy = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
 
-        targetX = dx * 10;
-        targetY = -dy * 6;
-        targetScale = 1.018;
-      });
+    targetX = dx * 14;
+    targetY = -dy * 8;
+    targetScale = 1.028;
+    targetZ = 16;
+  });
 
-      heroEl.addEventListener('mouseleave', () => {
-        targetX = 0;
-        targetY = 0;
-        targetScale = 1;
-      });
-    }
+  heroEl.addEventListener('mouseleave', () => {
+    targetX = 0;
+    targetY = 0;
+    targetScale = 1;
+    targetZ = 0;
+  });
+}
 
     // SCROLL REVEAL
     const reveals = document.querySelectorAll('.reveal');
