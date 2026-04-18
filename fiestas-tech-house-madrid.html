@@ -1,46 +1,331 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Fiestas Tech House Madrid | BOSSA</title>
-  <meta name="description" content="Descubre las mejores fiestas de tech house en Madrid. BOSSA ofrece eventos de música electrónica con un enfoque en minimal, deep tech y tech house.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Fiestas Tech House en Madrid | BOSSA</title>
+  <meta name="description" content="BOSSA es una propuesta de fiestas tech house en Madrid con sonido minimal, deep tech y tech house. Eventos en formato noche y tardeo con identidad propia." />
+
+  <meta property="og:title" content="Fiestas Tech House en Madrid | BOSSA" />
+  <meta property="og:description" content="Minimal, deep tech y tech house en Madrid. Eventos en formato noche y tardeo con una dirección musical y estética cuidada." />
+  <meta property="og:image" content="https://bossatheclub.com/LG-RRSS.png" />
+  <meta property="og:url" content="https://bossatheclub.com/fiestas-tech-house-madrid" />
+  <meta property="og:type" content="article" />
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --red: #dc143c;
+      --black: #080808;
+      --white: #f0ece4;
+      --gray: #111111;
+      --gray-mid: #2a2a2a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 44px 28px 80px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 64px;
+      gap: 20px;
+    }
+
+    .brand {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: .28em;
+      font-size: 22px;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .back-link {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: .6;
+      text-decoration: none;
+      transition: opacity .2s ease, color .2s ease;
+    }
+
+    .back-link:hover {
+      opacity: 1;
+      color: var(--red);
+    }
+
+    .hero {
+      padding: 10px 0 42px;
+      border-bottom: 1px solid var(--gray-mid);
+      margin-bottom: 42px;
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: .34em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 22px;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 30px;
+      height: 1px;
+      background: var(--red);
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 8vw, 88px);
+      line-height: .94;
+      letter-spacing: .02em;
+      margin-bottom: 26px;
+      max-width: 760px;
+    }
+
+    .hero-intro {
+      max-width: 760px;
+      font-size: 17px;
+      opacity: .8;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 56px;
+      align-items: start;
+      margin-bottom: 52px;
+    }
+
+    .content h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      letter-spacing: .03em;
+      margin-bottom: 14px;
+      margin-top: 38px;
+    }
+
+    .content h2:first-child {
+      margin-top: 0;
+    }
+
+    .content p {
+      font-size: 16px;
+      opacity: .72;
+      max-width: 680px;
+    }
+
+    .content p + p {
+      margin-top: 16px;
+    }
+
+    .side-panel {
+      background: linear-gradient(180deg, rgba(255,255,255,.02) 0%, rgba(255,255,255,.01) 100%);
+      border: 1px solid var(--gray-mid);
+      padding: 30px 28px;
+    }
+
+    .side-panel h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      letter-spacing: .05em;
+      margin-bottom: 18px;
+    }
+
+    .side-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .side-item {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      opacity: .58;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--gray-mid);
+    }
+
+    .side-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .cta-box {
+      margin-top: 54px;
+      padding-top: 32px;
+      border-top: 1px solid var(--gray-mid);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .cta-box p {
+      font-size: 15px;
+      opacity: .68;
+      max-width: 700px;
+    }
+
+    .cta-link {
+      display: inline-block;
+      width: fit-content;
+      padding: 14px 26px;
+      background: var(--red);
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: .28em;
+      font-size: 11px;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .cta-link:hover {
+      background: #b01030;
+      transform: translateY(-1px);
+    }
+
+    .bottom-note {
+      margin-top: 56px;
+      padding-top: 22px;
+      border-top: 1px solid var(--gray-mid);
+      font-size: 13px;
+      opacity: .42;
+    }
+
+    @media (max-width: 860px) {
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .page {
+        padding: 28px 22px 64px;
+      }
+
+      .topbar {
+        margin-bottom: 44px;
+      }
+
+      .hero {
+        padding-top: 0;
+        margin-bottom: 34px;
+      }
+
+      .hero-intro,
+      .content p {
+        font-size: 15px;
+      }
+
+      .side-panel {
+        padding: 24px 22px;
+      }
+    }
+  </style>
 </head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a href="https://bossatheclub.com/" class="brand">BOSSA</a>
+      <a href="https://bossatheclub.com/" class="back-link">Volver a la web</a>
+    </div>
 
-<body style="font-family: Arial; padding: 40px; max-width: 800px; margin: auto; background: #000; color: #fff;">
+    <section class="hero">
+      <div class="eyebrow">Madrid</div>
+      <h1>Fiestas Tech House en Madrid</h1>
+      <p class="hero-intro">
+        BOSSA es una propuesta de música electrónica en Madrid centrada en una línea sonora que se mueve entre el minimal, el deep tech y el tech house, con una identidad cuidada tanto en la selección musical como en la atmósfera de cada evento.
+      </p>
+    </section>
 
-  <h1>Fiestas Tech House en Madrid</h1>
+    <section class="grid">
+      <div class="content">
+        <h2>Eventos de música electrónica en Madrid</h2>
+        <p>
+          Si estás buscando fiestas de tech house en Madrid, BOSSA se sitúa dentro de una nueva generación de propuestas que priorizan el criterio musical, la dirección estética y la coherencia de público por encima del ruido.
+        </p>
+        <p>
+          Los eventos de BOSSA tienen lugar en formato noche y tardeo, adaptándose a distintos momentos de la semana sin perder una línea clara en sonido, identidad y energía.
+        </p>
 
-  <p>
-    Si estás buscando fiestas de tech house en Madrid, BOSSA es una de las propuestas más cuidadas dentro de la escena electrónica actual.
-  </p>
+        <h2>Minimal, deep tech y tech house</h2>
+        <p>
+          La propuesta musical de BOSSA parte de grooves precisos, tensión rítmica y una selección orientada a quienes buscan una experiencia más refinada dentro de la escena electrónica de Madrid. No se trata solo de escuchar tech house, sino de cómo se construye el viaje durante una sesión completa.
+        </p>
 
-  <p>
-    BOSSA se centra en sonidos minimal, deep tech y tech house, alejándose de lo comercial y apostando por una experiencia más refinada y enfocada en la música.
-  </p>
+        <h2>Qué tipo de experiencia propone BOSSA</h2>
+        <p>
+          BOSSA plantea encuentros donde el sonido, el entorno y el ritmo de la noche están pensados como una unidad. La intención no es llenar un espacio sin criterio, sino crear una experiencia reconocible para un público que valora la música electrónica con sensibilidad de club culture.
+        </p>
 
-  <h2>Eventos de música electrónica en Madrid</h2>
+        <div class="cta-box">
+          <p>
+            Puedes consultar las próximas fechas, el archivo visual y los accesos a entradas desde la web principal de BOSSA.
+          </p>
+          <a href="https://bossatheclub.com/" class="cta-link">Ver BOSSA</a>
+        </div>
+      </div>
 
-  <p>
-    Los eventos de BOSSA tienen lugar en formato viernes noche, reuniendo a un público que valora la selección musical, el ambiente y una identidad clara dentro de la escena underground.
-  </p>
+      <aside class="side-panel">
+        <h3>Claves</h3>
+        <div class="side-list">
+          <div class="side-item">Música electrónica en Madrid</div>
+          <div class="side-item">Eventos en formato noche y tardeo</div>
+          <div class="side-item">Minimal · Deep Tech · Tech House</div>
+          <div class="side-item">Identidad cuidada</div>
+          <div class="side-item">Próximas fechas y entradas</div>
+        </div>
+      </aside>
+    </section>
 
-  <h2>Qué tipo de fiesta es BOSSA</h2>
-
-  <p>
-    No es una fiesta masiva ni genérica. BOSSA busca un equilibrio entre club culture y accesibilidad, creando una experiencia coherente a nivel sonoro, visual y de público.
-  </p>
-
-  <h2>Próximos eventos</h2>
-
-  <p>
-    Puedes consultar los próximos eventos y acceder a las entradas desde aquí:
-  </p>
-
-  <p>
-    <a href="https://bossatheclub.com" style="color:#fff; text-decoration: underline;">
-      Ver eventos BOSSA
-    </a>
-  </p>
-
+    <div class="bottom-note">
+      BOSSA — Madrid · Música electrónica, archivo visual y próximos eventos.
+    </div>
+  </main>
 </body>
 </html>
