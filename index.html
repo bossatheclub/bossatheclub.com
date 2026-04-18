@@ -132,23 +132,29 @@
     .hero-logo-scene {
       position:absolute; top:50%; left:50%;
       transform:translate(-50%,-50%);
-      width:min(680px,74vw);
-      perspective:900px;
+      width:min(480px,56vw);
+      perspective:1200px;
       z-index:2;
     }
     .hero-logo-3d {
       width:100%;
       transform-style:preserve-3d;
       opacity:0;
-      animation:logoReveal 1.4s cubic-bezier(0.16,1,0.3,1) .2s forwards;
-      will-change:transform;
-      filter:drop-shadow(0 0 40px rgba(220,20,60,.15));
+      animation:logoReveal 2s cubic-bezier(0.16,1,0.3,1) .1s forwards;
+      will-change:transform,filter,opacity;
     }
-    .hero-logo-3d img { display:block; width:100%; height:auto; }
+    .hero-logo-3d img {
+      display:block; width:100%; height:auto;
+      clip-path:inset(27% 2% 2% 2%);
+      margin-top:-27%;
+    }
 
     @keyframes logoReveal {
-      from { opacity:0; transform:rotateX(18deg) rotateY(-8deg) scale(.88); }
-      to   { opacity:1; transform:rotateX(0deg)  rotateY(0deg)  scale(1);   }
+      0%   { opacity:0; transform:translateZ(-180px) rotateX(28deg) rotateY(-14deg) scale(.7); filter:blur(12px) drop-shadow(0 0 0px rgba(220,20,60,0)); }
+      55%  { opacity:1; transform:translateZ(20px) rotateX(-3deg) rotateY(4deg) scale(1.04); filter:blur(0px) drop-shadow(0 0 60px rgba(220,20,60,.55)); }
+      72%  { filter:drop-shadow(0 0 90px rgba(220,20,60,.7)) brightness(1.15); }
+      85%  { transform:translateZ(-6px) rotateX(1deg) rotateY(-1deg) scale(.99); filter:drop-shadow(0 0 30px rgba(220,20,60,.3)); }
+      100% { opacity:1; transform:translateZ(0px) rotateX(0deg) rotateY(0deg) scale(1); filter:drop-shadow(0 4px 24px rgba(220,20,60,.18)); }
     }
 
     .hero-bottom {
@@ -408,7 +414,7 @@
 
       .hero { padding:0 24px 56px; }
       .hero-line { left:24px; }
-      .hero-logo-scene { width:min(420px,84vw); }
+      .hero-logo-scene { width:min(340px,80vw); }
 
       section { padding:72px 24px; }
 
@@ -541,26 +547,59 @@
   </div>
 
   <div class="eventos-grid reveal">
-    <!--
-      CÓMO AÑADIR UN EVENTO:
-      Copia este bloque dentro de .eventos-grid, encima del div.no-eventos:
 
-      <div class="evento-card">
-        <div class="evento-card-poster">
-          <img src="cartel-nombre.jpg" alt="Nombre evento" />
-        </div>
-        <div class="evento-card-info">
-          <div class="evento-card-fecha">Vie 25 Abr 2025 · 23:00h</div>
-          <div class="evento-card-nombre">NOMBRE ARTISTA</div>
-          <div class="evento-card-venue">El Sótano · Madrid</div>
-          <a href="https://link-entradas-ra" target="_blank" class="evento-card-cta">Entradas</a>
-        </div>
+    <!-- ═══════════════════════════════════════════════════════════════
+         GUÍA PARA AÑADIR O MODIFICAR EVENTOS
+         ───────────────────────────────────────────────────────────────
+         1. Sube el cartel JPG/PNG a GitHub en la misma carpeta que index.html
+         2. En src="..." escribe el nombre exacto del archivo subido
+         3. Cambia la fecha, artista, venue y link de entradas
+         4. Para OCULTAR un evento: añade  style="display:none"  al div.evento-card
+         5. Cuando no haya eventos activos: descomenta el div.no-eventos
+            y pon  style="display:none"  en todas las cards
+         ═══════════════════════════════════════════════════════════════ -->
+
+    <div class="evento-card">
+      <div class="evento-card-poster">
+        <!-- Cartel del evento: sube FLYER19.jpg a GitHub y deja src="FLYER19.jpg" -->
+        <img src="FLYER19.jpg" alt="BOSSA · Evento" />
       </div>
+      <div class="evento-card-info">
+        <div class="evento-card-fecha">Vie 19 · Ene 2026 · 23:00h</div>  <!-- ← cambia la fecha -->
+        <div class="evento-card-nombre">BOSSA</div>                        <!-- ← nombre del artista/sesión -->
+        <div class="evento-card-venue">El Sótano · Madrid</div>            <!-- ← venue -->
+        <a href="https://es.ra.co/promoters/177842" target="_blank" class="evento-card-cta">Entradas</a>  <!-- ← link RA -->
+      </div>
+    </div>
 
-      El cartel debe estar en la misma carpeta que index.html.
-      Cuando haya eventos activos, borra el div.no-eventos.
-    -->
+    <div class="evento-card">
+      <div class="evento-card-poster">
+        <img src="FLYER26.jpg" alt="BOSSA · Evento" />
+      </div>
+      <div class="evento-card-info">
+        <div class="evento-card-fecha">Vie 26 · Ene 2026 · 23:00h</div>
+        <div class="evento-card-nombre">BOSSA</div>
+        <div class="evento-card-venue">El Sótano · Madrid</div>
+        <a href="https://es.ra.co/promoters/177842" target="_blank" class="evento-card-cta">Entradas</a>
+      </div>
+    </div>
+
+    <div class="evento-card">
+      <div class="evento-card-poster">
+        <img src="FLYER3.jpg" alt="BOSSA · Evento" />
+      </div>
+      <div class="evento-card-info">
+        <div class="evento-card-fecha">Vie 3 · Feb 2026 · 23:00h</div>
+        <div class="evento-card-nombre">BOSSA</div>
+        <div class="evento-card-venue">El Sótano · Madrid</div>
+        <a href="https://es.ra.co/promoters/177842" target="_blank" class="evento-card-cta">Entradas</a>
+      </div>
+    </div>
+
+    <!-- Descomenta esta línea cuando no haya eventos activos:
     <div class="no-eventos">Próximas fechas en breve</div>
+    -->
+
   </div>
 </section>
 
@@ -654,15 +693,6 @@
 
   // SCROLL REVEAL
   const reveals = document.querySelectorAll('.reveal');
-  new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold:.08 }).observe
-  ? new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold:.08 }).observe(reveals[0])
-  : null;
-
-  // Reinit observer properly
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold:.08 });
