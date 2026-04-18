@@ -4,16 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>BOSSA — Madrid</title>
-  <meta name="description" content="A refined take on electronic music culture in Madrid." />
+  <title>Eventos de Música Electrónica en Madrid | BOSSA</title>
+  <meta name="description" content="Eventos de música electrónica en Madrid con una propuesta centrada en minimal deep tech y tech house. BOSSA desarrolla formatos de noche y tardeo con identidad propia." />
 
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 
-  <meta property="og:title" content="BOSSA — Madrid" />
-  <meta property="og:description" content="A refined take on electronic music culture in Madrid." />
+  <meta property="og:title" content="Eventos de Música Electrónica en Madrid | BOSSA" />
+  <meta property="og:description" content="Minimal deep tech y tech house en Madrid. Eventos en formato noche y tardeo con una dirección musical y estética cuidada." />
   <meta property="og:image" content="https://bossatheclub.com/LG-RRSS.png" />
-  <meta property="og:url" content="https://bossatheclub.com" />
-  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bossatheclub.com/eventos-musica-electronica-madrid" />
+  <meta property="og:type" content="article" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -45,7 +45,6 @@
       font-family: 'Barlow', sans-serif;
       font-weight: 300;
       overflow-x: hidden;
-      cursor: none;
     }
 
     body::before {
@@ -55,43 +54,21 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       opacity: 0.03;
       pointer-events: none;
-      z-index: 9997;
+      z-index: 0;
     }
 
-    /* CURSOR */
-    .cursor {
-      width: 8px;
-      height: 8px;
-      background: var(--red);
-      border-radius: 50%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: width .18s ease, height .18s ease, background .18s ease, border .18s ease;
+    .page-wrap {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
     }
 
-    .cursor.hover {
-      width: 26px;
-      height: 26px;
-      background: transparent;
-      border: 1px solid var(--red);
-    }
-
-    @media (hover: none) {
-      .cursor { display: none; }
-      body { cursor: auto; }
-    }
-
-    /* NAV */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      z-index: 200;
+      z-index: 50;
       padding: 24px 48px;
       display: flex;
       justify-content: space-between;
@@ -102,7 +79,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(8,8,8,.95) 0%, transparent 100%);
+      background: linear-gradient(to bottom, rgba(8,8,8,.94) 0%, transparent 100%);
       z-index: -1;
     }
 
@@ -114,265 +91,41 @@
       text-decoration: none;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-    }
-
-    .nav-links a {
+    .nav-back {
       font-size: 10px;
       letter-spacing: .28em;
       text-transform: uppercase;
       color: var(--white);
       text-decoration: none;
       opacity: .55;
-      transition: opacity .2s ease;
+      transition: opacity .2s ease, color .2s ease;
     }
 
-    .nav-links a:hover {
+    .nav-back:hover {
       opacity: 1;
-    }
-
-    .nav-burger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-
-    .nav-burger span {
-      display: block;
-      width: 24px;
-      height: 1px;
-      background: var(--white);
-      transition: transform .3s ease, opacity .3s ease;
-    }
-
-    .nav-burger.open span:nth-child(1) {
-      transform: translateY(6px) rotate(45deg);
-    }
-
-    .nav-burger.open span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .nav-burger.open span:nth-child(3) {
-      transform: translateY(-6px) rotate(-45deg);
-    }
-
-    .mobile-menu {
-      position: fixed;
-      inset: 0;
-      background: rgba(8,8,8,.97);
-      z-index: 190;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 36px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .35s ease;
-    }
-
-    .mobile-menu.open {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    .mobile-menu a {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 44px;
-      letter-spacing: .08em;
-      color: var(--white);
-      text-decoration: none;
-      transition: color .2s ease;
-    }
-
-    .mobile-menu a:hover {
       color: var(--red);
     }
 
-    /* HERO */
     .hero {
-      min-height: 100vh;
-      padding: 0 48px 44px;
+      padding: 150px 48px 72px;
       position: relative;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+      border-bottom: 1px solid var(--gray-mid);
     }
 
     .hero-bg {
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 24% 20% at 50% 46%, rgba(220,20,60,.20) 0%, rgba(220,20,60,.09) 28%, transparent 72%),
-        radial-gradient(ellipse 18% 16% at 18% 82%, rgba(220,20,60,.03) 0%, transparent 72%);
+        radial-gradient(ellipse 24% 20% at 50% 28%, rgba(220,20,60,.14) 0%, rgba(220,20,60,.06) 28%, transparent 72%);
       pointer-events: none;
-      transition: transform .35s ease-out;
-      will-change: transform;
     }
 
-    .hero-line {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 48px;
-      width: 1px;
-      background: linear-gradient(to bottom, transparent 0%, var(--red) 25%, var(--red) 75%, transparent 100%);
-      opacity: .12;
-    }
-
-    .hero-logo-scene {
-      position: absolute;
-      top: 45.5%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: min(360px, 44vw);
-      perspective: 1800px;
+    .hero-inner {
+      position: relative;
       z-index: 2;
-      will-change: transform;
-    }
-
-    .hero-logo-3d {
-      width: 100%;
-      transform-style: preserve-3d;
-      opacity: 0;
-      filter: drop-shadow(0 10px 20px rgba(220,20,60,.14));
-      animation: logoReveal 2.1s var(--transition-smooth) .05s forwards;
-      will-change: transform, filter, opacity;
-    }
-
-    .hero-logo-3d-inner {
-      width: 100%;
-      transform-style: preserve-3d;
-      position: relative;
-    }
-
-    .hero-logo-3d-inner::before {
-      content: '';
-      position: absolute;
-      inset: -8% -6%;
-      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,.03) 0%, transparent 56%);
-      filter: blur(20px);
-      z-index: -2;
-      pointer-events: none;
-      opacity: .6;
-    }
-
-    .hero-logo-3d-inner::after {
-      content: '';
-      position: absolute;
-      inset: 14% 16% 14% 16%;
-      background: radial-gradient(circle, rgba(220,20,60,.16) 0%, rgba(220,20,60,.05) 38%, transparent 74%);
-      filter: blur(34px);
-      z-index: -1;
-      pointer-events: none;
-      opacity: .9;
-      transition: opacity .35s ease, transform .35s ease;
-    }
-
-    .hero-logo-3d img {
-      display: block;
-      width: 100%;
-      height: auto;
-      transform: translateZ(0);
-      backface-visibility: hidden;
-    }
-
-    @keyframes logoReveal {
-      0% {
-        opacity: 0;
-        transform: translateZ(-240px) rotateX(34deg) rotateY(-22deg) scale(.60);
-        filter: blur(16px) drop-shadow(0 0 0 rgba(220,20,60,0));
-      }
-      24% {
-        opacity: 1;
-        transform: translateZ(90px) rotateX(-10deg) rotateY(10deg) scale(1.08);
-        filter: blur(0) drop-shadow(0 0 60px rgba(220,20,60,.40));
-      }
-      48% {
-        transform: translateZ(22px) rotateX(4deg) rotateY(-4deg) scale(.99);
-        filter: blur(0) drop-shadow(0 0 52px rgba(220,20,60,.28));
-      }
-      74% {
-        transform: translateZ(8px) rotateX(-1deg) rotateY(1deg) scale(1.01);
-        filter: blur(0) drop-shadow(0 0 26px rgba(220,20,60,.18));
-      }
-      100% {
-        opacity: 1;
-        transform: translateZ(0) rotateX(0deg) rotateY(0deg) scale(1);
-        filter: blur(0) drop-shadow(0 8px 18px rgba(220,20,60,.14));
-      }
-    }
-
-    .hero-bottom {
-      position: relative;
-      z-index: 3;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      opacity: 0;
-      animation: fadeUp 1s var(--transition-smooth) .85s forwards;
-    }
-
-    .hero-tagline {
-      font-style: italic;
-      font-size: clamp(12px, 1.4vw, 15px);
-      letter-spacing: .12em;
-      opacity: .45;
-      line-height: 1.9;
-    }
-
-    .hero-tagline strong {
-      font-style: normal;
-      font-weight: 400;
-      opacity: 1;
-      color: var(--red);
-      display: block;
-      letter-spacing: .2em;
-      font-size: .9em;
-    }
-
-    .hero-scroll {
-      font-size: 9px;
-      letter-spacing: .32em;
-      text-transform: uppercase;
-      opacity: .3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .hero-scroll::after {
-      content: '';
-      width: 1px;
-      height: 44px;
-      background: var(--white);
-      display: block;
-      animation: scrollPulse 2.2s ease-in-out infinite;
-    }
-
-    @keyframes scrollPulse {
-      0%,100% { opacity: .3; transform: scaleY(1); }
-      50% { opacity: .65; transform: scaleY(1.08); }
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(28px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* SECTIONS */
-    section {
-      padding: 120px 48px;
+      max-width: 1180px;
+      margin: 0 auto;
     }
 
     .section-label {
@@ -380,7 +133,7 @@
       letter-spacing: .35em;
       text-transform: uppercase;
       color: var(--red);
-      margin-bottom: 48px;
+      margin-bottom: 28px;
       display: flex;
       align-items: center;
       gap: 14px;
@@ -393,1044 +146,244 @@
       background: var(--red);
     }
 
-    /* CONCEPTO */
-    #concepto {
-      border-top: 1px solid var(--gray-mid);
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(54px, 8vw, 112px);
+      line-height: .9;
+      letter-spacing: .02em;
+      max-width: 920px;
+      margin-bottom: 30px;
+    }
+
+    .hero-intro {
+      max-width: 760px;
+      font-size: 18px;
+      line-height: 1.9;
+      opacity: .72;
+    }
+
+    .content-section {
+      padding: 72px 48px 96px;
+    }
+
+    .content-grid {
+      max-width: 1180px;
+      margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      grid-template-columns: 1.1fr .75fr;
+      gap: 64px;
       align-items: start;
     }
 
-    .concepto-text h2 {
+    .content-main h2 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(52px, 7vw, 96px);
-      line-height: .92;
-      letter-spacing: .02em;
-      margin-bottom: 40px;
-    }
-
-    .concepto-text h2 em {
-      font-style: normal;
-      color: var(--red);
-    }
-
-    .concepto-text p {
-      font-size: 15px;
-      line-height: 1.85;
-      opacity: .62;
-      max-width: 480px;
-    }
-
-    .concepto-text p + p {
-      margin-top: 20px;
-    }
-
-    .sound-tags {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .sound-tag {
-      padding: 22px 0;
-      border-bottom: 1px solid var(--gray-mid);
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 34px;
-      letter-spacing: .07em;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      opacity: .25;
-      transition: opacity .3s ease, padding-left .3s ease;
-    }
-
-    .sound-tag:hover {
-      opacity: 1;
-      padding-left: 12px;
-    }
-
-    .sound-tag span {
-      font-family: 'Barlow', sans-serif;
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: .25em;
-      text-transform: uppercase;
-      color: var(--red);
-    }
-
-    /* IDENTIDAD */
-    #identidad {
-      border-top: 1px solid var(--gray-mid);
-      background: var(--gray);
-    }
-
-    .identidad-header {
-      margin-bottom: 72px;
-    }
-
-    .identidad-header h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(44px, 5.5vw, 76px);
-      line-height: .93;
-      letter-spacing: .02em;
-      max-width: 620px;
-    }
-
-    .identidad-header h2 em {
-      font-style: normal;
-      color: var(--red);
-    }
-
-    .identidad-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--gray-mid);
-    }
-
-    .identidad-card {
-      background: var(--gray);
-      padding: 40px 36px;
-      position: relative;
-      overflow: hidden;
-      transition: background .3s ease;
-    }
-
-    .identidad-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--red);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform .4s var(--transition-smooth);
-    }
-
-    .identidad-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .identidad-card:hover {
-      background: #161616;
-    }
-
-    .identidad-card .card-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 13px;
-      letter-spacing: .25em;
-      color: var(--red);
-      opacity: .6;
-      margin-bottom: 24px;
-    }
-
-    .identidad-card h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 28px;
-      letter-spacing: .05em;
-      margin-bottom: 16px;
-    }
-
-    .identidad-card p {
-      font-size: 13px;
-      line-height: 1.8;
-      opacity: .5;
-    }
-
-    .identidad-bottom {
-      margin-top: 72px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .identidad-quote {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(30px, 3.8vw, 50px);
-      line-height: 1.06;
+      font-size: clamp(32px, 4vw, 54px);
+      line-height: .95;
       letter-spacing: .03em;
-      opacity: .85;
+      margin-bottom: 18px;
+      margin-top: 54px;
+      max-width: 760px;
     }
 
-    .identidad-quote em {
-      font-style: normal;
+    .content-main h2:first-child {
+      margin-top: 0;
+    }
+
+    .content-main p {
+      font-size: 16px;
+      line-height: 1.9;
+      opacity: .68;
+      max-width: 760px;
+    }
+
+    .content-main p + p {
+      margin-top: 18px;
+    }
+
+    .content-main a.inline-link {
+      color: var(--white);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(240,236,228,.28);
+      transition: color .2s ease, border-color .2s ease;
+    }
+
+    .content-main a.inline-link:hover {
       color: var(--red);
+      border-color: var(--red);
     }
 
-    .identidad-values {
+    .side-panel {
+      border: 1px solid var(--gray-mid);
+      background: rgba(255,255,255,.015);
+      padding: 34px 28px;
+      position: sticky;
+      top: 110px;
+    }
+
+    .side-panel h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 30px;
+      letter-spacing: .04em;
+      margin-bottom: 22px;
+    }
+
+    .side-list {
       display: flex;
       flex-direction: column;
     }
 
-    .identidad-value {
+    .side-item {
       padding: 15px 0;
       border-bottom: 1px solid var(--gray-mid);
       font-size: 11px;
       letter-spacing: .22em;
       text-transform: uppercase;
-      opacity: .4;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      transition: opacity .2s ease;
+      opacity: .56;
     }
 
-    .identidad-value:hover {
-      opacity: 1;
+    .side-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
     }
 
-    .identidad-value::before {
-      content: '';
-      width: 4px;
-      height: 4px;
-      background: var(--red);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    /* EVENTOS */
-    #eventos {
+    .cta-box {
+      margin-top: 58px;
+      padding-top: 30px;
       border-top: 1px solid var(--gray-mid);
     }
 
-    .eventos-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 56px;
+    .cta-box p {
+      margin-bottom: 20px;
     }
 
-    .eventos-header h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(40px, 5vw, 72px);
-      line-height: 1;
-      letter-spacing: .03em;
-    }
-
-    .eventos-header a {
-      font-size: 10px;
-      letter-spacing: .28em;
-      text-transform: uppercase;
-      color: var(--red);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(220,20,60,.3);
-      padding-bottom: 2px;
-      transition: border-color .2s ease;
-    }
-
-    .eventos-header a:hover {
-      border-color: var(--red);
-    }
-
-    .eventos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 24px;
-    }
-
-    .evento-card {
-      background: var(--gray);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform .3s var(--transition-smooth);
-    }
-
-    .evento-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .evento-card-poster {
-      aspect-ratio: 3 / 4;
-      overflow: hidden;
-      background: var(--gray-mid);
-      position: relative;
-    }
-
-    .evento-card-poster img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .45s ease;
-      display: block;
-    }
-
-    .evento-card:hover .evento-card-poster img {
-      transform: scale(1.03);
-    }
-
-    .evento-card-info {
-      padding: 20px 20px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      flex: 1;
-    }
-
-    .evento-card-fecha {
-      font-size: 11px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--red);
-      font-weight: 400;
-    }
-
-    .evento-card-nombre {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 26px;
-      letter-spacing: .05em;
-      margin-top: 4px;
-    }
-
-    .evento-card-venue {
-      font-size: 11px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      opacity: .4;
-    }
-
-    .evento-card-cta {
-      margin-top: auto;
-      padding-top: 20px;
-      display: block;
-      padding: 14px 0;
+    .cta-link {
+      display: inline-block;
+      padding: 14px 26px;
       background: var(--red);
       color: #fff;
-      font-size: 11px;
-      letter-spacing: .3em;
-      text-transform: uppercase;
       text-decoration: none;
-      text-align: center;
-      font-weight: 400;
-      transition: background .2s ease;
-    }
-
-    .evento-card-cta:hover {
-      background: #b01030;
-    }
-
-    /* ARCHIVO */
-    #archivo {
-      border-top: 1px solid var(--gray-mid);
-      background: var(--black);
-    }
-
-    .archivo-header {
-      margin-bottom: 56px;
-    }
-
-    .archivo-header h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(40px, 5vw, 72px);
-      line-height: 1;
-      letter-spacing: .03em;
-      margin-bottom: 16px;
-    }
-
-    .archivo-header p {
-      font-size: 14px;
-      line-height: 1.8;
-      opacity: .55;
-      max-width: 560px;
-    }
-
-    .archivo-hero {
-      margin-bottom: 16px;
-      position: relative;
-      overflow: hidden;
-      background: var(--gray);
-      aspect-ratio: 16 / 7;
-    }
-
-    .archivo-hero img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform .55s ease;
-    }
-
-    .archivo-hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(8,8,8,.28) 0%, rgba(8,8,8,0) 52%);
-      pointer-events: none;
-    }
-
-    .archivo-hero:hover img {
-      transform: scale(1.02);
-    }
-
-    .archivo-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .archivo-item {
-      position: relative;
-      overflow: hidden;
-      background: var(--gray);
-      aspect-ratio: 4 / 5;
-    }
-
-    .archivo-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform .45s ease;
-    }
-
-    .archivo-item::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(8,8,8,.22) 0%, rgba(8,8,8,0) 50%);
-      pointer-events: none;
-    }
-
-    .archivo-item:hover img {
-      transform: scale(1.02);
-    }
-
-    /* CONTACTO */
-    #contacto {
-      border-top: 1px solid var(--gray-mid);
-      background: var(--gray);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    #contacto h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(48px, 6vw, 88px);
-      line-height: .9;
-      letter-spacing: .02em;
-    }
-
-    .contact-right {
-      padding-top: 8px;
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-    }
-
-    .contact-item {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .contact-item label {
-      font-size: 10px;
-      letter-spacing: .3em;
       text-transform: uppercase;
-      opacity: .35;
-    }
-
-    .contact-item a {
-      font-size: 16px;
-      color: var(--white);
-      text-decoration: none;
-      transition: color .2s ease;
-    }
-
-    .contact-item a:hover {
-      color: var(--red);
-    }
-
-    .social-links {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-top: 8px;
-    }
-
-    .social-link {
-      font-size: 10px;
       letter-spacing: .28em;
-      text-transform: uppercase;
-      color: var(--white);
-      text-decoration: none;
-      opacity: .45;
-      padding: 12px 18px;
-      border: 1px solid var(--gray-mid);
-      transition: opacity .2s ease, color .2s ease, border-color .2s ease;
+      font-size: 11px;
+      transition: background .2s ease, transform .2s ease;
     }
 
-    .social-link:hover {
-      opacity: 1;
-      color: var(--red);
-      border-color: var(--red);
+    .cta-link:hover {
+      background: #b01030;
+      transform: translateY(-1px);
     }
 
-    /* FOOTER */
-    footer {
-      padding: 24px 48px;
+    .bottom-note {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding-top: 26px;
       border-top: 1px solid var(--gray-mid);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      font-size: 13px;
+      opacity: .42;
     }
 
-    .footer-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 18px;
-      letter-spacing: .3em;
-      color: var(--white);
-      opacity: .3;
-      text-decoration: none;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-      list-style: none;
-    }
-
-    .footer-links a {
-      font-size: 9px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--white);
-      text-decoration: none;
-      opacity: .2;
-      transition: opacity .2s ease;
-    }
-
-    .footer-links a:hover {
-      opacity: .6;
-    }
-
-    .footer-copy {
-      font-size: 9px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      opacity: .2;
-    }
-
-    /* REVEAL */
-    .reveal {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity .9s var(--transition-smooth), transform .9s var(--transition-smooth);
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* MOBILE */
-    @media (max-width: 768px) {
-      nav { padding: 20px 24px; }
-      .nav-links { display: none; }
-      .nav-burger { display: flex; }
+    @media (max-width: 900px) {
+      nav {
+        padding: 20px 24px;
+      }
 
       .hero {
-        padding: 0 24px 36px;
+        padding: 130px 24px 54px;
       }
 
-      .hero-line {
-        left: 24px;
+      .content-section {
+        padding: 54px 24px 72px;
       }
 
-      .hero-logo-scene {
-        top: 43.5%;
-        width: min(250px, 66vw);
-      }
-
-      .sound-tag {
-        opacity: 0.72;
-        padding-left: 0;
-      }
-
-      .sound-tag:first-child {
-        opacity: 0.9;
-      }
-
-      .sound-tag:last-child {
-        opacity: 0.68;
-      }
-
-      .sound-tag span {
-        color: var(--red);
-        opacity: 0.95;
-      }
-
-      .identidad-card {
-        background: #151515;
-      }
-
-      .identidad-card h3 {
-        opacity: 1;
-      }
-
-      .identidad-card p {
-        opacity: 0.68;
-      }
-
-      .identidad-value {
-        opacity: 0.62;
-      }
-
-      section {
-        padding: 72px 24px;
-      }
-
-      #concepto,
-      #contacto,
-      .identidad-bottom {
+      .content-grid {
         grid-template-columns: 1fr;
-        gap: 48px;
+        gap: 42px;
       }
 
-      .identidad-grid {
-        grid-template-columns: 1fr;
+      .side-panel {
+        position: static;
       }
 
-      .eventos-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 14px;
+      .hero-intro {
+        font-size: 16px;
       }
 
-      .eventos-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
-      }
-
-      .archivo-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-      }
-
-      footer {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-        padding: 24px;
-      }
-
-      .footer-links {
-        display: none;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .eventos-grid,
-      .archivo-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-      }
-
-      .hero-logo-scene {
-        top: 42.8%;
-        width: 64vw;
-      }
-
-      .mobile-menu a {
-        font-size: 40px;
-      }
-
-      .evento-card-info {
-        padding: 16px 14px 18px;
-      }
-
-      .evento-card-fecha {
-        font-size: 10px;
-        letter-spacing: .16em;
-      }
-
-      .evento-card-nombre {
-        font-size: 20px;
-      }
-
-      .evento-card-venue {
-        font-size: 10px;
-        letter-spacing: .14em;
-      }
-
-      .evento-card-cta {
-        font-size: 10px;
-        letter-spacing: .22em;
-        padding: 12px 0;
-      }
-
-      .archivo-header p {
-        font-size: 13px;
+      .content-main p {
+        font-size: 15px;
       }
     }
   </style>
 </head>
 <body>
+  <div class="page-wrap">
 
-  <div class="cursor" id="cursor"></div>
+    <nav>
+      <a href="https://bossatheclub.com/" class="nav-logo">BOSSA</a>
+      <a href="https://bossatheclub.com/" class="nav-back">Volver a la web</a>
+    </nav>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-logo">BOSSA</a>
-    <ul class="nav-links">
-      <li><a href="#concepto">Concepto</a></li>
-      <li><a href="#identidad">Identidad</a></li>
-      <li><a href="#eventos">Eventos</a></li>
-      <li><a href="#archivo">Archivo</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-    <button class="nav-burger" id="burger" aria-label="Menú">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-inner">
+        <div class="section-label">Madrid</div>
+        <h1>Eventos de Música Electrónica en Madrid</h1>
+        <p class="hero-intro">
+          BOSSA es una propuesta de música electrónica en Madrid centrada en una línea sonora que se mueve entre el minimal deep tech y el tech house, con una identidad cuidada tanto en la selección musical como en la atmósfera de cada evento.
+        </p>
+      </div>
+    </section>
 
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#identidad" class="menu-link">Identidad</a>
-    <a href="#eventos" class="menu-link">Eventos</a>
-    <a href="#archivo" class="menu-link">Archivo</a>
-    <a href="#contacto" class="menu-link">Contacto</a>
+    <section class="content-section">
+      <div class="content-grid">
+        <div class="content-main">
+          <h2>Una propuesta dentro de la escena electrónica de Madrid</h2>
+          <p>
+            Madrid reúne una oferta amplia de eventos de música electrónica, desde formatos más abiertos hasta propuestas con una dirección artística más definida. Dentro de ese contexto, BOSSA desarrolla una línea propia enfocada en el criterio musical, la coherencia estética y una experiencia construida desde el detalle.
+          </p>
+          <p>
+            Para quienes buscan una propuesta con sonido y contexto, BOSSA también se mueve dentro de la conversación de las <a href="/fiestas-tech-house-madrid" class="inline-link">fiestas tech house en Madrid</a>, conectando una visión más precisa del club con una identidad reconocible.
+          </p>
+
+          <h2>Minimal deep tech y tech house</h2>
+          <p>
+            La propuesta musical de BOSSA parte de grooves precisos, tensión rítmica y una construcción progresiva de la sesión. El foco está en una selección que se mueve entre el minimal deep tech y el tech house, entendidos desde una sensibilidad más cercana a la cultura de club que al consumo rápido.
+          </p>
+
+          <h2>Formato noche y tardeo</h2>
+          <p>
+            Los eventos de BOSSA tienen lugar en formato noche y tardeo, adaptándose a distintos momentos sin perder una línea clara en sonido, energía y público. La intención no es solo programar fechas, sino consolidar una experiencia reconocible dentro de la música electrónica en Madrid.
+          </p>
+
+          <h2>Próximos eventos de BOSSA</h2>
+          <p>
+            Desde la web principal puedes consultar las próximas fechas, acceder a las entradas y explorar el archivo visual del proyecto.
+          </p>
+
+          <div class="cta-box">
+            <p>
+              Si quieres ver los próximos eventos de música electrónica de BOSSA en Madrid, puedes acceder directamente desde aquí.
+            </p>
+            <a href="https://bossatheclub.com/" class="cta-link">Ver BOSSA</a>
+          </div>
+        </div>
+
+        <aside class="side-panel">
+          <h3>Claves</h3>
+          <div class="side-list">
+            <div class="side-item">Música electrónica en Madrid</div>
+            <div class="side-item">Formato noche y tardeo</div>
+            <div class="side-item">Minimal Deep Tech · Tech House</div>
+            <div class="side-item">Dirección musical cuidada</div>
+            <div class="side-item">Próximas fechas y entradas</div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="bottom-note">
+        BOSSA — Madrid · Música electrónica, archivo visual y próximos eventos.
+      </div>
+    </section>
+
   </div>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg" id="heroBg"></div>
-    <div class="hero-line"></div>
-
-    <div class="hero-logo-scene">
-      <div class="hero-logo-3d" id="logo3d">
-        <div class="hero-logo-3d-inner">
-          <img src="BOUNDING-WHITE.png" alt="BOSSA" />
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-bottom">
-      <div class="hero-tagline">
-        Música electrónica en Madrid<br />
-        <strong>Minimal Deep Tech · Tech House</strong>
-      </div>
-      <div class="hero-scroll">scroll</div>
-    </div>
-  </section>
-
-  <!-- CONCEPTO -->
-  <section id="concepto">
-    <div class="concepto-text reveal">
-      <div class="section-label">Concepto</div>
-      <h2>Un sonido.<br /><em>Una identidad.</em></h2>
-      <p>BOSSA nace desde una idea simple: hacer eventos donde el sonido, la selección y la dirección estética tengan el mismo peso. Minimal deep tech y tech house tratados con criterio, sin exceso, sin artificio y sin fórmulas vacías.</p>
-      <p>Una propuesta construida desde la elegancia, la tensión y el detalle. Un punto de encuentro para quienes buscan algo más preciso que una fiesta genérica.</p>
-    </div>
-    <div class="concepto-right reveal">
-      <div class="section-label">Sonido</div>
-      <div class="sound-tags">
-        <div class="sound-tag">Minimal Deep Tech <span>Base</span></div>
-        <div class="sound-tag">Tech House <span>Grooves</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- IDENTIDAD -->
-  <section id="identidad">
-    <div class="identidad-header reveal">
-      <div class="section-label">Identidad</div>
-      <h2>Más que música.<br /><em>Una forma de entender el club.</em></h2>
-    </div>
-
-    <div class="identidad-grid reveal">
-      <div class="identidad-card">
-        <div class="card-num">01</div>
-        <h3>El Sonido</h3>
-        <p>Minimal deep tech y tech house tratados con criterio, sin exceso, sin artificio y sin fórmulas vacías. Grooves hipnóticos construidos capa a capa, donde el criterio musical es la línea que no se cruza.</p>
-      </div>
-      <div class="identidad-card">
-        <div class="card-num">02</div>
-        <h3>La Selección</h3>
-        <p>Cada artista pasa por un filtro de coherencia. No se trata de nombres, se trata de viajes. BOSSA programa con intención, no con trending.</p>
-      </div>
-      <div class="identidad-card">
-        <div class="card-num">03</div>
-        <h3>El Espacio</h3>
-        <p>Locales con carácter, no salas genéricas. El entorno forma parte del lenguaje sonoro de cada evento. El espacio no es un contenedor — es parte de la propuesta.</p>
-      </div>
-    </div>
-
-    <div class="identidad-bottom reveal">
-      <div class="identidad-quote">
-        "El sonido es la identidad.<br />
-        Todo lo demás<br />
-        <em>es consecuencia."</em>
-      </div>
-      <div class="identidad-values">
-        <div class="identidad-value">Criterio sobre tendencia</div>
-        <div class="identidad-value">Coherencia sonora</div>
-        <div class="identidad-value">Comunidad antes que consumo</div>
-        <div class="identidad-value">Elegancia, tensión y detalle</div>
-        <div class="identidad-value">Sonido, selección y dirección estética</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EVENTOS -->
-  <section id="eventos">
-    <div class="eventos-header reveal">
-      <h2>Próximos<br />Eventos</h2>
-      <a href="https://es.ra.co/promoters/177842" target="_blank" rel="noopener">Ver en Resident Advisor →</a>
-    </div>
-
-    <div class="eventos-grid reveal">
-      <div class="evento-card">
-        <div class="evento-card-poster">
-          <img src="POST19ABRIL.webp" alt="BOSSA · Evento" loading="lazy" />
-        </div>
-        <div class="evento-card-info">
-          <div class="evento-card-fecha">Dom 19 · Abr 2026 · 18:00h</div>
-          <div class="evento-card-nombre">BOSSA</div>
-          <div class="evento-card-venue">El Sótano · Madrid</div>
-          <a href="https://es.ra.co/events/2389462" target="_blank" class="evento-card-cta">Entradas</a>
-        </div>
-      </div>
-
-      <div class="evento-card">
-        <div class="evento-card-poster">
-          <img src="POST26ABRIL.webp" alt="BOSSA · Evento" loading="lazy" />
-        </div>
-        <div class="evento-card-info">
-          <div class="evento-card-fecha">Dom 26 · Abr 2026 · 18:00h</div>
-          <div class="evento-card-nombre">BOSSA</div>
-          <div class="evento-card-venue">El Sótano · Madrid</div>
-          <a href="https://es.ra.co/events/2390177" target="_blank" class="evento-card-cta">Entradas</a>
-        </div>
-      </div>
-
-      <div class="evento-card">
-        <div class="evento-card-poster">
-          <img src="POST03MAYO.webp" alt="BOSSA · Evento" loading="lazy" />
-        </div>
-        <div class="evento-card-info">
-          <div class="evento-card-fecha">Dom 03 · May 2026 · 18:00h</div>
-          <div class="evento-card-nombre">BOSSA</div>
-          <div class="evento-card-venue">El Sótano · Madrid</div>
-          <a href="https://es.ra.co/events/2416015" target="_blank" class="evento-card-cta">Entradas</a>
-        </div>
-      </div>
-
-      <div class="evento-card">
-        <div class="evento-card-poster">
-          <img src="TBA.png" alt="BOSSA · Evento" loading="lazy" />
-        </div>
-        <div class="evento-card-info">
-          <div class="evento-card-fecha">Vie 12 · Jun 2026 · 00:00h</div>
-          <div class="evento-card-nombre">BOSSA</div>
-          <div class="evento-card-venue">El Sótano · Madrid</div>
-          <a href="https://es.ra.co/promoters/177842" target="_blank" class="evento-card-cta">Entradas</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ARCHIVO -->
-  <section id="archivo">
-    <div class="archivo-header reveal">
-      <div class="section-label">Archivo</div>
-      <h2>Una atmósfera.<br />Un registro.</h2>
-      <p>Una selección de momentos que definen la atmósfera de BOSSA. Cabina, tensión y pista desde una mirada más cercana a la cultura que al exceso.</p>
-    </div>
-
-    <div class="archivo-hero reveal">
-      <img src="FOTO0.webp" alt="Archivo BOSSA principal" loading="lazy" />
-    </div>
-
-    <div class="archivo-grid reveal">
-      <div class="archivo-item">
-        <img src="FOTO1.webp" alt="Archivo BOSSA 1" loading="lazy" />
-      </div>
-      <div class="archivo-item">
-        <img src="FOTO2.webp" alt="Archivo BOSSA 2" loading="lazy" />
-      </div>
-      <div class="archivo-item">
-        <img src="FOTO3.webp" alt="Archivo BOSSA 3" loading="lazy" />
-      </div>
-      <div class="archivo-item">
-        <img src="FOTO4.webp" alt="Archivo BOSSA 4" loading="lazy" />
-      </div>
-      <div class="archivo-item">
-        <img src="FOTO5.webp" alt="Archivo BOSSA 5" loading="lazy" />
-      </div>
-      <div class="archivo-item">
-        <img src="FOTO6.webp" alt="Archivo BOSSA 6" loading="lazy" />
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACTO -->
-  <section id="contacto">
-    <div class="reveal">
-      <div class="section-label">Contacto</div>
-      <h2>Trabajemos<br />juntos</h2>
-    </div>
-    <div class="contact-right reveal">
-      <div class="contact-item">
-        <label>Booking & Colaboraciones</label>
-        <a href="mailto:contacto@bossatheclub.com">contacto@bossatheclub.com</a>
-      </div>
-      <div class="contact-item">
-        <label>Redes</label>
-        <div class="social-links">
-          <a href="https://instagram.com/bossatheclub" target="_blank" rel="noopener" class="social-link">Instagram</a>
-          <a href="https://es.ra.co/promoters/177842" target="_blank" rel="noopener" class="social-link">Resident Advisor</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <a href="#" class="footer-logo">BOSSA</a>
-    <ul class="footer-links">
-      <li><a href="#concepto">Concepto</a></li>
-      <li><a href="#identidad">Identidad</a></li>
-      <li><a href="#eventos">Eventos</a></li>
-      <li><a href="#archivo">Archivo</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-    <span class="footer-copy">© 2026 bossatheclub.com</span>
-  </footer>
-
-  <script>
-    const cursor = document.getElementById('cursor');
-    const isTouch = window.matchMedia('(hover:none)').matches;
-
-    if (!isTouch) {
-      document.addEventListener('mousemove', e => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-      });
-
-      document.querySelectorAll('a, button, .sound-tag, .identidad-card, .archivo-item, .archivo-hero, .evento-card').forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-      });
-    }
-
-    const burger = document.getElementById('burger');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    burger.addEventListener('click', () => {
-      burger.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-    });
-
-    document.querySelectorAll('.menu-link').forEach(link => {
-      link.addEventListener('click', () => {
-        burger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    });
-
-    const logo3d = document.getElementById('logo3d');
-    const heroBg = document.getElementById('heroBg');
-    const heroEl = document.querySelector('.hero');
-
-    let currentX = 0;
-    let currentY = 0;
-    let targetX = 0;
-    let targetY = 0;
-    let currentScale = 1;
-    let targetScale = 1;
-    let currentZ = 0;
-    let targetZ = 0;
-    let scrollProgress = 0;
-
-    function animateLogo() {
-      currentX += (targetX - currentX) * 0.055;
-      currentY += (targetY - currentY) * 0.055;
-      currentScale += (targetScale - currentScale) * 0.055;
-      currentZ += (targetZ - currentZ) * 0.055;
-
-      const scrollRotX = scrollProgress * 18;
-      const scrollRotY = -scrollProgress * 7;
-      const scrollScale = 1 - scrollProgress * 0.07;
-      const scrollZ = scrollProgress * -16;
-
-      const finalRotX = currentY + scrollRotX;
-      const finalRotY = currentX + scrollRotY;
-      const finalScale = currentScale * scrollScale;
-      const finalZ = currentZ + scrollZ;
-
-      logo3d.style.transform = `
-        translateZ(${finalZ}px)
-        rotateX(${finalRotX}deg)
-        rotateY(${finalRotY}deg)
-        scale(${finalScale})
-      `;
-
-      logo3d.style.filter = `
-        drop-shadow(0 ${8 + scrollProgress * 18}px ${20 + scrollProgress * 34}px rgba(220,20,60,${0.14 + scrollProgress * 0.12}))
-      `;
-
-      heroBg.style.transform = `translate(${currentX * 1.2}px, ${currentY * 0.8}px)`;
-
-      requestAnimationFrame(animateLogo);
-    }
-
-    animateLogo();
-
-    window.addEventListener('scroll', () => {
-      const heroH = heroEl.offsetHeight;
-      scrollProgress = Math.min(window.scrollY / (heroH * 0.72), 1);
-    }, { passive: true });
-
-    if (!isTouch) {
-      heroEl.addEventListener('mousemove', e => {
-        if (window.scrollY > 140) return;
-
-        const r = heroEl.getBoundingClientRect();
-        const dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
-        const dy = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
-
-        targetX = dx * 10;
-        targetY = -dy * 6;
-        targetScale = 1.018;
-        targetZ = 12;
-      });
-
-      heroEl.addEventListener('mouseleave', () => {
-        targetX = 0;
-        targetY = 0;
-        targetScale = 1;
-        targetZ = 0;
-      });
-    } else {
-      window.addEventListener('deviceorientation', (e) => {
-        const gamma = Math.max(-12, Math.min(12, e.gamma || 0));
-        const beta = Math.max(-12, Math.min(12, e.beta || 0));
-
-        targetX = gamma * 0.28;
-        targetY = (beta - 4) * -0.16;
-        targetScale = 1.01;
-        targetZ = 4;
-      }, true);
-    }
-
-    const reveals = document.querySelectorAll('.reveal');
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: .08 });
-
-    reveals.forEach(el => obs.observe(el));
-  </script>
 </body>
 </html>
