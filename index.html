@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+
   <style>
     :root {
       --red: #dc143c;
@@ -40,27 +41,6 @@
       cursor: none;
     }
 
-    /* CURSOR */
-    .cursor {
-      width: 8px;
-      height: 8px;
-      background: var(--red);
-      border-radius: 50%;
-      position: fixed;
-      top: 0; left: 0;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
-    }
-    .cursor.hover {
-      width: 28px;
-      height: 28px;
-      background: transparent;
-      border: 1px solid var(--red);
-    }
-
-    /* GRAIN OVERLAY */
     body::before {
       content: '';
       position: fixed;
@@ -71,16 +51,37 @@
       z-index: 9998;
     }
 
-    /* NAV */
+    .cursor {
+      width: 8px;
+      height: 8px;
+      background: var(--red);
+      border-radius: 50%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
+    }
+
+    .cursor.hover {
+      width: 28px;
+      height: 28px;
+      background: transparent;
+      border: 1px solid var(--red);
+    }
+
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
       padding: 28px 48px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      mix-blend-mode: normal;
     }
 
     nav::after {
@@ -106,42 +107,42 @@
     }
 
     .nav-links a {
-      font-family: 'Barlow', sans-serif;
-      font-weight: 300;
       font-size: 11px;
       letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--white);
       text-decoration: none;
       opacity: 0.6;
-      transition: opacity 0.2s;
+      transition: opacity 0.2s ease;
     }
 
     .nav-links a:hover {
       opacity: 1;
     }
 
-    /* HERO */
     .hero {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
       padding: 0 48px 72px;
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
     }
 
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(220,20,60,0.08) 0%, transparent 70%),
-                  radial-gradient(ellipse 40% 40% at 20% 80%, rgba(220,20,60,0.04) 0%, transparent 60%);
+      background:
+        radial-gradient(ellipse 42% 36% at 62% 48%, rgba(220,20,60,0.18) 0%, rgba(220,20,60,0.10) 28%, transparent 72%),
+        radial-gradient(ellipse 26% 22% at 20% 82%, rgba(220,20,60,0.05) 0%, transparent 70%);
+      pointer-events: none;
     }
 
     .hero-line {
       position: absolute;
-      top: 0; bottom: 0;
+      top: 0;
+      bottom: 0;
       left: 48px;
       width: 1px;
       background: linear-gradient(to bottom, transparent 0%, var(--red) 30%, var(--red) 70%, transparent 100%);
@@ -149,36 +150,25 @@
     }
 
     .hero-logo-wrap {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: min(620px, 72vw);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    animation: heroLogoIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: min(560px, 62vw);
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      opacity: 0;
+      animation: heroLogoAppear 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
     }
 
     .hero-logo-wrap img {
-    width: 100%;
-    height: auto;
-    display: block;
+      display: block;
+      width: 100%;
+      height: auto;
     }
 
-    @keyframes heroLogoIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
     .hero-bottom {
+      position: relative;
+      z-index: 3;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
@@ -187,8 +177,6 @@
     }
 
     .hero-tagline {
-      font-family: 'Barlow', sans-serif;
-      font-weight: 300;
       font-style: italic;
       font-size: clamp(13px, 1.5vw, 16px);
       letter-spacing: 0.12em;
@@ -223,17 +211,39 @@
       animation: scrollPulse 2s ease-in-out infinite;
     }
 
+    @keyframes heroLogoAppear {
+      from {
+        opacity: 0;
+        transform: translate(-50%, calc(-50% + 24px));
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
+    }
+
     @keyframes scrollPulse {
-      0%, 100% { opacity: 0.3; transform: scaleY(1); }
-      50% { opacity: 0.7; transform: scaleY(1.1); }
+      0%, 100% {
+        opacity: 0.3;
+        transform: scaleY(1);
+      }
+      50% {
+        opacity: 0.7;
+        transform: scaleY(1.1);
+      }
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    /* SECTIONS */
     section {
       padding: 120px 48px;
     }
@@ -256,7 +266,6 @@
       background: var(--red);
     }
 
-    /* CONCEPTO */
     #concepto {
       border-top: 1px solid var(--gray-mid);
       display: grid;
@@ -276,7 +285,6 @@
     .concepto-text h2 em {
       font-style: normal;
       color: var(--red);
-      -webkit-text-stroke: 0px;
     }
 
     .concepto-text p {
@@ -310,7 +318,7 @@
       justify-content: space-between;
       align-items: center;
       opacity: 0.3;
-      transition: opacity 0.3s;
+      transition: opacity 0.3s ease;
     }
 
     .sound-tag:hover {
@@ -326,7 +334,6 @@
       color: var(--red);
     }
 
-    /* PRÓXIMOS EVENTOS */
     #eventos {
       border-top: 1px solid var(--gray-mid);
       background: var(--gray);
@@ -354,7 +361,7 @@
       text-decoration: none;
       border-bottom: 1px solid rgba(220,20,60,0.3);
       padding-bottom: 2px;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s ease;
     }
 
     .eventos-header a:hover {
@@ -364,7 +371,6 @@
     .eventos-list {
       display: flex;
       flex-direction: column;
-      gap: 0;
     }
 
     .evento-item {
@@ -376,7 +382,6 @@
       border-bottom: 1px solid var(--gray-mid);
       text-decoration: none;
       color: inherit;
-      transition: background 0.2s;
       position: relative;
       overflow: hidden;
     }
@@ -384,12 +389,14 @@
     .evento-item::before {
       content: '';
       position: absolute;
-      left: 0; top: 0; bottom: 0;
+      left: 0;
+      top: 0;
+      bottom: 0;
       width: 2px;
       background: var(--red);
       transform: scaleY(0);
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       transform-origin: bottom;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .evento-item:hover::before {
@@ -408,7 +415,6 @@
       display: block;
       font-family: 'Barlow', sans-serif;
       font-size: 10px;
-      font-weight: 300;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       opacity: 0.7;
@@ -435,7 +441,7 @@
       text-transform: uppercase;
       color: var(--red);
       opacity: 0;
-      transition: opacity 0.2s;
+      transition: opacity 0.2s ease;
     }
 
     .evento-item:hover .evento-cta {
@@ -451,7 +457,6 @@
       text-transform: uppercase;
     }
 
-    /* CONTACTO */
     #contacto {
       border-top: 1px solid var(--gray-mid);
       display: grid;
@@ -491,7 +496,7 @@
       font-size: 16px;
       color: var(--white);
       text-decoration: none;
-      transition: color 0.2s;
+      transition: color 0.2s ease;
     }
 
     .contact-item a:hover {
@@ -502,6 +507,7 @@
       display: flex;
       gap: 24px;
       margin-top: 16px;
+      flex-wrap: wrap;
     }
 
     .social-link {
@@ -511,7 +517,7 @@
       color: var(--white);
       text-decoration: none;
       opacity: 0.5;
-      transition: opacity 0.2s, color 0.2s;
+      transition: opacity 0.2s ease, color 0.2s ease, border-color 0.2s ease;
       padding: 12px 20px;
       border: 1px solid var(--gray-mid);
     }
@@ -522,7 +528,6 @@
       border-color: var(--red);
     }
 
-    /* FOOTER */
     footer {
       padding: 32px 48px;
       border-top: 1px solid var(--gray-mid);
@@ -535,7 +540,6 @@
       opacity: 0.25;
     }
 
-    /* SCROLL REVEAL */
     .reveal {
       opacity: 0;
       transform: translateY(24px);
@@ -547,19 +551,57 @@
       transform: translateY(0);
     }
 
-    /* MOBILE */
     @media (max-width: 768px) {
-      nav { padding: 24px 24px; }
-      .nav-links { display: none; }
-      .hero { padding: 0 24px 56px; }
-      .hero-line { left: 24px; }
-      section { padding: 80px 24px; }
-      #concepto { grid-template-columns: 1fr; gap: 48px; }
-      #contacto { grid-template-columns: 1fr; gap: 48px; }
-      .eventos-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-      .evento-item { grid-template-columns: 72px 1fr; }
-      .evento-cta { display: none; }
-      footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px; }
+      nav {
+        padding: 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 0 24px 56px;
+      }
+
+      .hero-line {
+        left: 24px;
+      }
+
+      .hero-logo-wrap {
+        width: min(440px, 78vw);
+      }
+
+      section {
+        padding: 80px 24px;
+      }
+
+      #concepto,
+      #contacto {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .eventos-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .evento-item {
+        grid-template-columns: 72px 1fr;
+      }
+
+      .evento-cta {
+        display: none;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        padding: 24px;
+      }
     }
   </style>
 </head>
@@ -567,7 +609,6 @@
 
   <div class="cursor" id="cursor"></div>
 
-  <!-- NAV -->
   <nav>
     <a href="#" class="nav-logo">BOSSA</a>
     <ul class="nav-links">
@@ -577,7 +618,6 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-line"></div>
@@ -588,21 +628,21 @@
 
     <div class="hero-bottom">
       <div class="hero-tagline">
-        Música electrónica en Madrid<br/>
+        Música electrónica en Madrid<br />
         <strong>Minimal Deep Tech · Tech House</strong>
       </div>
       <div class="hero-scroll">scroll</div>
     </div>
   </section>
 
-  <!-- CONCEPTO -->
   <section id="concepto">
     <div class="concepto-text reveal">
       <div class="section-label">Concepto</div>
-      <h2>Un sonido.<br/><em>Una identidad.</em></h2>
+      <h2>Un sonido.<br /><em>Una identidad.</em></h2>
       <p>BOSSA es un concepto de música electrónica nacido en Madrid con una premisa clara: el sonido manda. Minimal, deep tech y tech house construidos con criterio, donde cada sesión es una declaración de intenciones.</p>
       <p>No es una fiesta más. Es un espacio para quienes entienden la diferencia entre poner música y crear un viaje.</p>
     </div>
+
     <div class="concepto-right reveal">
       <div class="section-label">Sonido</div>
       <div class="sound-tags">
@@ -612,29 +652,29 @@
     </div>
   </section>
 
-  <!-- EVENTOS -->
   <section id="eventos">
     <div class="eventos-header reveal">
-      <h2>Próximos<br/>Eventos</h2>
+      <h2>Próximos<br />Eventos</h2>
       <a href="https://es.ra.co/promoters/177842" target="_blank" rel="noopener">Ver en Resident Advisor →</a>
     </div>
+
     <div class="eventos-list reveal">
-      <!-- Añade aquí los eventos cuando los tengas confirmados -->
       <div class="no-eventos">Próximas fechas en breve</div>
     </div>
   </section>
 
-  <!-- CONTACTO -->
   <section id="contacto">
     <div class="reveal">
       <div class="section-label">Contacto</div>
-      <h2>Trabajemos<br/>juntos</h2>
+      <h2>Trabajemos<br />juntos</h2>
     </div>
+
     <div class="contact-right reveal">
       <div class="contact-item">
         <label>Booking & Colaboraciones</label>
         <a href="mailto:contacto@bossatheclub.com">contacto@bossatheclub.com</a>
       </div>
+
       <div class="contact-item">
         <label>Redes</label>
         <div class="social-links">
@@ -645,35 +685,35 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <span>© 2025 BOSSA — Madrid</span>
     <span>bossatheclub.com</span>
   </footer>
 
   <script>
-    // Cursor
     const cursor = document.getElementById('cursor');
-    document.addEventListener('mousemove', e => {
+
+    document.addEventListener('mousemove', (e) => {
       cursor.style.left = e.clientX + 'px';
       cursor.style.top = e.clientY + 'px';
     });
-    document.querySelectorAll('a, button, .sound-tag').forEach(el => {
+
+    document.querySelectorAll('a, button, .sound-tag').forEach((el) => {
       el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
     });
 
-    // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
+
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
         }
       });
     }, { threshold: 0.1 });
-    reveals.forEach(el => observer.observe(el));
-  </script>
 
+    reveals.forEach((el) => observer.observe(el));
+  </script>
 </body>
 </html>
