@@ -149,25 +149,34 @@
     }
 
     .hero-logo-wrap {
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);
-     width: min(700px, 80vw);
-     display: flex;
-     justify-content: center;
-     align-items: center;
-      opacity: 0;
-      animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(620px, 72vw);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation: heroLogoIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
     }
 
     .hero-logo-wrap img {
-      width: 100%;
-      display: block;
-      /* Recorta el espacio negro superior del PNG */
-      clip-path: inset(28% 0 0 0);
-      margin-top: -28%;
+    width: 100%;
+    height: auto;
+    display: block;
     }
+
+    @keyframes heroLogoIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
     .hero-bottom {
       display: flex;
