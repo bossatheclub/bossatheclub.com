@@ -626,12 +626,20 @@
     }
 
     .eventos-grid {
-      display: grid;
-  grid-template-columns: repeat(2, minmax(0, 420px));
-  gap: 24px;
-  justify-content: center;
-  max-width: 900px;
-  margin: 0 auto;
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scroll-snap-type: x proximity;
+      max-width: 100%;
+    }
+
+    .eventos-grid::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .eventos-grid::-webkit-scrollbar-thumb {
+      background: rgba(240, 236, 228, 0.15);
     }
 
     .evento-card {
@@ -640,6 +648,9 @@
       display: flex;
       flex-direction: column;
       transition: transform .3s var(--transition-smooth);
+      flex: 0 0 360px;
+      max-width: 360px;
+      scroll-snap-align: start;
     }
 
     .evento-card:hover {
@@ -875,34 +886,34 @@
     }
 
     /* FOOTER */
-   footer {
-  padding: 32px 48px;
-  border-top: 1px solid var(--gray-mid);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  text-align: center;
-}
+    footer {
+      padding: 32px 48px;
+      border-top: 1px solid var(--gray-mid);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      text-align: center;
+    }
 
     .footer-logo,
     .footer-logo:visited {
-  font-family: 'Bebas Neue', sans-serif;
-  letter-spacing: .3em;
-  font-size: 16px;
-  color: var(--white);
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: .3em;
+      font-size: 16px;
+      color: var(--white);
       opacity: 0.85;
-  text-decoration: none;
-}
+      text-decoration: none;
+    }
 
     .footer-links {
-   display: flex;
-  gap: 24px;
-  list-style: none;
-  justify-content: center;
-  flex-wrap: wrap;
-}
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
 
     .footer-links a {
       font-size: 9px;
@@ -1012,8 +1023,21 @@
       }
 
       .eventos-grid {
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 14px;
+        overflow-x: visible;
+        padding-bottom: 0;
+      }
+
+      .eventos-grid:has(.evento-card:only-child) {
+        grid-template-columns: minmax(0, 320px);
+        justify-content: center;
+      }
+
+      .evento-card {
+        flex: unset;
+        max-width: none;
       }
 
       .archivo-grid {
@@ -1038,6 +1062,11 @@
       .archivo-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
+      }
+
+      .eventos-grid:has(.evento-card:only-child) {
+        grid-template-columns: minmax(0, 260px);
+        justify-content: center;
       }
 
       .hero-logo-scene {
@@ -1188,49 +1217,49 @@
 
   <!-- EVENTOS -->
   <section id="eventos">
-  <div class="eventos-header reveal">
-    <h2>Próximos<br />Eventos</h2>
-    <a href="https://es.ra.co/promoters/177842" target="_blank" rel="noopener">Ver en Resident Advisor →</a>
-  </div>
-
-  <div class="eventos-grid reveal">
-    <div class="evento-card">
-      <div class="evento-card-poster">
-        <img src="POST26ABRIL.webp" alt="BOSSA · Evento" loading="lazy" />
-      </div>
-      <div class="evento-card-info">
-        <div class="evento-card-fecha">Dom 26 · Abr 2026 · 18:00h</div>
-        <div class="evento-card-nombre">BOSSA</div>
-        <div class="evento-card-venue">El Sótano · Madrid</div>
-        <a href="https://es.ra.co/events/2390177" target="_blank" class="evento-card-cta">Entradas</a>
-      </div>
+    <div class="eventos-header reveal">
+      <h2>Próximos<br />Eventos</h2>
+      <a href="https://es.ra.co/promoters/177842" target="_blank" rel="noopener">Ver en Resident Advisor →</a>
     </div>
 
-    <div class="evento-card">
-      <div class="evento-card-poster">
-        <img src="POST03MAYO.webp" alt="BOSSA · Evento" loading="lazy" />
+    <div class="eventos-grid reveal">
+      <div class="evento-card">
+        <div class="evento-card-poster">
+          <img src="POST26ABRIL.webp" alt="BOSSA · Evento" loading="lazy" />
+        </div>
+        <div class="evento-card-info">
+          <div class="evento-card-fecha">Dom 26 · Abr 2026 · 18:00h</div>
+          <div class="evento-card-nombre">BOSSA</div>
+          <div class="evento-card-venue">El Sótano · Madrid</div>
+          <a href="https://es.ra.co/events/2390177" target="_blank" class="evento-card-cta">Entradas</a>
+        </div>
       </div>
-      <div class="evento-card-info">
-        <div class="evento-card-fecha">Dom 03 · May 2026 · 18:00h</div>
-        <div class="evento-card-nombre">BOSSA</div>
-        <div class="evento-card-venue">El Sótano · Madrid</div>
-        <a href="https://es.ra.co/events/2416015" target="_blank" class="evento-card-cta">Entradas</a>
-      </div>
-    </div>
 
-    <div class="evento-card">
-      <div class="evento-card-poster">
-        <img src="TBA.png" alt="BOSSA · Evento" loading="lazy" />
+      <div class="evento-card">
+        <div class="evento-card-poster">
+          <img src="POST03MAYO.webp" alt="BOSSA · Evento" loading="lazy" />
+        </div>
+        <div class="evento-card-info">
+          <div class="evento-card-fecha">Dom 03 · May 2026 · 18:00h</div>
+          <div class="evento-card-nombre">BOSSA</div>
+          <div class="evento-card-venue">El Sótano · Madrid</div>
+          <a href="https://es.ra.co/events/2416015" target="_blank" class="evento-card-cta">Entradas</a>
+        </div>
       </div>
-      <div class="evento-card-info">
-        <div class="evento-card-fecha">Vie 12 · Jun 2026 · 00:00h</div>
-        <div class="evento-card-nombre">BOSSA</div>
-        <div class="evento-card-venue">El Sótano · Madrid</div>
-        <a href="https://es.ra.co/promoters/177842" target="_blank" class="evento-card-cta">Entradas</a>
+
+      <div class="evento-card">
+        <div class="evento-card-poster">
+          <img src="TBA.png" alt="BOSSA · Evento" loading="lazy" />
+        </div>
+        <div class="evento-card-info">
+          <div class="evento-card-fecha">Vie 12 · Jun 2026 · 00:00h</div>
+          <div class="evento-card-nombre">BOSSA</div>
+          <div class="evento-card-venue">El Sótano · Madrid</div>
+          <a href="https://es.ra.co/promoters/177842" target="_blank" class="evento-card-cta">Entradas</a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- ARCHIVO -->
   <section id="archivo">
@@ -1288,15 +1317,15 @@
   </section>
 
   <section style="padding: 0 48px 28px; border-top: 1px solid var(--gray-mid);">
-  <div style="max-width: 1180px; margin: 0 auto; padding-top: 28px;">
-    <p style="font-size: 13px; line-height: 1.9; opacity: 0.42; max-width: 900px; margin: 0 auto; text-align: center;">
-      BOSSA desarrolla una propuesta de
-      <a href="/eventos-musica-electronica-madrid" style="color: var(--white); text-decoration: none; border-bottom: 1px solid rgba(240,236,228,.28);">eventos de música electrónica en Madrid</a>
-      con una línea centrada en el
-      <a href="/fiestas-tech-house-madrid" style="color: var(--white); text-decoration: none; border-bottom: 1px solid rgba(240,236,228,.28);">minimal deep tech y el tech house</a>.
-    </p>
-  </div>
-</section>
+    <div style="max-width: 1180px; margin: 0 auto; padding-top: 28px;">
+      <p style="font-size: 13px; line-height: 1.9; opacity: 0.42; max-width: 900px; margin: 0 auto; text-align: center;">
+        BOSSA desarrolla una propuesta de
+        <a href="/eventos-musica-electronica-madrid" style="color: var(--white); text-decoration: none; border-bottom: 1px solid rgba(240,236,228,.28);">eventos de música electrónica en Madrid</a>
+        con una línea centrada en el
+        <a href="/fiestas-tech-house-madrid" style="color: var(--white); text-decoration: none; border-bottom: 1px solid rgba(240,236,228,.28);">minimal deep tech y el tech house</a>.
+      </p>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer>
