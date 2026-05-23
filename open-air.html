@@ -6,266 +6,281 @@
   <title>BOSSA Open Air — 14 Jun 2026</title>
   <meta name="description" content="BOSSA Open Air · 14 de junio 2026 · Autocine Madrid." />
   <meta property="og:title" content="BOSSA Open Air — 14 Jun 2026" />
-  <meta property="og:description" content="Una jornada al aire libre. Buena música, energía real y la mejor vibra." />
-  <meta property="og:image" content="PROMO.webp" />
+  <meta property="og:description" content="Una jornada de 10 horas al aire libre. Buena música, energía real y la mejor vibra." />
+  <meta property="og:image" content="https://bossatheclub.com/PROMO.webp" />
   <meta property="og:url" content="https://bossatheclub.com/bossa-open-air" />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --gold: #e8a020;
-      --black: #080808;
-      --white: #f0ece4;
-      --gray: #111111;
-      --gray-mid: #2a2a2a;
+      --yellow: #fdde16;
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --border: #1e1e1e;
       --red: #dc143c;
     }
 
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       background: var(--black);
       color: var(--white);
       font-family: 'Barlow', sans-serif;
-      font-weight: 300;
-      overflow-x: hidden;
+      font-weight: 400;
       max-width: 540px;
       margin: 0 auto;
+      overflow-x: hidden;
     }
 
-    /* NAV */
+    /* ── NAV ── */
     nav {
-      position: fixed; top:0; left:50%; transform:translateX(-50%);
-      width:100%; max-width:540px;
-      z-index:200; padding:18px 24px;
-      display:flex; justify-content:space-between; align-items:center;
-    }
-    nav::after {
-      content:''; position:absolute; inset:0;
-      background:linear-gradient(to bottom, rgba(8,8,8,.9) 0%, transparent 100%);
-      z-index:-1;
+      position: absolute; top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 14px 20px;
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 540px;
     }
     .nav-logo {
-      font-family:'Bebas Neue',sans-serif;
-      font-size:17px; letter-spacing:.3em;
-      color:var(--white); text-decoration:none; opacity:.9;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 15px; letter-spacing: .35em;
+      color: var(--white); text-decoration: none; opacity: .9;
     }
     .nav-back {
-      font-size:10px; letter-spacing:.22em; text-transform:uppercase;
-      color:var(--white); text-decoration:none; opacity:.4;
-      transition:opacity .2s;
+      font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--white); text-decoration: none; opacity: .5;
+      transition: opacity .2s;
     }
-    .nav-back:hover { opacity:.9; }
+    .nav-back:hover { opacity: 1; }
 
-    /* HERO FOTO — ocupa todo el ancho, ~55vh */
+    /* ── FOTO HERO — ocupa exactamente la mitad de la pantalla ── */
     .hero-photo {
-      width:100%;
-      height: 58vh;
-      min-height: 340px;
-      position:relative; overflow:hidden;
-      background: var(--gray-mid);
+      width: 100%;
+      height: 50vh;
+      min-height: 300px;
+      max-height: 420px;
+      position: relative; overflow: hidden;
+      background: #111;
     }
     .hero-photo img {
-      width:100%; height:100%; object-fit:cover; object-position:center top;
-      display:block;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 20%;
+      display: block;
     }
-    /* Degradado fuerte hacia abajo */
+    /* Degradado idéntico al de la imagen: suave hasta negro total al final */
     .hero-photo::after {
-      content:'';
-      position:absolute; inset:0;
+      content: '';
+      position: absolute; inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(8,8,8,0) 20%,
-        rgba(8,8,8,.6) 65%,
-        rgba(8,8,8,1) 100%
+        rgba(10,10,10,0) 30%,
+        rgba(10,10,10,.7) 72%,
+        rgba(10,10,10,1) 100%
       );
     }
 
-    /* BLOQUE PRINCIPAL */
+    /* ── BLOQUE DE CONTENIDO ── */
     .main {
-      padding: 0 24px 56px;
+      padding: 20px 20px 56px;
     }
 
-    /* FECHA — amarillo grande, como en la imagen */
+    /* FECHA */
     .event-date {
-      font-family:'Bebas Neue',sans-serif;
-      font-size: 44px;
-      letter-spacing:.06em;
-      color: var(--gold);
-      margin-top: 28px;
-      margin-bottom: 6px;
-      line-height:1;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px; letter-spacing: .06em;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 2px;
     }
 
-    /* TÍTULO ENORME en bloque */
-    .event-title {
-      font-family:'Bebas Neue',sans-serif;
-      font-size: clamp(62px, 18vw, 100px);
-      line-height: .9;
-      letter-spacing:.01em;
-      text-transform:uppercase;
-      margin-bottom: 6px;
-    }
-
-    /* SUBTÍTULO */
-    .event-subtitle {
-      font-family:'Bebas Neue',sans-serif;
-      font-size: clamp(34px, 10vw, 58px);
-      line-height:.92;
-      letter-spacing:.02em;
+    /* TECH HOUSE — enorme */
+    .title-main {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(72px, 21vw, 110px);
+      line-height: .86;
+      letter-spacing: .01em;
       color: var(--white);
-      opacity:.85;
-      margin-bottom: 24px;
+      margin-bottom: 0;
     }
 
-    /* LINEA DORADA */
-    .gold-line {
-      width: 44px; height: 3px;
-      background: var(--gold);
-      margin-bottom: 24px;
+    /* MINIMAL DEEP TECH — algo más pequeño, una línea */
+    .title-sub {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(38px, 11vw, 58px);
+      line-height: .9;
+      letter-spacing: .02em;
+      color: var(--white);
+      margin-bottom: 22px;
     }
 
-    /* DESCRIPCION */
-    .event-desc {
-      font-size: 16px;
-      line-height: 1.75;
-      opacity: .6;
-      margin-bottom: 32px;
-    }
-
-    /* CAJA DESCUENTO — muy fiel a la imagen */
-    .discount-box {
-      border: 1.5px dashed rgba(232,160,32,.5);
-      padding: 18px 20px;
+    /* LÍNEA AMARILLA */
+    .yellow-line {
+      width: 40px; height: 3px;
+      background: var(--yellow);
       margin-bottom: 20px;
-      display:flex; align-items:center; gap:16px;
-      background: rgba(232,160,32,.04);
-    }
-    .discount-icon {
-      width:38px; height:38px; flex-shrink:0;
-      background: var(--gold);
-      border-radius:50%;
-      display:flex; align-items:center; justify-content:center;
-      font-family:'Bebas Neue',sans-serif;
-      font-size:18px; color:var(--black); font-weight:700;
-    }
-    .discount-text {
-      flex:1; font-size:14px; line-height:1.4; opacity:.65;
-    }
-    .discount-code {
-      font-family:'Bebas Neue',sans-serif;
-      font-size:26px; letter-spacing:.1em;
-      color: var(--black);
-      background: var(--gold);
-      padding: 8px 18px;
-      flex-shrink:0;
     }
 
-    /* BOTÓN PRINCIPAL — amarillo enorme */
-    .cta-primary {
-      display:block; width:100%;
-      padding: 22px 28px;
-      background: var(--gold);
-      color: var(--black);
-      font-family:'Bebas Neue',sans-serif;
-      font-size: 26px; letter-spacing:.15em; text-transform:uppercase;
-      text-decoration:none; text-align:center;
-      transition: background .2s, transform .12s;
-      display:flex; align-items:center; justify-content:center; gap:16px;
+    /* DESCRIPCIÓN */
+    .event-desc {
+      font-size: 15px; line-height: 1.72; font-weight: 300;
+      color: rgba(255,255,255,.72);
+      margin-bottom: 30px;
+    }
+
+    /* ── CAJA DESCUENTO ── */
+    .discount-box {
+      border: 1.5px dashed rgba(253,222,22,.5);
+      border-radius: 6px;
+      padding: 14px 16px;
       margin-bottom: 16px;
+      display: flex; align-items: center; gap: 14px;
+      background: rgba(253,222,22,.03);
     }
-    .cta-primary:hover { background:#d4911c; transform:translateY(-1px); }
-    .cta-arrow {
-      font-size:22px; transition:transform .2s;
-    }
-    .cta-primary:hover .cta-arrow { transform:translateX(4px); }
 
-    /* NOTA AFORO */
+    /* Icono badge octogonal como en la imagen */
+    .discount-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: var(--yellow);
+      display: flex; align-items: center; justify-content: center;
+      clip-path: polygon(
+        30% 0%, 70% 0%,
+        100% 30%, 100% 70%,
+        70% 100%, 30% 100%,
+        0% 70%, 0% 30%
+      );
+    }
+    .discount-icon span {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px; color: var(--black); font-weight: 900;
+      line-height: 1;
+    }
+
+    .discount-text {
+      flex: 1;
+      font-size: 14px; font-weight: 300;
+      color: rgba(255,255,255,.65);
+    }
+
+    .discount-code {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px; letter-spacing: .08em;
+      color: var(--black);
+      background: var(--yellow);
+      padding: 7px 18px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    /* ── BOTÓN CTA ── */
+    .cta-primary {
+      display: flex; width: 100%;
+      padding: 20px 24px;
+      background: var(--yellow);
+      color: var(--black);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px; letter-spacing: .15em; text-transform: uppercase;
+      text-decoration: none;
+      align-items: center; justify-content: center; gap: 16px;
+      border-radius: 4px;
+      margin-bottom: 14px;
+      transition: filter .18s, transform .12s;
+    }
+    .cta-primary:hover { filter: brightness(.9); transform: translateY(-1px); }
+    .cta-arrow { font-size: 20px; }
+
+    /* AFORO */
     .aforo-note {
-      text-align:center;
-      font-size:10px; letter-spacing:.28em; text-transform:uppercase;
-      opacity:.3; margin-bottom:52px;
+      text-align: center;
+      font-size: 9px; letter-spacing: .3em; text-transform: uppercase;
+      color: rgba(255,255,255,.32);
+      margin-bottom: 0;
     }
 
-    /* SEPARADOR */
-    .sep {
-      width:100%; height:1px; background:var(--gray-mid); margin:48px 0;
-    }
-
-    /* INFO PILLS */
+    /* ── INFO GRID ── */
     .info-grid {
-      display:grid; grid-template-columns:1fr 1fr;
-      gap:1px; background:var(--gray-mid);
-      margin-bottom: 48px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      margin-top: 40px; margin-bottom: 0;
+      border: 1px solid #2c2c2c;
+      background: #161616;
     }
     .info-cell {
-      background:var(--gray); padding:22px 20px;
-      display:flex; flex-direction:column; gap:6px;
+      background: #161616;
+      padding: 22px 20px;
+      display: flex; flex-direction: column; gap: 8px;
+      position: relative;
+    }
+    /* Línea divisora vertical entre columnas */
+    .info-cell:nth-child(odd) {
+      border-right: 1px solid #2c2c2c;
+    }
+    /* Línea divisora horizontal entre filas */
+    .info-cell:nth-child(1),
+    .info-cell:nth-child(2) {
+      border-bottom: 1px solid #2c2c2c;
     }
     .info-label {
-      font-size:9px; letter-spacing:.3em; text-transform:uppercase; opacity:.35;
+      font-size: 9px; letter-spacing: .3em; text-transform: uppercase;
+      color: rgba(255,255,255,.32);
     }
     .info-value {
-      font-family:'Bebas Neue',sans-serif;
-      font-size:20px; letter-spacing:.05em;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px; letter-spacing: .04em; color: var(--white);
     }
 
-    /* LINEUP */
+    /* ── LINEUP ── */
+    .lineup-wrap {
+      padding: 40px 0 0;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+    }
     .lineup-label {
-      font-size:10px; letter-spacing:.35em; text-transform:uppercase;
-      color:var(--red); margin-bottom:28px;
-      display:flex; align-items:center; gap:12px;
+      font-size: 10px; letter-spacing: .35em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 22px;
+      display: flex; align-items: center; gap: 12px;
     }
-    .lineup-label::before { content:''; width:24px; height:1px; background:var(--red); }
+    .lineup-label::before { content: ''; width: 22px; height: 1px; background: var(--red); }
 
-    .lineup-list { display:flex; flex-direction:column; }
+    .lineup-list { display: flex; flex-direction: column; }
     .lineup-item {
-      padding:16px 0; border-bottom:1px solid var(--gray-mid);
-      display:flex; justify-content:space-between; align-items:center;
-      font-family:'Bebas Neue',sans-serif;
-      font-size:26px; letter-spacing:.05em;
-      opacity:.3; transition:opacity .25s, padding-left .25s;
+      padding: 14px 0; border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: .04em;
+      opacity: .28; transition: opacity .25s, padding-left .25s;
     }
-    .lineup-item:hover { opacity:1; padding-left:8px; }
+    .lineup-item:hover { opacity: 1; padding-left: 8px; }
     .lineup-item span {
-      font-family:'Barlow',sans-serif; font-size:10px;
-      letter-spacing:.22em; text-transform:uppercase;
-      color:var(--gold); opacity:.8;
+      font-family: 'Barlow', sans-serif; font-size: 10px;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--yellow); opacity: .85;
     }
     .lineup-tba {
-      padding:20px 0;
-      font-size:11px; letter-spacing:.22em; text-transform:uppercase; opacity:.22;
+      padding: 18px 0;
+      font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+      color: rgba(255,255,255,.22);
     }
 
     /* BACK */
     .back-link {
-      display:block; text-align:center; margin-top:56px; margin-bottom:16px;
-      font-size:10px; letter-spacing:.25em; text-transform:uppercase;
-      color:var(--white); text-decoration:none; opacity:.25;
-      transition:opacity .2s;
+      display: block; text-align: center; margin-top: 52px;
+      font-size: 9px; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--white); text-decoration: none; opacity: .22;
+      transition: opacity .2s;
     }
-    .back-link:hover { opacity:.6; }
+    .back-link:hover { opacity: .6; }
 
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer {
-      padding:22px 24px; border-top:1px solid var(--gray-mid);
-      display:flex; justify-content:space-between; align-items:center;
+      padding: 20px; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 40px;
     }
     .footer-logo {
-      font-family:'Bebas Neue',sans-serif; font-size:15px; letter-spacing:.3em;
-      color:var(--white); opacity:.25; text-decoration:none;
+      font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: .3em;
+      color: var(--white); opacity: .22; text-decoration: none;
     }
-    .footer-copy { font-size:9px; letter-spacing:.18em; text-transform:uppercase; opacity:.2; }
-
-    /* REVEAL */
-    .reveal {
-      opacity:0; transform:translateY(16px);
-      transition: opacity .7s cubic-bezier(0.16,1,0.3,1), transform .7s cubic-bezier(0.16,1,0.3,1);
-    }
-    .reveal.visible { opacity:1; transform:translateY(0); }
+    .footer-copy { font-size: 9px; letter-spacing: .15em; text-transform: uppercase; opacity: .18; }
   </style>
 </head>
 <body>
@@ -278,30 +293,29 @@
 
 <!-- FOTO HERO -->
 <div class="hero-photo">
-  <img src="OPENAIR.webp" alt="BOSSA Open Air — Autocine Madrid" />
+  <img src="PROMO.webp" alt="BOSSA Open Air — Autocine Madrid" />
 </div>
 
 <!-- CONTENIDO -->
 <div class="main">
 
-  <div class="event-date reveal">14 Jun</div>
+  <div class="event-date">14 JUN</div>
+  <div class="title-main">Tech House</div>
+  <div class="title-sub">Minimal Deep Tech</div>
 
-  <h1 class="event-title reveal">Tech House</h1>
-  <div class="event-subtitle reveal">Deep Tech · Minimal</div>
+  <div class="yellow-line"></div>
 
-  <div class="gold-line reveal"></div>
-
-  <p class="event-desc reveal">
-    Una jornada al aire libre. Buena música,<br />
-    energía real y la mejor vibra.<br />
+  <p class="event-desc">
+    Una jornada de 10 horas al aire libre.<br />
+    Buena música, energía real y la mejor vibra.<br />
     Nos vemos en la pista.
   </p>
 
   <!-- CÓDIGO DESCUENTO -->
-  <div class="discount-box reveal">
-    <div class="discount-icon">%</div>
+  <div class="discount-box">
+    <div class="discount-icon"><span>%</span></div>
     <div class="discount-text">Tienes un código de descuento:</div>
-    <div class="discount-code">VTC</div>
+    <div class="discount-code">TR2</div>
   </div>
 
   <!-- CTA -->
@@ -309,22 +323,22 @@
     href="https://site.fourvenues.com/es/bossa/events/bossa-open-air--autocine-madrid-14-06-2026-64AV"
     target="_blank"
     rel="noopener"
-    class="cta-primary reveal"
+    class="cta-primary"
   >
     Compra tu entrada <span class="cta-arrow">→</span>
   </a>
 
-  <p class="aforo-note reveal">Aforo limitado · No te quedes fuera</p>
+  <p class="aforo-note">No te quedes fuera</p>
 
-  <!-- INFO -->
-  <div class="info-grid reveal">
+  <!-- INFO GRID -->
+  <div class="info-grid">
     <div class="info-cell">
       <span class="info-label">Fecha</span>
       <span class="info-value">Dom 14 Jun</span>
     </div>
     <div class="info-cell">
       <span class="info-label">Apertura</span>
-      <span class="info-value">13:00h</span>
+      <span class="info-value">13:00H</span>
     </div>
     <div class="info-cell">
       <span class="info-label">Lugar</span>
@@ -337,17 +351,18 @@
   </div>
 
   <!-- LINEUP -->
-  <div class="lineup-label reveal">Lineup</div>
-  <div class="lineup-list reveal">
-    <!--
-      Cuando tengas artistas confirmados, añade líneas así:
-      <div class="lineup-item">NOMBRE ARTISTA <span>DJ Set</span></div>
-      <div class="lineup-item">NOMBRE ARTISTA <span>Live</span></div>
-    -->
-    <div class="lineup-tba">Lineup en breve — síguenos en Instagram</div>
+  <div class="lineup-wrap">
+    <div class="lineup-label">Lineup</div>
+    <div class="lineup-list">
+      <!--
+        Cuando tengas artistas confirmados añade:
+        <div class="lineup-item">NOMBRE ARTISTA <span>DJ Set</span></div>
+      -->
+      <div class="lineup-tba">Lineup en breve — síguenos en Instagram</div>
+    </div>
   </div>
 
-  <a href="/" class="back-link reveal">← Volver a bossatheclub.com</a>
+  <a href="/" class="back-link">← Volver a bossatheclub.com</a>
 
 </div>
 
@@ -357,13 +372,5 @@
   <span class="footer-copy">© 2026 bossatheclub.com</span>
 </footer>
 
-<script>
-  // SCROLL REVEAL
-  const reveals = document.querySelectorAll('.reveal');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold:.06 });
-  reveals.forEach(el => obs.observe(el));
-</script>
 </body>
 </html>
