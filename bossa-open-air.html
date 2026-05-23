@@ -1,1 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BOSSA Open Air — 14 Jun 2026</title>
+  <meta name="description" content="BOSSA Open Air · 14 de junio 2026 · Autocine Madrid." />
+  <meta property="og:title" content="BOSSA Open Air — 14 Jun 2026" />
+  <meta property="og:description" content="Una jornada al aire libre. Buena música, energía real y la mejor vibra." />
+  <meta property="og:image" content="PROMO.webp" />
+  <meta property="og:url" content="https://bossatheclub.com/bossa-open-air" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #e8a020;
+      --black: #080808;
+      --white: #f0ece4;
+      --gray: #111111;
+      --gray-mid: #2a2a2a;
+      --red: #dc143c;
+    }
 
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top:0; left:50%; transform:translateX(-50%);
+      width:100%; max-width:540px;
+      z-index:200; padding:18px 24px;
+      display:flex; justify-content:space-between; align-items:center;
+    }
+    nav::after {
+      content:''; position:absolute; inset:0;
+      background:linear-gradient(to bottom, rgba(8,8,8,.9) 0%, transparent 100%);
+      z-index:-1;
+    }
+    .nav-logo {
+      font-family:'Bebas Neue',sans-serif;
+      font-size:17px; letter-spacing:.3em;
+      color:var(--white); text-decoration:none; opacity:.9;
+    }
+    .nav-back {
+      font-size:10px; letter-spacing:.22em; text-transform:uppercase;
+      color:var(--white); text-decoration:none; opacity:.4;
+      transition:opacity .2s;
+    }
+    .nav-back:hover { opacity:.9; }
+
+    /* HERO FOTO — ocupa todo el ancho, ~55vh */
+    .hero-photo {
+      width:100%;
+      height: 58vh;
+      min-height: 340px;
+      position:relative; overflow:hidden;
+      background: var(--gray-mid);
+    }
+    .hero-photo img {
+      width:100%; height:100%; object-fit:cover; object-position:center top;
+      display:block;
+    }
+    /* Degradado fuerte hacia abajo */
+    .hero-photo::after {
+      content:'';
+      position:absolute; inset:0;
+      background: linear-gradient(
+        to bottom,
+        rgba(8,8,8,0) 20%,
+        rgba(8,8,8,.6) 65%,
+        rgba(8,8,8,1) 100%
+      );
+    }
+
+    /* BLOQUE PRINCIPAL */
+    .main {
+      padding: 0 24px 56px;
+    }
+
+    /* FECHA — amarillo grande, como en la imagen */
+    .event-date {
+      font-family:'Bebas Neue',sans-serif;
+      font-size: 44px;
+      letter-spacing:.06em;
+      color: var(--gold);
+      margin-top: 28px;
+      margin-bottom: 6px;
+      line-height:1;
+    }
+
+    /* TÍTULO ENORME en bloque */
+    .event-title {
+      font-family:'Bebas Neue',sans-serif;
+      font-size: clamp(62px, 18vw, 100px);
+      line-height: .9;
+      letter-spacing:.01em;
+      text-transform:uppercase;
+      margin-bottom: 6px;
+    }
+
+    /* SUBTÍTULO */
+    .event-subtitle {
+      font-family:'Bebas Neue',sans-serif;
+      font-size: clamp(34px, 10vw, 58px);
+      line-height:.92;
+      letter-spacing:.02em;
+      color: var(--white);
+      opacity:.85;
+      margin-bottom: 24px;
+    }
+
+    /* LINEA DORADA */
+    .gold-line {
+      width: 44px; height: 3px;
+      background: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    /* DESCRIPCION */
+    .event-desc {
+      font-size: 16px;
+      line-height: 1.75;
+      opacity: .6;
+      margin-bottom: 32px;
+    }
+
+    /* CAJA DESCUENTO — muy fiel a la imagen */
+    .discount-box {
+      border: 1.5px dashed rgba(232,160,32,.5);
+      padding: 18px 20px;
+      margin-bottom: 20px;
+      display:flex; align-items:center; gap:16px;
+      background: rgba(232,160,32,.04);
+    }
+    .discount-icon {
+      width:38px; height:38px; flex-shrink:0;
+      background: var(--gold);
+      border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Bebas Neue',sans-serif;
+      font-size:18px; color:var(--black); font-weight:700;
+    }
+    .discount-text {
+      flex:1; font-size:14px; line-height:1.4; opacity:.65;
+    }
+    .discount-code {
+      font-family:'Bebas Neue',sans-serif;
+      font-size:26px; letter-spacing:.1em;
+      color: var(--black);
+      background: var(--gold);
+      padding: 8px 18px;
+      flex-shrink:0;
+    }
+
+    /* BOTÓN PRINCIPAL — amarillo enorme */
+    .cta-primary {
+      display:block; width:100%;
+      padding: 22px 28px;
+      background: var(--gold);
+      color: var(--black);
+      font-family:'Bebas Neue',sans-serif;
+      font-size: 26px; letter-spacing:.15em; text-transform:uppercase;
+      text-decoration:none; text-align:center;
+      transition: background .2s, transform .12s;
+      display:flex; align-items:center; justify-content:center; gap:16px;
+      margin-bottom: 16px;
+    }
+    .cta-primary:hover { background:#d4911c; transform:translateY(-1px); }
+    .cta-arrow {
+      font-size:22px; transition:transform .2s;
+    }
+    .cta-primary:hover .cta-arrow { transform:translateX(4px); }
+
+    /* NOTA AFORO */
+    .aforo-note {
+      text-align:center;
+      font-size:10px; letter-spacing:.28em; text-transform:uppercase;
+      opacity:.3; margin-bottom:52px;
+    }
+
+    /* SEPARADOR */
+    .sep {
+      width:100%; height:1px; background:var(--gray-mid); margin:48px 0;
+    }
+
+    /* INFO PILLS */
+    .info-grid {
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:1px; background:var(--gray-mid);
+      margin-bottom: 48px;
+    }
+    .info-cell {
+      background:var(--gray); padding:22px 20px;
+      display:flex; flex-direction:column; gap:6px;
+    }
+    .info-label {
+      font-size:9px; letter-spacing:.3em; text-transform:uppercase; opacity:.35;
+    }
+    .info-value {
+      font-family:'Bebas Neue',sans-serif;
+      font-size:20px; letter-spacing:.05em;
+    }
+
+    /* LINEUP */
+    .lineup-label {
+      font-size:10px; letter-spacing:.35em; text-transform:uppercase;
+      color:var(--red); margin-bottom:28px;
+      display:flex; align-items:center; gap:12px;
+    }
+    .lineup-label::before { content:''; width:24px; height:1px; background:var(--red); }
+
+    .lineup-list { display:flex; flex-direction:column; }
+    .lineup-item {
+      padding:16px 0; border-bottom:1px solid var(--gray-mid);
+      display:flex; justify-content:space-between; align-items:center;
+      font-family:'Bebas Neue',sans-serif;
+      font-size:26px; letter-spacing:.05em;
+      opacity:.3; transition:opacity .25s, padding-left .25s;
+    }
+    .lineup-item:hover { opacity:1; padding-left:8px; }
+    .lineup-item span {
+      font-family:'Barlow',sans-serif; font-size:10px;
+      letter-spacing:.22em; text-transform:uppercase;
+      color:var(--gold); opacity:.8;
+    }
+    .lineup-tba {
+      padding:20px 0;
+      font-size:11px; letter-spacing:.22em; text-transform:uppercase; opacity:.22;
+    }
+
+    /* BACK */
+    .back-link {
+      display:block; text-align:center; margin-top:56px; margin-bottom:16px;
+      font-size:10px; letter-spacing:.25em; text-transform:uppercase;
+      color:var(--white); text-decoration:none; opacity:.25;
+      transition:opacity .2s;
+    }
+    .back-link:hover { opacity:.6; }
+
+    /* FOOTER */
+    footer {
+      padding:22px 24px; border-top:1px solid var(--gray-mid);
+      display:flex; justify-content:space-between; align-items:center;
+    }
+    .footer-logo {
+      font-family:'Bebas Neue',sans-serif; font-size:15px; letter-spacing:.3em;
+      color:var(--white); opacity:.25; text-decoration:none;
+    }
+    .footer-copy { font-size:9px; letter-spacing:.18em; text-transform:uppercase; opacity:.2; }
+
+    /* REVEAL */
+    .reveal {
+      opacity:0; transform:translateY(16px);
+      transition: opacity .7s cubic-bezier(0.16,1,0.3,1), transform .7s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">BOSSA</a>
+  <a href="/" class="nav-back">← Volver</a>
+</nav>
+
+<!-- FOTO HERO -->
+<div class="hero-photo">
+  <img src="OPENAIR.webp" alt="BOSSA Open Air — Autocine Madrid" />
+</div>
+
+<!-- CONTENIDO -->
+<div class="main">
+
+  <div class="event-date reveal">14 Jun</div>
+
+  <h1 class="event-title reveal">Tech House</h1>
+  <div class="event-subtitle reveal">Deep Tech · Minimal</div>
+
+  <div class="gold-line reveal"></div>
+
+  <p class="event-desc reveal">
+    Una jornada al aire libre. Buena música,<br />
+    energía real y la mejor vibra.<br />
+    Nos vemos en la pista.
+  </p>
+
+  <!-- CÓDIGO DESCUENTO -->
+  <div class="discount-box reveal">
+    <div class="discount-icon">%</div>
+    <div class="discount-text">Tienes un código de descuento:</div>
+    <div class="discount-code">VTC</div>
+  </div>
+
+  <!-- CTA -->
+  <a
+    href="https://site.fourvenues.com/es/bossa/events/bossa-open-air--autocine-madrid-14-06-2026-64AV"
+    target="_blank"
+    rel="noopener"
+    class="cta-primary reveal"
+  >
+    Compra tu entrada <span class="cta-arrow">→</span>
+  </a>
+
+  <p class="aforo-note reveal">Aforo limitado · No te quedes fuera</p>
+
+  <!-- INFO -->
+  <div class="info-grid reveal">
+    <div class="info-cell">
+      <span class="info-label">Fecha</span>
+      <span class="info-value">Dom 14 Jun</span>
+    </div>
+    <div class="info-cell">
+      <span class="info-label">Apertura</span>
+      <span class="info-value">13:00h</span>
+    </div>
+    <div class="info-cell">
+      <span class="info-label">Lugar</span>
+      <span class="info-value">Autocine</span>
+    </div>
+    <div class="info-cell">
+      <span class="info-label">Formato</span>
+      <span class="info-value">Open Air</span>
+    </div>
+  </div>
+
+  <!-- LINEUP -->
+  <div class="lineup-label reveal">Lineup</div>
+  <div class="lineup-list reveal">
+    <!--
+      Cuando tengas artistas confirmados, añade líneas así:
+      <div class="lineup-item">NOMBRE ARTISTA <span>DJ Set</span></div>
+      <div class="lineup-item">NOMBRE ARTISTA <span>Live</span></div>
+    -->
+    <div class="lineup-tba">Lineup en breve — síguenos en Instagram</div>
+  </div>
+
+  <a href="/" class="back-link reveal">← Volver a bossatheclub.com</a>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="footer-logo">BOSSA</a>
+  <span class="footer-copy">© 2026 bossatheclub.com</span>
+</footer>
+
+<script>
+  // SCROLL REVEAL
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold:.06 });
+  reveals.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
