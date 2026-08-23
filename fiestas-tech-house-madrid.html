@@ -4,18 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Eventos de Música Electrónica en Madrid | BOSSA</title>
+  <title>Fiestas Tech House en Madrid | BOSSA</title>
 
   <meta
     name="description"
-    content="Descubre BOSSA, eventos de música electrónica en Madrid centrados en minimal deep tech y tech house. Sonido, club culture, formatos noche y tardeo y próximas fechas."
+    content="Fiestas tech house en Madrid con BOSSA. Minimal deep tech, tech house, club culture, formatos noche y tardeo y una identidad sonora y visual propia."
   />
 
   <meta name="robots" content="index, follow" />
 
   <link
     rel="canonical"
-    href="https://bossatheclub.com/eventos-musica-electronica-madrid"
+    href="https://bossatheclub.com/fiestas-tech-house-madrid"
   />
 
   <link
@@ -28,12 +28,12 @@
   <!-- OPEN GRAPH -->
   <meta
     property="og:title"
-    content="Eventos de Música Electrónica en Madrid | BOSSA"
+    content="Fiestas Tech House en Madrid | BOSSA"
   />
 
   <meta
     property="og:description"
-    content="Minimal deep tech y tech house en Madrid. Sonido, selección y club culture con identidad propia."
+    content="Minimal deep tech y tech house en Madrid. Descubre el sonido, la atmósfera y las próximas fechas de BOSSA."
   />
 
   <meta
@@ -43,7 +43,7 @@
 
   <meta
     property="og:url"
-    content="https://bossatheclub.com/eventos-musica-electronica-madrid"
+    content="https://bossatheclub.com/fiestas-tech-house-madrid"
   />
 
   <meta
@@ -72,6 +72,7 @@
     href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;1,300&display=swap"
     rel="stylesheet"
   />
+
 
   <style>
 
@@ -222,7 +223,7 @@
     ===================================================== */
 
     .hero {
-      min-height: 88vh;
+      min-height: 92vh;
 
       position: relative;
 
@@ -248,14 +249,14 @@
       background:
 
         radial-gradient(
-          ellipse 32% 26% at 70% 40%,
-          rgba(220,20,60,.18) 0%,
-          rgba(220,20,60,.07) 32%,
+          ellipse 34% 28% at 72% 42%,
+          rgba(220,20,60,.21) 0%,
+          rgba(220,20,60,.08) 32%,
           transparent 74%
         ),
 
         radial-gradient(
-          ellipse 22% 18% at 15% 78%,
+          ellipse 22% 18% at 12% 80%,
           rgba(220,20,60,.035) 0%,
           transparent 72%
         );
@@ -335,18 +336,18 @@
 
       font-size:
         clamp(
-          58px,
-          8vw,
-          118px
+          60px,
+          8.4vw,
+          122px
         );
 
-      line-height: .88;
+      line-height: .87;
 
       letter-spacing: .015em;
 
-      max-width: 900px;
+      max-width: 940px;
 
-      margin-bottom: 34px;
+      margin-bottom: 36px;
     }
 
 
@@ -487,8 +488,8 @@
       display: grid;
 
       grid-template-columns:
-        .75fr
-        1.25fr;
+        .72fr
+        1.28fr;
 
       gap: 100px;
 
@@ -512,9 +513,10 @@
 
 
     .intro-content h2,
-    .text-block h2,
-    .experience-heading h2,
+    .identity-heading h2,
+    .format-heading h2,
     .visual-heading h2,
+    .related-copy h2,
     .final-inner h2 {
       font-family:
         'Bebas Neue',
@@ -557,7 +559,7 @@
 
 
     /* =====================================================
-       SOUND
+       SOUND DNA
     ===================================================== */
 
     .sound-section {
@@ -578,20 +580,20 @@
     }
 
 
-    .sound-heading {
-      margin-bottom: 60px;
-
+    .sound-top {
       display: flex;
 
       justify-content: space-between;
 
-      gap: 50px;
-
       align-items: end;
+
+      gap: 60px;
+
+      margin-bottom: 56px;
     }
 
 
-    .sound-heading h2 {
+    .sound-top h2 {
       font-family:
         'Bebas Neue',
         sans-serif;
@@ -609,8 +611,8 @@
     }
 
 
-    .sound-heading p {
-      max-width: 430px;
+    .sound-top p {
+      max-width: 420px;
 
       font-size: 14px;
 
@@ -620,41 +622,145 @@
     }
 
 
-    .sound-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
-      gap: 1px;
-
-      background: var(--gray-mid);
+    .sound-lines {
+      border-top:
+        1px solid
+        var(--gray-mid);
     }
 
 
-    .sound-card {
+    .sound-line {
+      display: grid;
+
+      grid-template-columns:
+        100px
+        minmax(220px, .8fr)
+        1.6fr;
+
+      gap: 34px;
+
+      align-items: center;
+
+      padding: 32px 0;
+
+      border-bottom:
+        1px solid
+        var(--gray-mid);
+    }
+
+
+    .sound-line-number {
+      font-family:
+        'Bebas Neue',
+        sans-serif;
+
+      font-size: 14px;
+
+      letter-spacing: .24em;
+
+      color: var(--red);
+
+      opacity: .7;
+    }
+
+
+    .sound-line h3 {
+      font-family:
+        'Bebas Neue',
+        sans-serif;
+
+      font-size: 34px;
+
+      letter-spacing: .04em;
+    }
+
+
+    .sound-line p {
+      font-size: 14px;
+
+      line-height: 1.85;
+
+      opacity: .54;
+
+      max-width: 570px;
+    }
+
+
+    /* =====================================================
+       IDENTITY / WHAT TO EXPECT
+    ===================================================== */
+
+    .identity-section {
+      padding: 110px 48px;
+
+      border-bottom:
+        1px solid
+        var(--gray-mid);
+    }
+
+
+    .identity-wrap {
+      max-width: 1180px;
+
+      margin: 0 auto;
+    }
+
+
+    .identity-heading {
+      max-width: 730px;
+
+      margin-bottom: 58px;
+    }
+
+
+    .identity-heading h2 {
+      margin-bottom: 24px;
+    }
+
+
+    .identity-heading p {
+      font-size: 16px;
+
+      line-height: 1.9;
+
+      opacity: .62;
+    }
+
+
+    .identity-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 1px;
+
+      background:
+        var(--gray-mid);
+    }
+
+
+    .identity-card {
       position: relative;
 
-      overflow: hidden;
+      background: var(--black);
 
-      padding: 44px 40px;
+      padding: 40px 34px;
 
-      background: var(--gray);
-
-      min-height: 290px;
+      min-height: 270px;
 
       transition:
         background .3s ease;
     }
 
 
-    .sound-card::before {
+    .identity-card::before {
       content: '';
 
       position: absolute;
 
-      left: 0;
       top: 0;
+      left: 0;
       right: 0;
 
       height: 2px;
@@ -672,59 +778,59 @@
     }
 
 
-    .sound-card:hover {
-      background: #161616;
+    .identity-card:hover {
+      background: #111;
     }
 
 
-    .sound-card:hover::before {
+    .identity-card:hover::before {
       transform: scaleX(1);
     }
 
 
-    .sound-card-number {
+    .identity-card-number {
       font-size: 10px;
 
       letter-spacing: .28em;
 
       color: var(--red);
 
-      margin-bottom: 54px;
+      margin-bottom: 48px;
 
       opacity: .65;
     }
 
 
-    .sound-card h3 {
+    .identity-card h3 {
       font-family:
         'Bebas Neue',
         sans-serif;
 
-      font-size: 36px;
+      font-size: 29px;
 
       letter-spacing: .04em;
 
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
 
-    .sound-card p {
-      font-size: 14px;
+    .identity-card p {
+      font-size: 13px;
 
-      line-height: 1.85;
+      line-height: 1.82;
 
-      opacity: .55;
-
-      max-width: 480px;
+      opacity: .52;
     }
 
 
     /* =====================================================
-       EXPERIENCE
+       FORMAT
     ===================================================== */
 
-    .experience-section {
+    .format-section {
       padding: 110px 48px;
+
+      background: var(--gray);
 
       border-bottom:
         1px solid
@@ -732,98 +838,95 @@
     }
 
 
-    .experience-wrap {
+    .format-wrap {
       max-width: 1180px;
 
       margin: 0 auto;
     }
 
 
-    .experience-heading {
-      max-width: 750px;
-
-      margin-bottom: 62px;
-    }
-
-
-    .experience-heading h2 {
-      margin-bottom: 24px;
-    }
-
-
-    .experience-heading p {
-      font-size: 16px;
-
-      line-height: 1.9;
-
-      opacity: .62;
-    }
-
-
-    .experience-list {
+    .format-heading {
       display: grid;
 
       grid-template-columns:
-        repeat(4, 1fr);
+        1fr
+        .8fr;
 
-      border-top:
-        1px solid
-        var(--gray-mid);
+      gap: 90px;
 
-      border-bottom:
-        1px solid
-        var(--gray-mid);
+      align-items: end;
+
+      margin-bottom: 54px;
     }
 
 
-    .experience-item {
-      padding: 34px 28px;
+    .format-heading p {
+      font-size: 15px;
 
-      border-right:
+      line-height: 1.9;
+
+      opacity: .58;
+    }
+
+
+    .format-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 16px;
+    }
+
+
+    .format-card {
+      min-height: 230px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+
+      padding: 36px 34px;
+
+      border:
         1px solid
         var(--gray-mid);
+
+      background:
+        rgba(255,255,255,.012);
     }
 
 
-    .experience-item:last-child {
-      border-right: none;
-    }
-
-
-    .experience-item span {
-      display: block;
-
+    .format-card span {
       color: var(--red);
 
-      font-family:
-        'Bebas Neue',
-        sans-serif;
+      font-size: 10px;
 
-      font-size: 13px;
+      letter-spacing: .3em;
 
-      letter-spacing: .25em;
-
-      margin-bottom: 22px;
+      text-transform: uppercase;
     }
 
 
-    .experience-item h3 {
+    .format-card h3 {
       font-family:
         'Bebas Neue',
         sans-serif;
 
-      font-size: 25px;
+      font-size: 38px;
 
       letter-spacing: .04em;
-
-      margin-bottom: 12px;
     }
 
 
-    .experience-item p {
+    .format-card p {
+      max-width: 460px;
+
       font-size: 13px;
 
-      line-height: 1.75;
+      line-height: 1.8;
 
       opacity: .5;
     }
@@ -835,8 +938,6 @@
 
     .visual-section {
       padding: 110px 48px;
-
-      background: var(--gray);
 
       border-bottom:
         1px solid
@@ -865,12 +966,12 @@
 
 
     .visual-heading h2 {
-      max-width: 620px;
+      max-width: 650px;
     }
 
 
     .visual-heading p {
-      max-width: 410px;
+      max-width: 400px;
 
       font-size: 14px;
 
@@ -889,17 +990,18 @@
 
       margin-bottom: 14px;
 
-      background: var(--gray-mid);
+      background:
+        var(--gray);
     }
 
 
     .visual-main img {
-      display: block;
-
       width: 100%;
       height: 100%;
 
       object-fit: cover;
+
+      display: block;
 
       transition:
         transform
@@ -909,7 +1011,8 @@
 
 
     .visual-main:hover img {
-      transform: scale(1.015);
+      transform:
+        scale(1.015);
     }
 
 
@@ -924,11 +1027,13 @@
 
 
     .visual-item {
-      aspect-ratio: 16 / 10;
+      aspect-ratio:
+        16 / 10;
 
       overflow: hidden;
 
-      background: var(--gray-mid);
+      background:
+        var(--gray);
     }
 
 
@@ -936,9 +1041,9 @@
       width: 100%;
       height: 100%;
 
-      display: block;
-
       object-fit: cover;
+
+      display: block;
 
       transition:
         transform
@@ -953,11 +1058,13 @@
 
 
     /* =====================================================
-       RELATED / SEO INTERNAL LINK
+       RELATED SEO PAGE
     ===================================================== */
 
     .related-section {
       padding: 92px 48px;
+
+      background: var(--gray);
 
       border-bottom:
         1px solid
@@ -983,31 +1090,18 @@
 
 
     .related-copy h2 {
-      font-family:
-        'Bebas Neue',
-        sans-serif;
-
-      font-size:
-        clamp(
-          36px,
-          4.5vw,
-          62px
-        );
-
-      line-height: .95;
-
       margin-bottom: 22px;
     }
 
 
     .related-copy p {
+      max-width: 620px;
+
       font-size: 15px;
 
       line-height: 1.9;
 
       opacity: .6;
-
-      max-width: 620px;
     }
 
 
@@ -1019,7 +1113,7 @@
 
 
     /* =====================================================
-       FINAL CTA
+       FINAL
     ===================================================== */
 
     .final-section {
@@ -1036,8 +1130,8 @@
 
       position: absolute;
 
-      width: 520px;
-      height: 520px;
+      width: 540px;
+      height: 540px;
 
       left: 50%;
       top: 50%;
@@ -1048,8 +1142,8 @@
       background:
         radial-gradient(
           circle,
-          rgba(220,20,60,.13),
-          transparent 68%
+          rgba(220,20,60,.14),
+          transparent 69%
         );
 
       pointer-events: none;
@@ -1057,13 +1151,13 @@
 
 
     .final-inner {
-      position: relative;
-
-      z-index: 2;
-
       max-width: 760px;
 
       margin: 0 auto;
+
+      position: relative;
+
+      z-index: 2;
 
       text-align: center;
     }
@@ -1080,17 +1174,17 @@
 
 
     .final-inner p {
-      font-size: 16px;
-
-      line-height: 1.85;
-
-      opacity: .58;
+      max-width: 600px;
 
       margin:
         0 auto
         32px;
 
-      max-width: 600px;
+      font-size: 16px;
+
+      line-height: 1.85;
+
+      opacity: .58;
     }
 
 
@@ -1152,9 +1246,7 @@
     @media (max-width: 900px) {
 
       nav {
-        padding:
-          20px
-          24px;
+        padding: 20px 24px;
       }
 
 
@@ -1192,7 +1284,8 @@
 
       .intro-section,
       .sound-section,
-      .experience-section,
+      .identity-section,
+      .format-section,
       .visual-section,
       .related-section,
       .final-section {
@@ -1209,7 +1302,7 @@
       }
 
 
-      .sound-heading,
+      .sound-top,
       .visual-heading {
         flex-direction: column;
 
@@ -1217,36 +1310,38 @@
       }
 
 
-      .sound-grid {
+      .sound-line {
+        grid-template-columns: 52px 1fr;
+
+        gap: 18px;
+      }
+
+
+      .sound-line p {
+        grid-column:
+          2 / 3;
+      }
+
+
+      .identity-grid {
         grid-template-columns: 1fr;
       }
 
 
-      .sound-card::before {
+      .identity-card {
+        background: #111;
+      }
+
+
+      .identity-card::before {
         display: none;
       }
 
 
-      .sound-card {
-        background: #151515;
-      }
+      .format-heading {
+        grid-template-columns: 1fr;
 
-
-      .experience-list {
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
-
-
-      .experience-item:nth-child(2) {
-        border-right: none;
-      }
-
-
-      .experience-item:nth-child(-n+2) {
-        border-bottom:
-          1px solid
-          var(--gray-mid);
+        gap: 28px;
       }
 
 
@@ -1274,46 +1369,47 @@
       h1 {
         font-size:
           clamp(
-            52px,
+            54px,
             16vw,
-            78px
+            80px
           );
       }
 
 
-      .experience-list {
+      .sound-line {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+      }
+
+
+      .sound-line p {
+        grid-column: auto;
+      }
+
+
+      .format-grid {
         grid-template-columns: 1fr;
       }
 
 
-      .experience-item {
-        border-right: none;
-
-        border-bottom:
-          1px solid
-          var(--gray-mid);
-      }
-
-
-      .experience-item:last-child {
-        border-bottom: none;
-      }
-
-
       .visual-main {
-        aspect-ratio: 4 / 3;
+        aspect-ratio:
+          4 / 3;
       }
 
 
       .visual-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:
+          1fr 1fr;
 
         gap: 10px;
       }
 
 
       .visual-item {
-        aspect-ratio: 4 / 5;
+        aspect-ratio:
+          4 / 5;
       }
 
     }
@@ -1368,11 +1464,11 @@
 
 
       <h1>
-        Eventos de música
+        Fiestas Tech House
         <br />
 
         <em>
-          electrónica en Madrid
+          en Madrid
         </em>
       </h1>
 
@@ -1380,10 +1476,10 @@
       <div class="hero-bottom">
 
         <p class="hero-intro">
-          BOSSA es una propuesta de club culture en Madrid
-          centrada en minimal deep tech y tech house.
-          Sonido, selección y dirección estética construidos
-          alrededor de la pista, con formatos de noche y tardeo.
+          Si buscas minimal deep tech y tech house en Madrid,
+          BOSSA desarrolla una propuesta construida alrededor
+          del groove, la selección y la pista. Formatos de noche
+          y tardeo con una identidad sonora y visual reconocible.
         </p>
 
 
@@ -1402,12 +1498,13 @@
 
 
   <!-- =====================================================
-       QUÉ ES BOSSA
+       INTRO
   ====================================================== -->
 
   <section class="intro-section">
 
     <div class="intro-grid">
+
 
       <div>
 
@@ -1416,7 +1513,7 @@
         </div>
 
         <div class="section-number">
-          01 — CONCEPTO
+          01 — LA FIESTA
         </div>
 
       </div>
@@ -1425,23 +1522,24 @@
       <div class="intro-content">
 
         <h2>
-          Una propuesta propia dentro de la electrónica madrileña.
+          Tech house con una dirección propia.
         </h2>
 
 
         <p>
-          Madrid reúne una escena electrónica amplia y en constante
-          movimiento. BOSSA nace dentro de ese contexto con una
-          dirección concreta: crear eventos donde la selección musical,
-          el espacio y la identidad visual trabajen en la misma dirección.
+          BOSSA nace en Madrid con una idea clara:
+          construir fechas donde la música no funcione
+          como acompañamiento, sino como centro de toda
+          la experiencia.
         </p>
 
 
         <p>
-          El proyecto se construye alrededor de la pista y de una forma
-          particular de entender el club: cercana, cuidada y reconocible,
-          sin perder la energía necesaria para que la música siga siendo
-          el centro de cada fecha.
+          Cada evento combina selección musical,
+          dirección estética y una relación cercana
+          entre cabina y pista. El objetivo es mantener
+          una identidad reconocible aunque cambien
+          artistas, horarios o espacios.
         </p>
 
       </div>
@@ -1452,76 +1550,106 @@
 
 
   <!-- =====================================================
-       SONIDO
+       SOUND DNA
   ====================================================== -->
 
   <section class="sound-section">
 
     <div class="sound-wrap">
 
+
       <div class="section-label">
-        Sonido
+        Sound DNA
       </div>
 
 
-      <div class="sound-heading">
+      <div class="sound-top">
 
         <h2>
-          Minimal deep tech.
+          El sonido antes
           <br />
-          Tech house.
+          que la fórmula.
         </h2>
 
 
         <p>
-          Dos territorios conectados por una misma idea:
-          groove, tensión, espacio y una sesión construida
-          con continuidad.
+          BOSSA se mueve entre dos territorios:
+          minimal deep tech y tech house.
+          Diferentes intensidades dentro
+          de una misma dirección sonora.
         </p>
 
       </div>
 
 
-      <div class="sound-grid">
+      <div class="sound-lines">
 
 
-        <article class="sound-card">
+        <article class="sound-line">
 
-          <div class="sound-card-number">
+          <div class="sound-line-number">
             01
           </div>
 
+
           <h3>
-            Minimal Deep Tech
+            Groove
           </h3>
 
+
           <p>
-            Bajos profundos, percusión precisa y estructuras
-            progresivas. Un sonido que trabaja desde el detalle
-            y deja espacio para que el groove evolucione
-            durante la sesión.
+            Bajos marcados, percusión precisa y patrones
+            que trabajan de forma continua sobre la pista.
+            El ritmo es la base sobre la que se construye
+            cada sesión.
           </p>
 
         </article>
 
 
-        <article class="sound-card">
+        <article class="sound-line">
 
-          <div class="sound-card-number">
+          <div class="sound-line-number">
             02
           </div>
 
+
           <h3>
-            Tech House
+            Tensión
           </h3>
 
+
           <p>
-            Ritmo, energía y una conexión directa con la pista,
-            tratados desde una selección coherente con el universo
-            BOSSA y alejados de fórmulas excesivamente previsibles.
+            Una evolución progresiva donde los cambios
+            no dependen únicamente del impacto inmediato.
+            Espacio, dinámica y construcción forman parte
+            del recorrido.
           </p>
 
         </article>
+
+
+        <article class="sound-line">
+
+          <div class="sound-line-number">
+            03
+          </div>
+
+
+          <h3>
+            Selección
+          </h3>
+
+
+          <p>
+            Minimal deep tech y tech house elegidos
+            desde la coherencia musical y no desde
+            una fórmula fija. Cada artista debe encajar
+            dentro del sonido completo de la fecha.
+          </p>
+
+        </article>
+
 
       </div>
 
@@ -1531,106 +1659,190 @@
 
 
   <!-- =====================================================
-       EXPERIENCIA
+       QUÉ ENCONTRARÁS
   ====================================================== -->
 
-  <section class="experience-section">
+  <section class="identity-section">
 
-    <div class="experience-wrap">
+    <div class="identity-wrap">
 
 
-      <div class="experience-heading">
+      <div class="identity-heading">
 
         <div class="section-label">
-          La experiencia
+          En la pista
         </div>
 
 
         <h2>
-          Cómo son los eventos BOSSA.
+          Qué encontrarás en una fecha BOSSA.
         </h2>
 
 
         <p>
-          Cada fecha cambia, pero la dirección se mantiene:
-          una programación coherente, proximidad con la pista
-          y una identidad que conecta música, espacio y público.
+          Una experiencia de club donde música,
+          público y espacio comparten la misma dirección.
+          Menos elementos gratuitos y más atención
+          a lo que realmente sostiene una pista.
         </p>
 
       </div>
 
 
-      <div class="experience-list">
+      <div class="identity-grid">
 
 
-        <article class="experience-item">
+        <article class="identity-card">
 
-          <span>
+          <div class="identity-card-number">
             01
-          </span>
+          </div>
+
 
           <h3>
-            Selección
+            Cabina y pista
           </h3>
 
+
           <p>
-            Line-ups construidos por coherencia musical,
-            no únicamente por nombre o tendencia.
+            Una relación cercana entre artista y público,
+            donde la energía se construye desde el espacio
+            y no desde la distancia.
           </p>
 
         </article>
 
 
-        <article class="experience-item">
+        <article class="identity-card">
 
-          <span>
+          <div class="identity-card-number">
             02
-          </span>
+          </div>
+
 
           <h3>
-            Pista
+            Line-up coherente
           </h3>
 
+
           <p>
-            Una experiencia cercana donde cabina,
-            sonido y público forman parte del mismo espacio.
+            Los artistas no funcionan como piezas aisladas.
+            La programación se plantea como un recorrido
+            musical completo de principio a fin.
           </p>
 
         </article>
 
 
-        <article class="experience-item">
+        <article class="identity-card">
 
-          <span>
+          <div class="identity-card-number">
             03
-          </span>
+          </div>
+
 
           <h3>
-            Formatos
+            Identidad
           </h3>
 
+
           <p>
-            Eventos de noche y tardeo adaptados
-            a distintos momentos sin perder identidad.
+            Sonido y dirección estética forman parte
+            del mismo lenguaje para que cada fecha
+            pueda reconocerse como BOSSA.
           </p>
 
         </article>
 
 
-        <article class="experience-item">
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       FORMATOS
+  ====================================================== -->
+
+  <section class="format-section">
+
+    <div class="format-wrap">
+
+
+      <div class="section-label">
+        Formatos
+      </div>
+
+
+      <div class="format-heading">
+
+        <h2>
+          De tarde o de noche.
+          <br />
+          La dirección no cambia.
+        </h2>
+
+
+        <p>
+          BOSSA trabaja diferentes horarios
+          y formatos en Madrid manteniendo
+          una misma línea de sonido,
+          selección y atmósfera.
+        </p>
+
+      </div>
+
+
+      <div class="format-grid">
+
+
+        <article class="format-card">
 
           <span>
-            04
+            NIGHT
           </span>
 
-          <h3>
-            Madrid
-          </h3>
 
-          <p>
-            Una propuesta nacida desde la escena local
-            con una mirada conectada a la cultura de club europea.
-          </p>
+          <div>
+
+            <h3>
+              Formato noche
+            </h3>
+
+
+            <p>
+              Más recorrido, mayor profundidad y una evolución
+              de la sesión pensada para las horas de club.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <article class="format-card">
+
+          <span>
+            DAY
+          </span>
+
+
+          <div>
+
+            <h3>
+              Tardeo
+            </h3>
+
+
+            <p>
+              Una lectura diferente del mismo sonido:
+              energía desde primera hora sin abandonar
+              el criterio musical de BOSSA.
+            </p>
+
+          </div>
 
         </article>
 
@@ -1656,20 +1868,20 @@
         <div>
 
           <div class="section-label">
-            Archivo
+            Atmosphere
           </div>
 
 
           <h2>
-            La atmósfera también forma parte del sonido.
+            La pista habla mejor que cualquier descripción.
           </h2>
 
         </div>
 
 
         <p>
-          Una selección de momentos de BOSSA:
-          cabina, pista y público desde dentro del club.
+          Una selección de momentos reales de BOSSA
+          en Madrid: sonido, cabina, público y espacio.
         </p>
 
       </div>
@@ -1679,7 +1891,7 @@
 
         <img
           src="FOTO0.webp"
-          alt="Evento BOSSA de música electrónica en Madrid"
+          alt="Fiesta tech house BOSSA en Madrid"
           loading="lazy"
         />
 
@@ -1688,11 +1900,12 @@
 
       <div class="visual-grid">
 
+
         <div class="visual-item">
 
           <img
-            src="FOTO1.webp"
-            alt="Pista en un evento BOSSA en Madrid"
+            src="FOTO3.webp"
+            alt="Pista en una fiesta BOSSA de tech house en Madrid"
             loading="lazy"
           />
 
@@ -1702,12 +1915,13 @@
         <div class="visual-item">
 
           <img
-            src="FOTO2.webp"
-            alt="Club culture y música electrónica en BOSSA Madrid"
+            src="FOTO4.webp"
+            alt="Club culture y tech house en BOSSA Madrid"
             loading="lazy"
           />
 
         </div>
+
 
       </div>
 
@@ -1717,7 +1931,7 @@
 
 
   <!-- =====================================================
-       LINK HACIA FIESTAS TECH HOUSE
+       LINK HACIA EVENTOS ELECTRÓNICA
   ====================================================== -->
 
   <section class="related-section">
@@ -1728,20 +1942,21 @@
       <div class="related-copy">
 
         <div class="section-label">
-          Tech House
+          Madrid
         </div>
 
 
         <h2>
-          ¿Buscas fiestas de tech house en Madrid?
+          Más eventos de música electrónica en Madrid.
         </h2>
 
 
         <p>
-          Si tu búsqueda está centrada específicamente en
-          minimal deep tech y tech house, puedes conocer con
-          más detalle la propuesta musical de BOSSA y el tipo
-          de experiencia que encontrarás en nuestras fechas.
+          Si quieres conocer BOSSA dentro de un contexto
+          más amplio, puedes explorar nuestra propuesta
+          de eventos de música electrónica en Madrid,
+          su dirección musical y los diferentes formatos
+          del proyecto.
         </p>
 
       </div>
@@ -1750,10 +1965,10 @@
       <div class="related-action">
 
         <a
-          href="/fiestas-tech-house-madrid"
+          href="/eventos-musica-electronica-madrid"
           class="cta-outline"
         >
-          Fiestas Tech House →
+          Eventos electrónica →
         </a>
 
       </div>
@@ -1764,7 +1979,7 @@
 
 
   <!-- =====================================================
-       FINAL CTA
+       CTA FINAL
   ====================================================== -->
 
   <section class="final-section">
@@ -1773,19 +1988,19 @@
 
 
       <div class="section-label">
-        Próximas fechas
+        Próxima fecha
       </div>
 
 
       <h2>
-        La siguiente empieza aquí.
+        Nos vemos en la pista.
       </h2>
 
 
       <p>
-        Consulta la programación actual de BOSSA,
-        próximas fechas, ubicaciones y acceso a entradas
-        desde la web principal.
+        Consulta la programación actual,
+        próximas fiestas, ubicaciones
+        y acceso a entradas desde la web de BOSSA.
       </p>
 
 
@@ -1793,7 +2008,7 @@
         href="/#eventos"
         class="cta-link"
       >
-        Ver próximos eventos →
+        Ver próximas fiestas →
       </a>
 
 
