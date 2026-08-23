@@ -17,9 +17,14 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;1,300&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
+
     :root {
       --red: #dc143c;
       --black: #080808;
@@ -29,7 +34,9 @@
       --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -52,47 +59,79 @@
       content: '';
       position: fixed;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
       opacity: 0.03;
       pointer-events: none;
       z-index: 9997;
     }
 
-    /* CURSOR */
+
+    /* ======================================================
+       CURSOR
+    ====================================================== */
+
     .cursor {
       width: 8px;
       height: 8px;
+
       background: var(--red);
       border-radius: 50%;
+
       position: fixed;
       top: 0;
       left: 0;
+
       pointer-events: none;
+
       z-index: 9999;
+
       transform: translate(-50%, -50%);
-      transition: width .18s ease, height .18s ease, background .18s ease, border .18s ease;
+
+      transition:
+        width .18s ease,
+        height .18s ease,
+        background .18s ease,
+        border .18s ease;
     }
 
     .cursor.hover {
       width: 26px;
       height: 26px;
+
       background: transparent;
+
       border: 1px solid var(--red);
     }
 
     @media (hover: none) {
-      .cursor { display: none; }
-      body { cursor: auto; }
+      .cursor {
+        display: none;
+      }
+
+      body {
+        cursor: auto;
+      }
     }
 
-    /* NAV */
+
+    /* ======================================================
+       NAV
+    ====================================================== */
+
     nav {
       position: fixed;
+
       top: 0;
       left: 0;
       right: 0;
-      z-index: 200;
+
+      z-index: 1000;
+
       padding: 24px 48px;
+
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -100,33 +139,55 @@
 
     nav::after {
       content: '';
+
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(8,8,8,.95) 0%, transparent 100%);
+
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(8,8,8,.96) 0%,
+          rgba(8,8,8,.72) 38%,
+          transparent 100%
+        );
+
       z-index: -1;
+
+      pointer-events: none;
     }
 
     .nav-logo {
       font-family: 'Bebas Neue', sans-serif;
+
       font-size: 20px;
       letter-spacing: .3em;
+
       color: var(--white);
+
       text-decoration: none;
     }
 
     .nav-links {
       display: flex;
+
       gap: 36px;
+
       list-style: none;
     }
 
     .nav-links a {
       font-size: 10px;
+
       letter-spacing: .28em;
+
       text-transform: uppercase;
+
       color: var(--white);
+
       text-decoration: none;
+
       opacity: .55;
+
       transition: opacity .2s ease;
     }
 
@@ -136,20 +197,31 @@
 
     .nav-burger {
       display: none;
+
       flex-direction: column;
+
       gap: 5px;
+
       cursor: pointer;
+
       background: none;
+
       border: none;
+
       padding: 4px;
     }
 
     .nav-burger span {
       display: block;
+
       width: 24px;
       height: 1px;
+
       background: var(--white);
-      transition: transform .3s ease, opacity .3s ease;
+
+      transition:
+        transform .3s ease,
+        opacity .3s ease;
     }
 
     .nav-burger.open span:nth-child(1) {
@@ -164,32 +236,54 @@
       transform: translateY(-6px) rotate(-45deg);
     }
 
+
+    /* ======================================================
+       MOBILE MENU
+    ====================================================== */
+
     .mobile-menu {
       position: fixed;
+
       inset: 0;
-      background: rgba(8,8,8,.97);
-      z-index: 190;
+
+      background: rgba(8,8,8,.98);
+
+      z-index: 900;
+
       display: flex;
+
       flex-direction: column;
+
       justify-content: center;
+
       align-items: center;
+
       gap: 36px;
+
       opacity: 0;
+
       pointer-events: none;
+
       transition: opacity .35s ease;
     }
 
     .mobile-menu.open {
       opacity: 1;
+
       pointer-events: all;
     }
 
     .mobile-menu a {
       font-family: 'Bebas Neue', sans-serif;
+
       font-size: 44px;
+
       letter-spacing: .08em;
+
       color: var(--white);
+
       text-decoration: none;
+
       transition: color .2s ease;
     }
 
@@ -197,522 +291,714 @@
       color: var(--red);
     }
 
-    /* HERO */
-.hero {
-  min-height: 100svh;
-  padding: 0 48px 44px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  isolation: isolate;
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(
-      ellipse 25% 21% at 50% 45%,
-      rgba(220,20,60,.17) 0%,
-      rgba(220,20,60,.075) 30%,
-      transparent 72%
-    ),
-    radial-gradient(
-      ellipse 18% 16% at 18% 82%,
-      rgba(220,20,60,.025) 0%,
-      transparent 72%
-    );
-  pointer-events: none;
-  will-change: transform;
-}
-
-.hero-vignette {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(
-      circle at center,
-      transparent 30%,
-      rgba(8,8,8,.08) 58%,
-      rgba(8,8,8,.42) 100%
-    );
-  z-index: 1;
-}
-
-.hero-line {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 48px;
-  width: 1px;
-  background:
-    linear-gradient(
-      to bottom,
-      transparent 0%,
-      var(--red) 25%,
-      var(--red) 75%,
-      transparent 100%
-    );
-  opacity: .10;
-  z-index: 1;
-}
-
-/* ESCENA 3D */
-.hero-logo-scene {
-  position: absolute;
-  top: 44.5%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(340px, 42vw);
-  perspective: 1800px;
-  z-index: 3;
-}
-
-/* EL EXTERIOR HACE LA ANIMACIÓN DE ENTRADA */
-.hero-logo-3d {
-  position: relative;
-  width: 100%;
-  opacity: 0;
-  transform-style: preserve-3d;
-  animation:
-    logoEntrance 2.15s var(--transition-smooth) .08s forwards;
-  will-change: transform, opacity, filter;
-}
-
-/* EL INTERIOR HACE EL PARALLAX DESPUÉS */
-.hero-logo-3d-inner {
-  position: relative;
-  width: 100%;
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-
-/* HALO ROJO CONTROLADO */
-.hero-logo-3d-inner::before {
-  content: '';
-  position: absolute;
-  inset: 14% 12%;
-  z-index: -2;
-  pointer-events: none;
-
-  background:
-    radial-gradient(
-      ellipse at center,
-      rgba(220,20,60,.22) 0%,
-      rgba(220,20,60,.08) 35%,
-      transparent 74%
-    );
-
-  filter: blur(38px);
-  opacity: 0;
-
-  animation:
-    logoAura 2.5s ease .3s forwards;
-}
-
-/* BARRIDO DE LUZ CLIPADO AL LOGO */
-.hero-logo-3d-inner::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 2;
-
-  background:
-    linear-gradient(
-      112deg,
-      transparent 0%,
-      transparent 38%,
-      rgba(255,255,255,0) 43%,
-      rgba(255,255,255,.85) 49%,
-      rgba(220,20,60,.45) 53%,
-      rgba(255,255,255,0) 59%,
-      transparent 64%,
-      transparent 100%
-    );
-
-  background-size: 280% 100%;
-  background-position: 140% 0;
-
-  -webkit-mask:
-    url("BOUNDING-WHITE.png")
-    center / contain
-    no-repeat;
-
-  mask:
-    url("BOUNDING-WHITE.png")
-    center / contain
-    no-repeat;
-
-  opacity: 0;
-
-  animation:
-    logoSheen 1.2s cubic-bezier(.22,.61,.36,1) 1.02s forwards;
-}
-
-.hero-logo-3d img {
-  display: block;
-  width: 100%;
-  height: auto;
-  position: relative;
-  z-index: 1;
-  transform: translateZ(8px);
-  backface-visibility: hidden;
-  filter:
-    drop-shadow(0 7px 16px rgba(0,0,0,.22))
-    drop-shadow(0 0 12px rgba(220,20,60,.06));
-}
-
-/* ENTRADA DEL LOGO */
-@keyframes logoEntrance {
-  0% {
-    opacity: 0;
-    transform:
-      translateZ(-320px)
-      rotateX(28deg)
-      rotateY(-22deg)
-      scale(.52);
-    filter: blur(15px);
-  }
-
-  30% {
-    opacity: .95;
-    transform:
-      translateZ(76px)
-      rotateX(-7deg)
-      rotateY(8deg)
-      scale(1.055);
-    filter:
-      blur(0)
-      drop-shadow(0 0 38px rgba(220,20,60,.28));
-  }
-
-  52% {
-    opacity: 1;
-    transform:
-      translateZ(-15px)
-      rotateX(2.8deg)
-      rotateY(-3deg)
-      scale(.985);
-    filter:
-      blur(0)
-      drop-shadow(0 0 28px rgba(220,20,60,.20));
-  }
-
-  72% {
-    transform:
-      translateZ(8px)
-      rotateX(-.8deg)
-      rotateY(1deg)
-      scale(1.008);
-  }
-
-  100% {
-    opacity: 1;
-    transform:
-      translateZ(0)
-      rotateX(0deg)
-      rotateY(0deg)
-      scale(1);
-    filter:
-      blur(0)
-      drop-shadow(0 8px 18px rgba(220,20,60,.11));
-  }
-}
-
-@keyframes logoAura {
-  0% {
-    opacity: 0;
-    transform: scale(.65);
-  }
-
-  35% {
-    opacity: .95;
-    transform: scale(1.14);
-  }
-
-  68% {
-    opacity: .52;
-    transform: scale(1);
-  }
-
-  100% {
-    opacity: .32;
-    transform: scale(.96);
-  }
-}
-
-@keyframes logoSheen {
-  0% {
-    opacity: 0;
-    background-position: 140% 0;
-  }
-
-  18% {
-    opacity: 1;
-  }
-
-  78% {
-    opacity: .85;
-  }
-
-  100% {
-    opacity: 0;
-    background-position: -70% 0;
-  }
-}
-
-/* PARTE INFERIOR */
-.hero-bottom {
-  position: relative;
-  z-index: 4;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 40px;
-
-  opacity: 0;
-  animation:
-    heroBottomReveal
-    1.1s
-    var(--transition-smooth)
-    1.15s
-    forwards;
-}
-
-.hero-tagline {
-  font-style: italic;
-  font-size: clamp(12px, 1.4vw, 15px);
-  letter-spacing: .12em;
-  opacity: .45;
-  line-height: 1.9;
-}
-
-.hero-tagline strong {
-  display: block;
-  font-style: normal;
-  font-weight: 400;
-  color: var(--red);
-  letter-spacing: .2em;
-  font-size: .9em;
-  opacity: 1;
-}
-
-/* NEXT EVENT */
-.hero-next {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 5px;
-
-  color: var(--white);
-  text-decoration: none;
-  text-align: right;
-
-  transition:
-    opacity .25s ease,
-    transform .3s var(--transition-smooth);
-}
-
-.hero-next:hover {
-  transform: translateY(-3px);
-}
-
-.hero-next-label {
-  font-size: 9px;
-  letter-spacing: .34em;
-  text-transform: uppercase;
-  color: var(--red);
-}
-
-.hero-next-date {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 19px;
-  letter-spacing: .08em;
-  line-height: 1;
-}
-
-.hero-next-venue {
-  font-size: 9px;
-  letter-spacing: .24em;
-  text-transform: uppercase;
-  opacity: .38;
-}
-
-.hero-next-arrow {
-  display: inline-block;
-  margin-left: 4px;
-  transition: transform .3s var(--transition-smooth);
-}
-
-.hero-next:hover .hero-next-arrow {
-  transform: translateX(5px);
-}
-
-@keyframes heroBottomReveal {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* TABLET / MOBILE HERO */
-@media (max-width: 768px) {
-  .hero {
-    padding: 0 24px 30px;
-    min-height: 100svh;
-  }
-
-  .hero-line {
-    left: 24px;
-  }
-
-  .hero-logo-scene {
-    top: 42.5%;
-    width: min(235px, 61vw);
-  }
-
-  .hero-bottom {
-    align-items: flex-end;
-    gap: 20px;
-  }
-
-  .hero-tagline {
-    font-size: 11px;
-    letter-spacing: .09em;
-    line-height: 1.75;
-    max-width: 54%;
-  }
-
-  .hero-tagline strong {
-    font-size: .84em;
-    letter-spacing: .14em;
-  }
-
-  .hero-next {
-    max-width: 43%;
-  }
-
-  .hero-next-label {
-    font-size: 8px;
-    letter-spacing: .26em;
-  }
-
-  .hero-next-date {
-    font-size: 17px;
-  }
-
-  .hero-next-venue {
-    font-size: 8px;
-    line-height: 1.5;
-    letter-spacing: .15em;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    padding: 0 20px 28px;
-  }
-
-  .hero-line {
-    left: 20px;
-  }
-
-  .hero-logo-scene {
-    top: 41.5%;
-    width: min(215px, 58vw);
-  }
-
-  .hero-bottom {
-    gap: 18px;
-  }
-
-  .hero-tagline {
-    font-size: 10px;
-  }
-
-  .hero-next-date {
-    font-size: 16px;
-  }
-}
-
-/* REDUCED MOTION */
-@media (prefers-reduced-motion: reduce) {
-  .hero-logo-3d,
-  .hero-logo-3d-inner::before,
-  .hero-logo-3d-inner::after,
-  .hero-bottom {
-    animation: none !important;
-  }
-
-  .hero-logo-3d {
-    opacity: 1;
-    transform: none;
-    filter: none;
-  }
-
-  .hero-bottom {
-    opacity: 1;
-    transform: none;
-  }
-}
-    /* SECTIONS */
+
+    /* ======================================================
+       HERO
+    ====================================================== */
+
+    .hero {
+      min-height: 100vh;
+      min-height: 100svh;
+
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 0 48px 44px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: flex-end;
+
+      isolation: isolate;
+    }
+
+
+    /* FONDO */
+
+    .hero-bg {
+      position: absolute;
+
+      inset: -3%;
+
+      z-index: -4;
+
+      background:
+
+        radial-gradient(
+          ellipse 25% 22% at 50% 45%,
+          rgba(220,20,60,.20) 0%,
+          rgba(220,20,60,.09) 30%,
+          rgba(220,20,60,.025) 51%,
+          transparent 74%
+        ),
+
+        radial-gradient(
+          ellipse 22% 17% at 17% 82%,
+          rgba(220,20,60,.03) 0%,
+          transparent 72%
+        );
+
+      pointer-events: none;
+
+      will-change: transform;
+    }
+
+
+    /* VIGNETTE */
+
+    .hero-vignette {
+      position: absolute;
+
+      inset: 0;
+
+      z-index: -2;
+
+      pointer-events: none;
+
+      background:
+        radial-gradient(
+          circle at 50% 46%,
+          transparent 18%,
+          rgba(8,8,8,.04) 48%,
+          rgba(8,8,8,.42) 100%
+        );
+    }
+
+
+    /* LÍNEA VERTICAL */
+
+    .hero-line {
+      position: absolute;
+
+      top: 0;
+      bottom: 0;
+
+      left: 48px;
+
+      width: 1px;
+
+      background:
+        linear-gradient(
+          to bottom,
+          transparent 0%,
+          var(--red) 25%,
+          var(--red) 75%,
+          transparent 100%
+        );
+
+      opacity: .10;
+
+      pointer-events: none;
+    }
+
+
+    /* ======================================================
+       ESCENA LOGO
+    ====================================================== */
+
+    .hero-logo-scene {
+      position: absolute;
+
+      top: 44%;
+
+      left: 50%;
+
+      width: min(340px, 42vw);
+
+      transform: translate(-50%, -50%);
+
+      perspective: 1800px;
+
+      z-index: 2;
+
+      pointer-events: none;
+    }
+
+
+    /* PEQUEÑO PUNTO DE PROFUNDIDAD */
+
+    .hero-logo-scene::before {
+      content: '';
+
+      position: absolute;
+
+      width: 4px;
+      height: 4px;
+
+      left: 50%;
+      top: 50%;
+
+      transform: translate(-50%, -50%);
+
+      border-radius: 50%;
+
+      background: var(--red);
+
+      box-shadow:
+        0 0 24px rgba(220,20,60,.65),
+        0 0 60px rgba(220,20,60,.25);
+
+      opacity: 0;
+
+      animation:
+        heroPointReveal
+        2.4s
+        ease
+        .15s
+        forwards;
+    }
+
+
+    /* OUTER = ANIMACIÓN DE ENTRADA */
+
+    .hero-logo-3d {
+      position: relative;
+
+      width: 100%;
+
+      transform-style: preserve-3d;
+
+      opacity: 1;
+
+      animation:
+        logoEntrance
+        2.25s
+        var(--transition-smooth)
+        .05s
+        both;
+
+      will-change:
+        transform,
+        filter,
+        opacity;
+    }
+
+
+    /* INNER = PARALLAX */
+
+    .hero-logo-3d-inner {
+      position: relative;
+
+      width: 100%;
+
+      transform-style: preserve-3d;
+
+      will-change: transform;
+    }
+
+
+    /* HALO */
+
+    .hero-logo-glow {
+      position: absolute;
+
+      inset: 12% 10%;
+
+      z-index: -2;
+
+      background:
+        radial-gradient(
+          ellipse at center,
+          rgba(220,20,60,.24) 0%,
+          rgba(220,20,60,.10) 32%,
+          rgba(220,20,60,.025) 56%,
+          transparent 75%
+        );
+
+      filter: blur(36px);
+
+      opacity: 0;
+
+      transform: scale(.7);
+
+      animation:
+        logoGlowReveal
+        2.5s
+        ease
+        .28s
+        forwards;
+    }
+
+
+    /* LOGO */
+
+    .hero-logo-3d img {
+      display: block;
+
+      position: relative;
+
+      z-index: 1;
+
+      width: 100%;
+      height: auto;
+
+      transform: translateZ(14px);
+
+      backface-visibility: hidden;
+
+      filter:
+        drop-shadow(0 8px 16px rgba(0,0,0,.30))
+        drop-shadow(0 0 10px rgba(220,20,60,.08));
+    }
+
+
+    /* BARRIDO SOBRE LA FORMA DEL LOGO */
+
+    .hero-logo-shine {
+      position: absolute;
+
+      inset: 0;
+
+      z-index: 2;
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          112deg,
+          transparent 0%,
+          transparent 36%,
+          rgba(255,255,255,0) 42%,
+          rgba(255,255,255,.95) 48%,
+          rgba(220,20,60,.60) 51%,
+          rgba(255,255,255,.25) 55%,
+          rgba(255,255,255,0) 61%,
+          transparent 66%,
+          transparent 100%
+        );
+
+      background-size: 280% 100%;
+
+      background-position: 145% 0;
+
+      -webkit-mask:
+        url("BOUNDING-WHITE.png")
+        center / contain
+        no-repeat;
+
+      mask:
+        url("BOUNDING-WHITE.png")
+        center / contain
+        no-repeat;
+
+      animation:
+        logoShine
+        1.35s
+        cubic-bezier(.22,.61,.36,1)
+        1.05s
+        forwards;
+    }
+
+
+    /* ======================================================
+       HERO ANIMATIONS
+    ====================================================== */
+
+    @keyframes logoEntrance {
+
+      0% {
+        opacity: 0;
+
+        transform:
+          translateZ(-280px)
+          rotateX(26deg)
+          rotateY(-19deg)
+          scale(.58);
+
+        filter:
+          blur(13px)
+          brightness(.65);
+      }
+
+      28% {
+        opacity: 1;
+
+        transform:
+          translateZ(68px)
+          rotateX(-7deg)
+          rotateY(8deg)
+          scale(1.05);
+
+        filter:
+          blur(0)
+          brightness(1.1)
+          drop-shadow(
+            0 0 48px
+            rgba(220,20,60,.32)
+          );
+      }
+
+      50% {
+        transform:
+          translateZ(-13px)
+          rotateX(2.4deg)
+          rotateY(-2.7deg)
+          scale(.987);
+
+        filter:
+          blur(0)
+          brightness(1.03)
+          drop-shadow(
+            0 0 34px
+            rgba(220,20,60,.22)
+          );
+      }
+
+      72% {
+        transform:
+          translateZ(7px)
+          rotateX(-.7deg)
+          rotateY(.9deg)
+          scale(1.006);
+      }
+
+      100% {
+        opacity: 1;
+
+        transform:
+          translateZ(0)
+          rotateX(0deg)
+          rotateY(0deg)
+          scale(1);
+
+        filter:
+          blur(0)
+          brightness(1)
+          drop-shadow(
+            0 8px 17px
+            rgba(220,20,60,.10)
+          );
+      }
+    }
+
+
+    @keyframes logoGlowReveal {
+
+      0% {
+        opacity: 0;
+        transform: scale(.65);
+      }
+
+      36% {
+        opacity: .95;
+        transform: scale(1.14);
+      }
+
+      65% {
+        opacity: .48;
+        transform: scale(1.02);
+      }
+
+      100% {
+        opacity: .30;
+        transform: scale(.96);
+      }
+    }
+
+
+    @keyframes logoShine {
+
+      0% {
+        opacity: 0;
+        background-position: 145% 0;
+      }
+
+      15% {
+        opacity: .9;
+      }
+
+      72% {
+        opacity: .75;
+      }
+
+      100% {
+        opacity: 0;
+        background-position: -70% 0;
+      }
+    }
+
+
+    @keyframes heroPointReveal {
+
+      0%,
+      80% {
+        opacity: 0;
+      }
+
+      88% {
+        opacity: .75;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+
+    /* ======================================================
+       HERO BOTTOM
+    ====================================================== */
+
+    .hero-bottom {
+      position: relative;
+
+      z-index: 4;
+
+      width: 100%;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: flex-end;
+
+      gap: 40px;
+
+      opacity: 0;
+
+      animation:
+        heroBottomReveal
+        1s
+        var(--transition-smooth)
+        1.05s
+        forwards;
+    }
+
+
+    .hero-tagline {
+      font-style: italic;
+
+      font-size:
+        clamp(
+          12px,
+          1.4vw,
+          15px
+        );
+
+      letter-spacing: .12em;
+
+      opacity: .45;
+
+      line-height: 1.9;
+    }
+
+
+    .hero-tagline strong {
+      display: block;
+
+      font-style: normal;
+
+      font-weight: 400;
+
+      color: var(--red);
+
+      letter-spacing: .2em;
+
+      font-size: .9em;
+
+      opacity: 1;
+    }
+
+
+    /* NEXT EVENT */
+
+    .hero-next {
+      position: relative;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: flex-end;
+
+      gap: 6px;
+
+      text-align: right;
+
+      color: var(--white);
+
+      text-decoration: none;
+
+      transition:
+        transform .3s var(--transition-smooth),
+        opacity .25s ease;
+    }
+
+
+    .hero-next:hover {
+      transform: translateY(-3px);
+    }
+
+
+    .hero-next-label {
+      font-size: 9px;
+
+      letter-spacing: .34em;
+
+      text-transform: uppercase;
+
+      color: var(--red);
+    }
+
+
+    .hero-next-date {
+      font-family:
+        'Bebas Neue',
+        sans-serif;
+
+      font-size: 20px;
+
+      letter-spacing: .07em;
+
+      line-height: 1;
+    }
+
+
+    .hero-next-venue {
+      font-size: 9px;
+
+      letter-spacing: .22em;
+
+      text-transform: uppercase;
+
+      opacity: .38;
+    }
+
+
+    .hero-next-arrow {
+      display: inline-block;
+
+      margin-left: 5px;
+
+      color: var(--red);
+
+      opacity: 1;
+
+      transition:
+        transform
+        .3s
+        var(--transition-smooth);
+    }
+
+
+    .hero-next:hover
+    .hero-next-arrow {
+      transform: translateX(5px);
+    }
+
+
+    @keyframes heroBottomReveal {
+
+      from {
+        opacity: 0;
+
+        transform:
+          translateY(22px);
+      }
+
+      to {
+        opacity: 1;
+
+        transform:
+          translateY(0);
+      }
+    }
+
+
+    /* ======================================================
+       SECTIONS
+    ====================================================== */
+
     section {
       padding: 120px 48px;
     }
 
     .section-label {
       font-size: 10px;
+
       letter-spacing: .35em;
+
       text-transform: uppercase;
+
       color: var(--red);
+
       margin-bottom: 48px;
+
       display: flex;
+
       align-items: center;
+
       gap: 14px;
     }
 
     .section-label::before {
       content: '';
+
       width: 28px;
       height: 1px;
+
       background: var(--red);
     }
 
-    /* CONCEPTO */
+
+    /* ======================================================
+       CONCEPTO
+    ====================================================== */
+
     #concepto {
-      border-top: 1px solid var(--gray-mid);
+      border-top:
+        1px
+        solid
+        var(--gray-mid);
+
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns:
+        1fr
+        1fr;
+
       gap: 80px;
+
       align-items: start;
     }
 
     .concepto-text h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(52px, 7vw, 96px);
+      font-family:
+        'Bebas Neue',
+        sans-serif;
+
+      font-size:
+        clamp(
+          52px,
+          7vw,
+          96px
+        );
+
       line-height: .92;
+
       letter-spacing: .02em;
+
       margin-bottom: 40px;
     }
 
     .concepto-text h2 em {
       font-style: normal;
+
       color: var(--red);
     }
 
     .concepto-text p {
       font-size: 15px;
+
       line-height: 1.85;
+
       opacity: .62;
+
       max-width: 480px;
     }
 
@@ -720,41 +1006,78 @@
       margin-top: 20px;
     }
 
+
+    /* SOUND */
+
     .sound-tags {
       display: flex;
+
       flex-direction: column;
     }
 
     .sound-tag {
       padding: 22px 0;
-      border-bottom: 1px solid var(--gray-mid);
-      font-family: 'Bebas Neue', sans-serif;
+
+      border-bottom:
+        1px
+        solid
+        var(--gray-mid);
+
+      font-family:
+        'Bebas Neue',
+        sans-serif;
+
       font-size: 34px;
+
       letter-spacing: .07em;
+
       display: flex;
-      justify-content: space-between;
+
+      justify-content:
+        space-between;
+
       align-items: center;
+
       opacity: .25;
-      transition: opacity .3s ease, padding-left .3s ease;
+
+      transition:
+        opacity .3s ease,
+        padding-left .3s ease;
     }
 
     .sound-tag:hover {
       opacity: 1;
+
       padding-left: 12px;
     }
 
     .sound-tag span {
-      font-family: 'Barlow', sans-serif;
+      font-family:
+        'Barlow',
+        sans-serif;
+
       font-size: 10px;
+
       font-weight: 300;
+
       letter-spacing: .25em;
+
       text-transform: uppercase;
+
       color: var(--red);
     }
 
-    /* IDENTIDAD */
+
+    /* ======================================================
+       IDENTIDAD
+    ====================================================== */
+
     #identidad {
-      border-top: 1px solid var(--gray-mid);
+      border-top:
+        1px
+        solid
+        var(--gray-mid);
+
       background: var(--gray);
     }
 
@@ -763,493 +1086,993 @@
     }
 
     .identidad-header h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(44px, 5.5vw, 76px);
+      font-family:
+        'Bebas Neue',
+        sans-serif;
+
+      font-size:
+        clamp(
+          44px,
+          5.5vw,
+          76px
+        );
+
       line-height: .93;
+
       letter-spacing: .02em;
+
       max-width: 620px;
     }
 
     .identidad-header h2 em {
       font-style: normal;
+
       color: var(--red);
     }
 
+
     .identidad-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(
+          3,
+          1fr
+        );
+
       gap: 1px;
-      background: var(--gray-mid);
+
+      background:
+        var(--gray-mid);
     }
+
 
     .identidad-card {
       background: var(--gray);
+
       padding: 40px 36px;
+
       position: relative;
+
       overflow: hidden;
-      transition: background .3s ease;
+
+      transition:
+        background
+        .3s
+        ease;
     }
+
 
     .identidad-card::before {
       content: '';
+
       position: absolute;
+
       top: 0;
       left: 0;
       right: 0;
+
       height: 2px;
+
       background: var(--red);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform .4s var(--transition-smooth);
+
+      transform:
+        scaleX(0);
+
+      transform-origin:
+        left;
+
+      transition:
+        transform
+        .4s
+        var(--transition-smooth);
     }
 
+
     .identidad-card:hover::before {
-      transform: scaleX(1);
+      transform:
+        scaleX(1);
     }
+
 
     .identidad-card:hover {
       background: #161616;
     }
 
+
     .identidad-card .card-num {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family:
+        'Bebas Neue',
+        sans-serif;
+
       font-size: 13px;
+
       letter-spacing: .25em;
+
       color: var(--red);
+
       opacity: .6;
+
       margin-bottom: 24px;
     }
 
+
     .identidad-card h3 {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family:
+        'Bebas Neue',
+        sans-serif;
+
       font-size: 28px;
+
       letter-spacing: .05em;
+
       margin-bottom: 16px;
     }
 
+
     .identidad-card p {
       font-size: 13px;
+
       line-height: 1.8;
+
       opacity: .5;
     }
 
+
     .identidad-bottom {
       margin-top: 72px;
+
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns:
+        1fr
+        1fr;
+
       gap: 80px;
+
       align-items: center;
     }
 
+
     .identidad-quote {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(30px, 3.8vw, 50px);
+      font-family:
+        'Bebas Neue',
+        sans-serif;
+
+      font-size:
+        clamp(
+          30px,
+          3.8vw,
+          50px
+        );
+
       line-height: 1.06;
+
       letter-spacing: .03em;
+
       opacity: .85;
     }
 
+
     .identidad-quote em {
       font-style: normal;
+
       color: var(--red);
     }
 
+
     .identidad-values {
       display: flex;
+
       flex-direction: column;
     }
 
+
     .identidad-value {
       padding: 15px 0;
-      border-bottom: 1px solid var(--gray-mid);
+
+      border-bottom:
+        1px
+        solid
+        var(--gray-mid);
+
       font-size: 11px;
+
       letter-spacing: .22em;
+
       text-transform: uppercase;
+
       opacity: .4;
+
       display: flex;
+
       align-items: center;
+
       gap: 14px;
-      transition: opacity .2s ease;
+
+      transition:
+        opacity
+        .2s
+        ease;
     }
+
 
     .identidad-value:hover {
       opacity: 1;
     }
 
+
     .identidad-value::before {
       content: '';
+
       width: 4px;
       height: 4px;
+
       background: var(--red);
+
       border-radius: 50%;
+
       flex-shrink: 0;
     }
 
-    /* EVENTOS */
+
+    /* ======================================================
+       EVENTOS
+    ====================================================== */
+
     #eventos {
-      border-top: 1px solid var(--gray-mid);
+      border-top:
+        1px
+        solid
+        var(--gray-mid);
     }
+
 
     .eventos-header {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 56px;
+
+      justify-content:
+        space-between;
+
+      align-items:
+        flex-end;
+
+      margin-bottom:
+        56px;
     }
 
+
     .eventos-header h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(40px, 5vw, 72px);
+      font-family:
+        'Bebas Neue',
+        sans-serif;
+
+      font-size:
+        clamp(
+          40px,
+          5vw,
+          72px
+        );
+
       line-height: 1;
+
       letter-spacing: .03em;
     }
 
+
     .eventos-header a {
       font-size: 10px;
+
       letter-spacing: .28em;
+
       text-transform: uppercase;
+
       color: var(--red);
+
       text-decoration: none;
-      border-bottom: 1px solid rgba(220,20,60,.3);
+
+      border-bottom:
+        1px solid
+        rgba(
+          220,
+          20,
+          60,
+          .3
+        );
+
       padding-bottom: 2px;
-      transition: border-color .2s ease;
+
+      transition:
+        border-color
+        .2s
+        ease;
     }
 
+
     .eventos-header a:hover {
-      border-color: var(--red);
+      border-color:
+        var(--red);
     }
+
+
+    /* DESKTOP = CARRUSEL HORIZONTAL */
 
     .eventos-grid {
       display: flex;
+
+      flex-wrap: nowrap;
+
       gap: 24px;
+
       overflow-x: auto;
-      padding-bottom: 8px;
-      scroll-snap-type: x proximity;
+
+      overflow-y: hidden;
+
       max-width: 100%;
+
+      padding-bottom: 10px;
+
+      scroll-snap-type:
+        x proximity;
+
+      scrollbar-width: thin;
+
+      scrollbar-color:
+        rgba(240,236,228,.14)
+        transparent;
     }
+
 
     .eventos-grid::-webkit-scrollbar {
-      height: 6px;
+      height: 5px;
     }
 
-    .eventos-grid::-webkit-scrollbar-thumb {
-      background: rgba(240, 236, 228, 0.15);
+
+    .eventos-grid::-webkit-scrollbar-track {
+      background: transparent;
     }
+
+
+    .eventos-grid::-webkit-scrollbar-thumb {
+      background:
+        rgba(
+          240,
+          236,
+          228,
+          .14
+        );
+
+      border-radius: 10px;
+    }
+
 
     .evento-card {
       background: var(--gray);
+
       overflow: hidden;
+
       display: flex;
+
       flex-direction: column;
-      transition: transform .3s var(--transition-smooth);
-      flex: 0 0 360px;
+
+      flex:
+        0
+        0
+        360px;
+
+      width: 360px;
+
       max-width: 360px;
-      scroll-snap-align: start;
+
+      scroll-snap-align:
+        start;
+
+      transition:
+        transform
+        .3s
+        var(--transition-smooth);
     }
+
 
     .evento-card:hover {
-      transform: translateY(-4px);
+      transform:
+        translateY(-4px);
     }
 
+
     .evento-card-poster {
-      aspect-ratio: 3 / 4;
+      aspect-ratio:
+        3 / 4;
+
       overflow: hidden;
-      background: var(--gray-mid);
+
+      background:
+        var(--gray-mid);
+
       position: relative;
     }
+
 
     .evento-card-poster img {
       width: 100%;
       height: 100%;
+
       object-fit: cover;
-      transition: transform .45s ease;
+
       display: block;
+
+      transition:
+        transform
+        .45s
+        ease;
     }
 
-    .evento-card:hover .evento-card-poster img {
-      transform: scale(1.03);
+
+    .evento-card:hover
+    .evento-card-poster img {
+      transform:
+        scale(1.03);
     }
+
 
     .evento-card-info {
-      padding: 20px 20px 24px;
+      padding:
+        20px
+        20px
+        24px;
+
       display: flex;
+
       flex-direction: column;
+
       gap: 8px;
+
       flex: 1;
     }
 
+
     .evento-card-fecha {
       font-size: 11px;
+
       letter-spacing: .2em;
+
       text-transform: uppercase;
+
       color: var(--red);
+
       font-weight: 400;
     }
 
+
     .evento-card-nombre {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family:
+        'Bebas Neue',
+        sans-serif;
+
       font-size: 26px;
+
       letter-spacing: .05em;
+
       margin-top: 4px;
     }
 
+
     .evento-card-venue {
       font-size: 11px;
+
       letter-spacing: .18em;
+
       text-transform: uppercase;
+
       opacity: .4;
     }
 
+
     .evento-card-cta {
       margin-top: auto;
-      padding-top: 20px;
+
       display: block;
+
       padding: 14px 0;
+
       background: var(--red);
+
       color: #fff;
+
       font-size: 11px;
+
       letter-spacing: .3em;
+
       text-transform: uppercase;
+
       text-decoration: none;
+
       text-align: center;
+
       font-weight: 400;
-      transition: background .2s ease;
+
+      transition:
+        background
+        .2s
+        ease;
     }
+
 
     .evento-card-cta:hover {
       background: #b01030;
     }
 
-    /* ARCHIVO */
+
+    /* ======================================================
+       ARCHIVO
+    ====================================================== */
+
     #archivo {
-      border-top: 1px solid var(--gray-mid);
-      background: var(--black);
+      border-top:
+        1px
+        solid
+        var(--gray-mid);
+
+      background:
+        var(--black);
     }
+
 
     .archivo-header {
       margin-bottom: 56px;
     }
 
+
     .archivo-header h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(40px, 5vw, 72px);
+      font-family:
+        'Bebas Neue',
+        sans-serif;
+
+      font-size:
+        clamp(
+          40px,
+          5vw,
+          72px
+        );
+
       line-height: 1;
+
       letter-spacing: .03em;
+
       margin-bottom: 16px;
     }
+
 
     .archivo-header p {
       font-size: 14px;
+
       line-height: 1.8;
+
       opacity: .55;
+
       max-width: 560px;
     }
 
+
     .archivo-hero {
       margin-bottom: 16px;
+
       position: relative;
+
       overflow: hidden;
+
       background: var(--gray);
-      aspect-ratio: 16 / 7;
+
+      aspect-ratio:
+        16 / 7;
     }
+
 
     .archivo-hero img {
       width: 100%;
       height: 100%;
+
       object-fit: cover;
+
       display: block;
-      transition: transform .55s ease;
+
+      transition:
+        transform
+        .55s
+        ease;
     }
+
 
     .archivo-hero::after {
       content: '';
+
       position: absolute;
+
       inset: 0;
-      background: linear-gradient(to top, rgba(8,8,8,.28) 0%, rgba(8,8,8,0) 52%);
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(8,8,8,.28)
+          0%,
+          rgba(8,8,8,0)
+          52%
+        );
+
       pointer-events: none;
     }
 
+
     .archivo-hero:hover img {
-      transform: scale(1.02);
+      transform:
+        scale(1.02);
     }
+
 
     .archivo-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(
+          3,
+          1fr
+        );
+
       gap: 16px;
     }
 
+
     .archivo-item {
       position: relative;
+
       overflow: hidden;
+
       background: var(--gray);
-      aspect-ratio: 4 / 5;
+
+      aspect-ratio:
+        4 / 5;
     }
+
 
     .archivo-item img {
       width: 100%;
       height: 100%;
+
       object-fit: cover;
+
       display: block;
-      transition: transform .45s ease;
+
+      transition:
+        transform
+        .45s
+        ease;
     }
+
 
     .archivo-item::after {
       content: '';
+
       position: absolute;
+
       inset: 0;
-      background: linear-gradient(to top, rgba(8,8,8,.22) 0%, rgba(8,8,8,0) 50%);
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(8,8,8,.22)
+          0%,
+          rgba(8,8,8,0)
+          50%
+        );
+
       pointer-events: none;
     }
 
+
     .archivo-item:hover img {
-      transform: scale(1.02);
+      transform:
+        scale(1.02);
     }
 
-    /* CONTACTO */
+
+    /* ======================================================
+       CONTACTO
+    ====================================================== */
+
     #contacto {
-      border-top: 1px solid var(--gray-mid);
-      background: var(--gray);
+      border-top:
+        1px
+        solid
+        var(--gray-mid);
+
+      background:
+        var(--gray);
+
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns:
+        1fr
+        1fr;
+
       gap: 80px;
+
       align-items: start;
     }
 
+
     #contacto h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(48px, 6vw, 88px);
+      font-family:
+        'Bebas Neue',
+        sans-serif;
+
+      font-size:
+        clamp(
+          48px,
+          6vw,
+          88px
+        );
+
       line-height: .9;
+
       letter-spacing: .02em;
     }
 
+
     .contact-right {
       padding-top: 8px;
+
       display: flex;
+
       flex-direction: column;
+
       gap: 32px;
     }
 
+
     .contact-item {
       display: flex;
+
       flex-direction: column;
+
       gap: 8px;
     }
 
+
     .contact-item label {
       font-size: 10px;
+
       letter-spacing: .3em;
+
       text-transform: uppercase;
+
       opacity: .35;
     }
 
+
     .contact-item a {
       font-size: 16px;
+
       color: var(--white);
+
       text-decoration: none;
-      transition: color .2s ease;
+
+      transition:
+        color
+        .2s
+        ease;
     }
+
 
     .contact-item a:hover {
       color: var(--red);
     }
 
+
     .social-links {
       display: flex;
+
       gap: 16px;
+
       flex-wrap: wrap;
+
       margin-top: 8px;
     }
 
+
     .social-link {
       font-size: 10px;
+
       letter-spacing: .28em;
+
       text-transform: uppercase;
+
       color: var(--white);
+
       text-decoration: none;
+
       opacity: .45;
-      padding: 12px 18px;
-      border: 1px solid var(--gray-mid);
-      transition: opacity .2s ease, color .2s ease, border-color .2s ease;
+
+      padding:
+        12px
+        18px;
+
+      border:
+        1px
+        solid
+        var(--gray-mid);
+
+      transition:
+        opacity .2s ease,
+        color .2s ease,
+        border-color .2s ease;
     }
+
 
     .social-link:hover {
       opacity: 1;
+
       color: var(--red);
-      border-color: var(--red);
+
+      border-color:
+        var(--red);
     }
 
-    /* FOOTER */
+
+    /* ======================================================
+       FOOTER
+    ====================================================== */
+
     footer {
-      padding: 32px 48px;
-      border-top: 1px solid var(--gray-mid);
+      padding:
+        32px
+        48px;
+
+      border-top:
+        1px
+        solid
+        var(--gray-mid);
+
       display: flex;
+
       flex-direction: column;
+
       align-items: center;
+
       justify-content: center;
+
       gap: 14px;
+
       text-align: center;
     }
 
+
     .footer-logo,
     .footer-logo:visited {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family:
+        'Bebas Neue',
+        sans-serif;
+
       letter-spacing: .3em;
+
       font-size: 16px;
+
       color: var(--white);
-      opacity: 0.85;
+
+      opacity: .85;
+
       text-decoration: none;
     }
+
 
     .footer-links {
       display: flex;
+
       gap: 24px;
+
       list-style: none;
+
       justify-content: center;
+
       flex-wrap: wrap;
     }
 
+
     .footer-links a {
       font-size: 9px;
+
       letter-spacing: .22em;
+
       text-transform: uppercase;
+
       color: var(--white);
+
       text-decoration: none;
+
       opacity: .2;
-      transition: opacity .2s ease;
+
+      transition:
+        opacity
+        .2s
+        ease;
     }
+
 
     .footer-links a:hover {
       opacity: .6;
     }
 
+
     .footer-copy {
       font-size: 9px;
+
       letter-spacing: .18em;
+
       text-transform: uppercase;
+
       opacity: .2;
     }
 
-    /* REVEAL */
+
+    /* ======================================================
+       REVEAL
+    ====================================================== */
+
     .reveal {
       opacity: 0;
-      transform: translateY(22px);
-      transition: opacity .9s var(--transition-smooth), transform .9s var(--transition-smooth);
+
+      transform:
+        translateY(22px);
+
+      transition:
+        opacity
+        .9s
+        var(--transition-smooth),
+
+        transform
+        .9s
+        var(--transition-smooth);
     }
+
 
     .reveal.visible {
       opacity: 1;
-      transform: translateY(0);
+
+      transform:
+        translateY(0);
     }
 
-    /* MOBILE */
+
+    /* ======================================================
+       MOBILE
+    ====================================================== */
+
     @media (max-width: 768px) {
-      nav { padding: 20px 24px; }
-      .nav-links { display: none; }
-      .nav-burger { display: flex; }
+
+      nav {
+        padding:
+          20px
+          24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-burger {
+        display: flex;
+      }
+
+
+      /* HERO MOBILE */
 
       .hero {
-        padding: 0 24px 36px;
+        min-height: 100vh;
+        min-height: 100svh;
+
+        padding:
+          0
+          24px
+          30px;
       }
 
       .hero-line {
@@ -1257,27 +2080,87 @@
       }
 
       .hero-logo-scene {
-        top: 43.5%;
-        width: min(250px, 66vw);
+        top: 41.5%;
+
+        width:
+          min(
+            235px,
+            60vw
+          );
       }
 
+      .hero-bottom {
+        gap: 18px;
+
+        align-items:
+          flex-end;
+      }
+
+      .hero-tagline {
+        max-width: 52%;
+
+        font-size: 10.5px;
+
+        line-height: 1.75;
+
+        letter-spacing: .08em;
+      }
+
+      .hero-tagline strong {
+        letter-spacing: .13em;
+
+        font-size: .86em;
+      }
+
+      .hero-next {
+        max-width: 45%;
+      }
+
+      .hero-next-label {
+        font-size: 7.5px;
+
+        letter-spacing: .25em;
+      }
+
+      .hero-next-date {
+        font-size: 16px;
+
+        line-height: 1.05;
+      }
+
+      .hero-next-venue {
+        font-size: 7.5px;
+
+        line-height: 1.4;
+
+        letter-spacing: .13em;
+      }
+
+
+      /* SOUND */
+
       .sound-tag {
-        opacity: 0.72;
+        opacity: .72;
+
         padding-left: 0;
       }
 
       .sound-tag:first-child {
-        opacity: 0.9;
+        opacity: .9;
       }
 
       .sound-tag:last-child {
-        opacity: 0.68;
+        opacity: .68;
       }
 
       .sound-tag span {
         color: var(--red);
-        opacity: 0.95;
+
+        opacity: .95;
       }
+
+
+      /* IDENTIDAD */
 
       .identidad-card {
         background: #151515;
@@ -1288,61 +2171,108 @@
       }
 
       .identidad-card p {
-        opacity: 0.68;
+        opacity: .68;
       }
 
       .identidad-value {
-        opacity: 0.62;
+        opacity: .62;
       }
 
+
       section {
-        padding: 72px 24px;
+        padding:
+          72px
+          24px;
       }
+
 
       #concepto,
       #contacto,
       .identidad-bottom {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+          1fr;
+
         gap: 48px;
       }
 
+
       .identidad-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+          1fr;
       }
+
+
+      /* EVENTOS */
 
       .eventos-header {
         flex-direction: column;
-        align-items: flex-start;
+
+        align-items:
+          flex-start;
+
         gap: 14px;
       }
+
 
       .eventos-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+
+        grid-template-columns:
+          repeat(
+            2,
+            minmax(0, 1fr)
+          );
+
         gap: 14px;
-        overflow-x: visible;
+
+        overflow: visible;
+
         padding-bottom: 0;
       }
 
-      .eventos-grid:has(.evento-card:only-child) {
-        grid-template-columns: minmax(0, 320px);
+
+      .eventos-grid:has(
+        .evento-card:only-child
+      ) {
+        grid-template-columns:
+          minmax(
+            0,
+            320px
+          );
+
         justify-content: center;
       }
 
+
       .evento-card {
         flex: unset;
+
+        width: auto;
+
         max-width: none;
       }
 
+
+      /* ARCHIVO */
+
       .archivo-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+          repeat(
+            2,
+            1fr
+          );
+
         gap: 12px;
       }
 
+
+      /* FOOTER */
+
       footer {
-        flex-direction: column;
         gap: 12px;
+
         text-align: center;
+
         padding: 24px;
       }
 
@@ -1351,553 +2281,1699 @@
       }
     }
 
+
+    /* ======================================================
+       SMALL MOBILE
+    ====================================================== */
+
     @media (max-width: 480px) {
-      .eventos-grid,
-      .archivo-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+
+      .hero {
+        padding:
+          0
+          20px
+          26px;
       }
 
-      .eventos-grid:has(.evento-card:only-child) {
-        grid-template-columns: minmax(0, 260px);
-        justify-content: center;
+      .hero-line {
+        left: 20px;
       }
 
       .hero-logo-scene {
-        top: 42.8%;
-        width: 64vw;
+        top: 40.5%;
+
+        width: 57vw;
+
+        max-width: 210px;
       }
+
 
       .mobile-menu a {
         font-size: 40px;
       }
 
-      .evento-card-info {
-        padding: 16px 14px 18px;
+
+      .eventos-grid,
+      .archivo-grid {
+        grid-template-columns:
+          repeat(
+            2,
+            minmax(0, 1fr)
+          );
+
+        gap: 12px;
       }
+
+
+      .eventos-grid:has(
+        .evento-card:only-child
+      ) {
+        grid-template-columns:
+          minmax(
+            0,
+            260px
+          );
+
+        justify-content: center;
+      }
+
+
+      .evento-card-info {
+        padding:
+          16px
+          14px
+          18px;
+      }
+
 
       .evento-card-fecha {
         font-size: 10px;
+
         letter-spacing: .16em;
       }
+
 
       .evento-card-nombre {
         font-size: 20px;
       }
 
+
       .evento-card-venue {
         font-size: 10px;
+
         letter-spacing: .14em;
       }
 
+
       .evento-card-cta {
         font-size: 10px;
+
         letter-spacing: .22em;
+
         padding: 12px 0;
       }
+
 
       .archivo-header p {
         font-size: 13px;
       }
     }
+
+
+    /* ======================================================
+       REDUCED MOTION
+    ====================================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      .hero-logo-3d,
+      .hero-logo-glow,
+      .hero-logo-shine,
+      .hero-logo-scene::before,
+      .hero-bottom {
+        animation: none !important;
+      }
+
+      .hero-logo-3d {
+        opacity: 1;
+
+        transform: none;
+
+        filter: none;
+      }
+
+      .hero-logo-glow {
+        opacity: .25;
+
+        transform: none;
+      }
+
+      .hero-logo-shine {
+        display: none;
+      }
+
+      .hero-bottom {
+        opacity: 1;
+
+        transform: none;
+      }
+
+      .reveal {
+        transition: none;
+      }
+    }
+
   </style>
 </head>
+
+
 <body>
 
-  <div class="cursor" id="cursor"></div>
 
-  <!-- NAV -->
+  <!-- CURSOR -->
+
+  <div
+    class="cursor"
+    id="cursor"
+  ></div>
+
+
+  <!-- ====================================================
+       NAV
+  ===================================================== -->
+
   <nav>
-    <a href="#" class="nav-logo">BOSSA</a>
+
+    <a
+      href="#"
+      class="nav-logo"
+    >
+      BOSSA
+    </a>
+
     <ul class="nav-links">
-      <li><a href="#concepto">Concepto</a></li>
-      <li><a href="#identidad">Identidad</a></li>
-      <li><a href="#eventos">Eventos</a></li>
-      <li><a href="#archivo">Archivo</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+
+      <li>
+        <a href="#concepto">
+          Concepto
+        </a>
+      </li>
+
+      <li>
+        <a href="#identidad">
+          Identidad
+        </a>
+      </li>
+
+      <li>
+        <a href="#eventos">
+          Eventos
+        </a>
+      </li>
+
+      <li>
+        <a href="#archivo">
+          Archivo
+        </a>
+      </li>
+
+      <li>
+        <a href="#contacto">
+          Contacto
+        </a>
+      </li>
+
     </ul>
-    <button class="nav-burger" id="burger" aria-label="Menú">
-      <span></span><span></span><span></span>
+
+
+    <button
+      class="nav-burger"
+      id="burger"
+      aria-label="Menú"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
+
   </nav>
 
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#identidad" class="menu-link">Identidad</a>
-    <a href="#eventos" class="menu-link">Eventos</a>
-    <a href="#archivo" class="menu-link">Archivo</a>
-    <a href="#contacto" class="menu-link">Contacto</a>
-  </div>
 
-  <!-- HERO -->
-  <div class="hero-bg" id="heroBg"></div>
-  <div class="hero-vignette"></div>
-  <div class="hero-line"></div>
+  <!-- ====================================================
+       MOBILE MENU
+  ===================================================== -->
 
-  <div class="hero-logo-scene">
-    <div class="hero-logo-3d" id="logo3d">
+  <div
+    class="mobile-menu"
+    id="mobileMenu"
+  >
 
-      <div class="hero-logo-3d-inner" id="logo3dInner">
-        <img
-          src="BOUNDING-WHITE.png"
-          alt="BOSSA"
-          fetchpriority="high"
-        />
-      </div>
-
-    </div>
-  </div>
-
-  <div class="hero-bottom">
-
-    <div class="hero-tagline">
-      Música electrónica en Madrid<br />
-      <strong>Minimal Deep Tech · Tech House</strong>
-    </div>
+    <a
+      href="#identidad"
+      class="menu-link"
+    >
+      Identidad
+    </a>
 
     <a
       href="#eventos"
-      class="hero-next"
-      id="heroNext"
-      aria-label="Ver próximo evento BOSSA"
+      class="menu-link"
     >
-      <span class="hero-next-label">
-        Next Event
-      </span>
+      Eventos
+    </a>
 
-      <span class="hero-next-date" id="heroNextDate">
-        PRÓXIMA FECHA
-      </span>
+    <a
+      href="#archivo"
+      class="menu-link"
+    >
+      Archivo
+    </a>
 
-      <span class="hero-next-venue" id="heroNextVenue">
-        MADRID <span class="hero-next-arrow">→</span>
-      </span>
+    <a
+      href="#contacto"
+      class="menu-link"
+    >
+      Contacto
     </a>
 
   </div>
 
-</section>
 
-  <!-- CONCEPTO -->
-  <section id="concepto">
-    <div class="concepto-text reveal">
-      <div class="section-label">Concepto</div>
-      <h2>Un sonido.<br /><em>Una identidad.</em></h2>
-      <p>BOSSA nace desde una idea simple: hacer eventos donde el sonido, la selección y la dirección estética tengan el mismo peso. Minimal deep tech y tech house tratados con criterio, sin exceso, sin artificio y sin fórmulas vacías.</p>
-      <p>Una propuesta construida desde la elegancia, la tensión y el detalle. Un punto de encuentro para quienes buscan algo más preciso que una fiesta genérica.</p>
-    </div>
-    <div class="concepto-right reveal">
-      <div class="section-label">Sonido</div>
-      <div class="sound-tags">
-        <div class="sound-tag">Minimal Deep Tech <span>Base</span></div>
-        <div class="sound-tag">Tech House <span>Grooves</span></div>
-      </div>
-    </div>
-  </section>
+  <!-- ====================================================
+       HERO
+  ===================================================== -->
 
-  <!-- IDENTIDAD -->
-  <section id="identidad">
-    <div class="identidad-header reveal">
-      <div class="section-label">Identidad</div>
-      <h2>Más que música.<br /><em>Una forma de entender el club.</em></h2>
-    </div>
+  <section
+    class="hero"
+    id="home"
+  >
 
-    <div class="identidad-grid reveal">
-      <div class="identidad-card">
-        <div class="card-num">01</div>
-        <h3>El Sonido</h3>
-        <p>Minimal deep tech y tech house tratados con criterio, sin exceso, sin artificio y sin fórmulas vacías. Grooves hipnóticos construidos capa a capa, donde el criterio musical es la línea que no se cruza.</p>
-      </div>
-      <div class="identidad-card">
-        <div class="card-num">02</div>
-        <h3>La Selección</h3>
-        <p>Cada artista pasa por un filtro de coherencia. No se trata de nombres, se trata de viajes. BOSSA programa con intención, no con trending.</p>
-      </div>
-      <div class="identidad-card">
-        <div class="card-num">03</div>
-        <h3>El Espacio</h3>
-        <p>Locales con carácter, no salas genéricas. El entorno forma parte del lenguaje sonoro de cada evento. El espacio no es un contenedor — es parte de la propuesta.</p>
-      </div>
-    </div>
+    <div
+      class="hero-bg"
+      id="heroBg"
+    ></div>
 
-    <div class="identidad-bottom reveal">
-      <div class="identidad-quote">
-        "El sonido es la identidad.<br />
-        Todo lo demás<br />
-        <em>es consecuencia."</em>
-      </div>
-      <div class="identidad-values">
-        <div class="identidad-value">Criterio sobre tendencia</div>
-        <div class="identidad-value">Coherencia sonora</div>
-        <div class="identidad-value">Comunidad antes que consumo</div>
-        <div class="identidad-value">Elegancia, tensión y detalle</div>
-        <div class="identidad-value">Sonido, selección y dirección estética</div>
-      </div>
-    </div>
-  </section>
+    <div
+      class="hero-vignette"
+    ></div>
 
-  <!-- EVENTOS -->
-  <section id="eventos">
-  <div class="eventos-header reveal">
-    <h2>Próximos<br />Eventos</h2>
-    <a href="https://es.ra.co/promoters/177842" target="_blank" rel="noopener">Ver en Resident Advisor →</a>
-  </div>
+    <div
+      class="hero-line"
+    ></div>
 
-  <div class="eventos-grid reveal">
 
-    <div class="evento-card">
-      <div class="evento-card-poster">
-        <img src="SAB05SEP.webp" alt="BOSSA · Evento" loading="lazy" />
-      </div>
-      <div class="evento-card-info">
-        <div class="evento-card-fecha">Sab 05 · Sep 2026 · 00:00h</div>
-        <div class="evento-card-nombre">BOSSA</div>
-        <div class="evento-card-venue">El Sótano · Madrid</div>
-        <a href="https://es.ra.co/events/2509138" target="_blank" class="evento-card-cta">Entradas</a>
-      </div>
-    </div>
+    <!-- LOGO CENTRAL -->
 
-    <div class="evento-card">
-      <div class="evento-card-poster">
-        <img src="TBA.png" alt="BOSSA · Evento" loading="lazy" />
-      </div>
-      <div class="evento-card-info">
-        <div class="evento-card-fecha">Dom 04 · Oct 2026 · 18:00h</div>
-        <div class="evento-card-nombre">BOSSA TARDEO</div>
-        <div class="evento-card-venue">El Sótano · Madrid</div>
-        <a href="https://es.ra.co/promoters/177842" target="_blank" class="evento-card-cta">Entradas</a>
-      </div>
-    </div>
+    <div class="hero-logo-scene">
 
-    <div class="evento-card">
-      <div class="evento-card-poster">
-        <img src="TBA.png" alt="BOSSA · Evento" loading="lazy" />
-      </div>
-      <div class="evento-card-info">
-        <div class="evento-card-fecha">Dom 11 · Oct 2026 · 18:00h</div>
-        <div class="evento-card-nombre">BOSSA TARDEO</div>
-        <div class="evento-card-venue">El Sótano · Madrid</div>
-        <a href="https://es.ra.co/promoters/177842" target="_blank" class="evento-card-cta">Entradas</a>
-      </div>
-    </div>
+      <div
+        class="hero-logo-3d"
+        id="logo3d"
+      >
 
-    <div class="evento-card">
-      <div class="evento-card-poster">
-        <img src="TBA.png" alt="BOSSA · Evento" loading="lazy" />
-      </div>
-      <div class="evento-card-info">
-        <div class="evento-card-fecha">Dom 18 · Oct 2026 · 18:00h</div>
-        <div class="evento-card-nombre">BOSSA TARDEO</div>
-        <div class="evento-card-venue">El Sótano · Madrid</div>
-        <a href="https://es.ra.co/promoters/177842" target="_blank" class="evento-card-cta">Entradas</a>
-      </div>
-    </div>
+        <div
+          class="hero-logo-3d-inner"
+          id="logo3dInner"
+        >
 
-  </div>
-</section>
+          <div
+            class="hero-logo-glow"
+          ></div>
 
-  <!-- ARCHIVO -->
-  <section id="archivo">
-    <div class="archivo-header reveal">
-      <div class="section-label">Archivo</div>
-      <h2>Una atmósfera.<br />Un registro.</h2>
-      <p>Una selección de momentos que definen la atmósfera de BOSSA. Cabina, tensión y pista desde una mirada más cercana a la cultura que al exceso.</p>
-    </div>
+          <img
+            src="BOUNDING-WHITE.png"
+            alt="BOSSA"
+            fetchpriority="high"
+          />
 
-    <div class="archivo-hero reveal">
-      <img src="FOTO0.webp" alt="Archivo BOSSA principal" loading="lazy" />
-    </div>
+          <div
+            class="hero-logo-shine"
+          ></div>
 
-    <div class="archivo-grid reveal">
-      <div class="archivo-item">
-        <img src="FOTO1.webp" alt="Archivo BOSSA 1" loading="lazy" />
-      </div>
-      <div class="archivo-item">
-        <img src="FOTO2.webp" alt="Archivo BOSSA 2" loading="lazy" />
-      </div>
-      <div class="archivo-item">
-        <img src="FOTO3.webp" alt="Archivo BOSSA 3" loading="lazy" />
-      </div>
-      <div class="archivo-item">
-        <img src="FOTO4.webp" alt="Archivo BOSSA 4" loading="lazy" />
-      </div>
-      <div class="archivo-item">
-        <img src="FOTO5.webp" alt="Archivo BOSSA 5" loading="lazy" />
-      </div>
-      <div class="archivo-item">
-        <img src="FOTO6.webp" alt="Archivo BOSSA 6" loading="lazy" />
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACTO -->
-  <section id="contacto">
-    <div class="reveal">
-      <div class="section-label">Contacto</div>
-      <h2>Trabajemos<br />juntos</h2>
-    </div>
-    <div class="contact-right reveal">
-      <div class="contact-item">
-        <label>Booking & Colaboraciones</label>
-        <a href="mailto:contacto@bossatheclub.com">contacto@bossatheclub.com</a>
-      </div>
-      <div class="contact-item">
-        <label>Redes</label>
-        <div class="social-links">
-          <a href="https://instagram.com/bossatheclub" target="_blank" rel="noopener" class="social-link">Instagram</a>
-          <a href="https://es.ra.co/promoters/177842" target="_blank" rel="noopener" class="social-link">Resident Advisor</a>
         </div>
+
       </div>
+
     </div>
+
+
+    <!-- HERO BOTTOM -->
+
+    <div class="hero-bottom">
+
+      <div class="hero-tagline">
+
+        Música electrónica en Madrid
+
+        <br />
+
+        <strong>
+          Minimal Deep Tech · Tech House
+        </strong>
+
+      </div>
+
+
+      <a
+        href="#eventos"
+        class="hero-next"
+        id="heroNext"
+        aria-label="Ver próximo evento BOSSA"
+      >
+
+        <span
+          class="hero-next-label"
+        >
+          Next Event
+        </span>
+
+        <span
+          class="hero-next-date"
+          id="heroNextDate"
+        >
+          PRÓXIMA FECHA
+        </span>
+
+        <span
+          class="hero-next-venue"
+          id="heroNextVenue"
+        >
+          MADRID
+          <span
+            class="hero-next-arrow"
+          >
+            →
+          </span>
+        </span>
+
+      </a>
+
+    </div>
+
   </section>
 
-  <section style="padding: 0 48px 28px; border-top: 1px solid var(--gray-mid);">
-    <div style="max-width: 1180px; margin: 0 auto; padding-top: 28px;">
-      <p style="font-size: 13px; line-height: 1.9; opacity: 0.42; max-width: 900px; margin: 0 auto; text-align: center;">
-        BOSSA desarrolla una propuesta de
-        <a href="/eventos-musica-electronica-madrid" style="color: var(--white); text-decoration: none; border-bottom: 1px solid rgba(240,236,228,.28);">eventos de música electrónica en Madrid</a>
-        con una línea centrada en el
-        <a href="/fiestas-tech-house-madrid" style="color: var(--white); text-decoration: none; border-bottom: 1px solid rgba(240,236,228,.28);">minimal deep tech y el tech house</a>.
+
+  <!-- ====================================================
+       CONCEPTO
+  ===================================================== -->
+
+  <section id="concepto">
+
+    <div
+      class="concepto-text reveal"
+    >
+
+      <div class="section-label">
+        Concepto
+      </div>
+
+      <h2>
+        Un sonido.
+        <br />
+
+        <em>
+          Una identidad.
+        </em>
+      </h2>
+
+      <p>
+        BOSSA nace desde una idea simple:
+        hacer eventos donde el sonido,
+        la selección y la dirección estética
+        tengan el mismo peso.
+        Minimal deep tech y tech house
+        tratados con criterio,
+        sin exceso,
+        sin artificio
+        y sin fórmulas vacías.
       </p>
+
+      <p>
+        Una propuesta construida desde
+        la elegancia,
+        la tensión
+        y el detalle.
+        Un punto de encuentro
+        para quienes buscan algo más preciso
+        que una fiesta genérica.
+      </p>
+
     </div>
+
+
+    <div
+      class="concepto-right reveal"
+    >
+
+      <div class="section-label">
+        Sonido
+      </div>
+
+      <div class="sound-tags">
+
+        <div class="sound-tag">
+          Minimal Deep Tech
+
+          <span>
+            Base
+          </span>
+        </div>
+
+        <div class="sound-tag">
+          Tech House
+
+          <span>
+            Grooves
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
   </section>
 
-  <!-- FOOTER -->
+
+  <!-- ====================================================
+       IDENTIDAD
+  ===================================================== -->
+
+  <section id="identidad">
+
+    <div
+      class="identidad-header reveal"
+    >
+
+      <div class="section-label">
+        Identidad
+      </div>
+
+      <h2>
+        Más que música.
+        <br />
+
+        <em>
+          Una forma de entender el club.
+        </em>
+      </h2>
+
+    </div>
+
+
+    <div
+      class="identidad-grid reveal"
+    >
+
+      <div class="identidad-card">
+
+        <div class="card-num">
+          01
+        </div>
+
+        <h3>
+          El Sonido
+        </h3>
+
+        <p>
+          Minimal deep tech y tech house
+          tratados con criterio,
+          sin exceso,
+          sin artificio
+          y sin fórmulas vacías.
+          Grooves hipnóticos
+          construidos capa a capa,
+          donde el criterio musical
+          es la línea que no se cruza.
+        </p>
+
+      </div>
+
+
+      <div class="identidad-card">
+
+        <div class="card-num">
+          02
+        </div>
+
+        <h3>
+          La Selección
+        </h3>
+
+        <p>
+          Cada artista pasa por
+          un filtro de coherencia.
+          No se trata de nombres,
+          se trata de viajes.
+          BOSSA programa con intención,
+          no con trending.
+        </p>
+
+      </div>
+
+
+      <div class="identidad-card">
+
+        <div class="card-num">
+          03
+        </div>
+
+        <h3>
+          El Espacio
+        </h3>
+
+        <p>
+          Locales con carácter,
+          no salas genéricas.
+          El entorno forma parte
+          del lenguaje sonoro
+          de cada evento.
+          El espacio no es un contenedor —
+          es parte de la propuesta.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="identidad-bottom reveal"
+    >
+
+      <div class="identidad-quote">
+
+        "El sonido es la identidad.
+
+        <br />
+
+        Todo lo demás
+
+        <br />
+
+        <em>
+          es consecuencia."
+        </em>
+
+      </div>
+
+
+      <div class="identidad-values">
+
+        <div class="identidad-value">
+          Criterio sobre tendencia
+        </div>
+
+        <div class="identidad-value">
+          Coherencia sonora
+        </div>
+
+        <div class="identidad-value">
+          Comunidad antes que consumo
+        </div>
+
+        <div class="identidad-value">
+          Elegancia, tensión y detalle
+        </div>
+
+        <div class="identidad-value">
+          Sonido, selección y dirección estética
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ====================================================
+       EVENTOS
+  ===================================================== -->
+
+  <section id="eventos">
+
+    <div
+      class="eventos-header reveal"
+    >
+
+      <h2>
+        Próximos
+        <br />
+        Eventos
+      </h2>
+
+      <a
+        href="https://es.ra.co/promoters/177842"
+        target="_blank"
+        rel="noopener"
+      >
+        Ver en Resident Advisor →
+      </a>
+
+    </div>
+
+
+    <div
+      class="eventos-grid reveal"
+    >
+
+
+      <!-- EVENTO 1 -->
+
+      <div class="evento-card">
+
+        <div class="evento-card-poster">
+
+          <img
+            src="SAB05SEP.webp"
+            alt="BOSSA · Sábado 5 de septiembre en Madrid"
+            loading="lazy"
+          />
+
+        </div>
+
+        <div class="evento-card-info">
+
+          <div class="evento-card-fecha">
+            Sab 05 · Sep 2026 · 00:00h
+          </div>
+
+          <div class="evento-card-nombre">
+            BOSSA
+          </div>
+
+          <div class="evento-card-venue">
+            El Sótano · Madrid
+          </div>
+
+          <a
+            href="https://es.ra.co/events/2509138"
+            target="_blank"
+            rel="noopener"
+            class="evento-card-cta"
+          >
+            Entradas
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- EVENTO 2 -->
+
+      <div class="evento-card">
+
+        <div class="evento-card-poster">
+
+          <img
+            src="TBA.png"
+            alt="BOSSA Tardeo · 4 de octubre en Madrid"
+            loading="lazy"
+          />
+
+        </div>
+
+        <div class="evento-card-info">
+
+          <div class="evento-card-fecha">
+            Dom 04 · Oct 2026 · 18:00h
+          </div>
+
+          <div class="evento-card-nombre">
+            BOSSA TARDEO
+          </div>
+
+          <div class="evento-card-venue">
+            El Sótano · Madrid
+          </div>
+
+          <a
+            href="https://es.ra.co/promoters/177842"
+            target="_blank"
+            rel="noopener"
+            class="evento-card-cta"
+          >
+            Entradas
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- EVENTO 3 -->
+
+      <div class="evento-card">
+
+        <div class="evento-card-poster">
+
+          <img
+            src="TBA.png"
+            alt="BOSSA Tardeo · 11 de octubre en Madrid"
+            loading="lazy"
+          />
+
+        </div>
+
+        <div class="evento-card-info">
+
+          <div class="evento-card-fecha">
+            Dom 11 · Oct 2026 · 18:00h
+          </div>
+
+          <div class="evento-card-nombre">
+            BOSSA TARDEO
+          </div>
+
+          <div class="evento-card-venue">
+            El Sótano · Madrid
+          </div>
+
+          <a
+            href="https://es.ra.co/promoters/177842"
+            target="_blank"
+            rel="noopener"
+            class="evento-card-cta"
+          >
+            Entradas
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- EVENTO 4 -->
+
+      <div class="evento-card">
+
+        <div class="evento-card-poster">
+
+          <img
+            src="TBA.png"
+            alt="BOSSA Tardeo · 18 de octubre en Madrid"
+            loading="lazy"
+          />
+
+        </div>
+
+        <div class="evento-card-info">
+
+          <div class="evento-card-fecha">
+            Dom 18 · Oct 2026 · 18:00h
+          </div>
+
+          <div class="evento-card-nombre">
+            BOSSA TARDEO
+          </div>
+
+          <div class="evento-card-venue">
+            El Sótano · Madrid
+          </div>
+
+          <a
+            href="https://es.ra.co/promoters/177842"
+            target="_blank"
+            rel="noopener"
+            class="evento-card-cta"
+          >
+            Entradas
+          </a>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- ====================================================
+       ARCHIVO
+  ===================================================== -->
+
+  <section id="archivo">
+
+    <div
+      class="archivo-header reveal"
+    >
+
+      <div class="section-label">
+        Archivo
+      </div>
+
+      <h2>
+        Una atmósfera.
+        <br />
+        Un registro.
+      </h2>
+
+      <p>
+        Una selección de momentos
+        que definen la atmósfera de BOSSA.
+        Cabina, tensión y pista
+        desde una mirada más cercana
+        a la cultura que al exceso.
+      </p>
+
+    </div>
+
+
+    <div
+      class="archivo-hero reveal"
+    >
+
+      <img
+        src="FOTO0.webp"
+        alt="Archivo visual BOSSA Madrid"
+        loading="lazy"
+      />
+
+    </div>
+
+
+    <div
+      class="archivo-grid reveal"
+    >
+
+      <div class="archivo-item">
+        <img
+          src="FOTO1.webp"
+          alt="Archivo BOSSA 1"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="archivo-item">
+        <img
+          src="FOTO2.webp"
+          alt="Archivo BOSSA 2"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="archivo-item">
+        <img
+          src="FOTO3.webp"
+          alt="Archivo BOSSA 3"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="archivo-item">
+        <img
+          src="FOTO4.webp"
+          alt="Archivo BOSSA 4"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="archivo-item">
+        <img
+          src="FOTO5.webp"
+          alt="Archivo BOSSA 5"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="archivo-item">
+        <img
+          src="FOTO6.webp"
+          alt="Archivo BOSSA 6"
+          loading="lazy"
+        />
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ====================================================
+       CONTACTO
+  ===================================================== -->
+
+  <section id="contacto">
+
+    <div class="reveal">
+
+      <div class="section-label">
+        Contacto
+      </div>
+
+      <h2>
+        Trabajemos
+        <br />
+        juntos
+      </h2>
+
+    </div>
+
+
+    <div
+      class="contact-right reveal"
+    >
+
+      <div class="contact-item">
+
+        <label>
+          Booking & Colaboraciones
+        </label>
+
+        <a
+          href="mailto:contacto@bossatheclub.com"
+        >
+          contacto@bossatheclub.com
+        </a>
+
+      </div>
+
+
+      <div class="contact-item">
+
+        <label>
+          Redes
+        </label>
+
+        <div class="social-links">
+
+          <a
+            href="https://instagram.com/bossatheclub"
+            target="_blank"
+            rel="noopener"
+            class="social-link"
+          >
+            Instagram
+          </a>
+
+          <a
+            href="https://es.ra.co/promoters/177842"
+            target="_blank"
+            rel="noopener"
+            class="social-link"
+          >
+            Resident Advisor
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ====================================================
+       SEO INTERNAL LINKS
+  ===================================================== -->
+
+  <section
+    style="
+      padding: 0 48px 28px;
+      border-top: 1px solid var(--gray-mid);
+    "
+  >
+
+    <div
+      style="
+        max-width: 1180px;
+        margin: 0 auto;
+        padding-top: 28px;
+      "
+    >
+
+      <p
+        style="
+          font-size: 13px;
+          line-height: 1.9;
+          opacity: 0.42;
+          max-width: 900px;
+          margin: 0 auto;
+          text-align: center;
+        "
+      >
+
+        BOSSA desarrolla una propuesta de
+
+        <a
+          href="/eventos-musica-electronica-madrid"
+          style="
+            color: var(--white);
+            text-decoration: none;
+            border-bottom:
+              1px solid
+              rgba(240,236,228,.28);
+          "
+        >
+          eventos de música electrónica en Madrid
+        </a>
+
+        con una línea centrada en el
+
+        <a
+          href="/fiestas-tech-house-madrid"
+          style="
+            color: var(--white);
+            text-decoration: none;
+            border-bottom:
+              1px solid
+              rgba(240,236,228,.28);
+          "
+        >
+          minimal deep tech y el tech house
+        </a>.
+
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ====================================================
+       FOOTER
+  ===================================================== -->
+
   <footer>
-    <a href="#" class="footer-logo">BOSSA</a>
+
+    <a
+      href="#"
+      class="footer-logo"
+    >
+      BOSSA
+    </a>
+
+
     <ul class="footer-links">
-      <li><a href="#concepto">Concepto</a></li>
-      <li><a href="#identidad">Identidad</a></li>
-      <li><a href="#eventos">Eventos</a></li>
-      <li><a href="#archivo">Archivo</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+
+      <li>
+        <a href="#concepto">
+          Concepto
+        </a>
+      </li>
+
+      <li>
+        <a href="#identidad">
+          Identidad
+        </a>
+      </li>
+
+      <li>
+        <a href="#eventos">
+          Eventos
+        </a>
+      </li>
+
+      <li>
+        <a href="#archivo">
+          Archivo
+        </a>
+      </li>
+
+      <li>
+        <a href="#contacto">
+          Contacto
+        </a>
+      </li>
+
     </ul>
-    <span class="footer-copy">© 2026 bossatheclub.com</span>
+
+
+    <span class="footer-copy">
+      © 2026 bossatheclub.com
+    </span>
+
   </footer>
 
+
+  <!-- ====================================================
+       JAVASCRIPT
+  ===================================================== -->
+
   <script>
-    const cursor = document.getElementById('cursor');
-    const isTouch = window.matchMedia('(hover:none)').matches;
+
+    /* ====================================================
+       TOUCH / DESKTOP
+    ===================================================== */
+
+    const isTouch =
+      window.matchMedia(
+        '(hover: none)'
+      ).matches;
+
+
+    /* ====================================================
+       CURSOR
+    ===================================================== */
+
+    const cursor =
+      document.getElementById(
+        'cursor'
+      );
+
 
     if (!isTouch) {
-      document.addEventListener('mousemove', e => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-      });
 
-      document.querySelectorAll('a, button, .sound-tag, .identidad-card, .archivo-item, .archivo-hero, .evento-card').forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-      });
-    }
+      document.addEventListener(
+        'mousemove',
+        e => {
 
-    const burger = document.getElementById('burger');
-    const mobileMenu = document.getElementById('mobileMenu');
+          cursor.style.left =
+            e.clientX + 'px';
 
-    burger.addEventListener('click', () => {
-      burger.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-    });
+          cursor.style.top =
+            e.clientY + 'px';
 
-    document.querySelectorAll('.menu-link').forEach(link => {
-      link.addEventListener('click', () => {
-        burger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    });
-
-    // HERO 3D — PREMIUM
-const heroEl = document.querySelector('.hero');
-const heroBg = document.getElementById('heroBg');
-const logoInner = document.getElementById('logo3dInner');
-
-let currentRotateX = 0;
-let currentRotateY = 0;
-let currentScale = 1;
-
-let targetRotateX = 0;
-let targetRotateY = 0;
-let targetScale = 1;
-
-let scrollProgress = 0;
-let heroVisible = true;
-let heroAnimationFrame = null;
-
-function renderHero3D() {
-  if (!heroVisible) {
-    heroAnimationFrame = null;
-    return;
-  }
-
-  currentRotateX += (targetRotateX - currentRotateX) * 0.07;
-  currentRotateY += (targetRotateY - currentRotateY) * 0.07;
-  currentScale += (targetScale - currentScale) * 0.07;
-
-  const scrollRotateX = scrollProgress * 7;
-  const scrollRotateY = scrollProgress * -2.5;
-  const scrollScale = 1 - scrollProgress * 0.035;
-  const scrollY = scrollProgress * -10;
-
-  const finalRotateX = currentRotateX + scrollRotateX;
-  const finalRotateY = currentRotateY + scrollRotateY;
-  const finalScale = currentScale * scrollScale;
-
-  logoInner.style.transform = `
-    translateY(${scrollY}px)
-    rotateX(${finalRotateX}deg)
-    rotateY(${finalRotateY}deg)
-    scale(${finalScale})
-  `;
-
-  if (!isTouch) {
-    heroBg.style.transform =
-      `translate(${currentRotateY * 0.65}px, ${currentRotateX * 0.45}px) scale(1.015)`;
-  }
-
-  heroAnimationFrame = requestAnimationFrame(renderHero3D);
-}
-
-function startHeroAnimation() {
-  if (!heroAnimationFrame) {
-    heroAnimationFrame = requestAnimationFrame(renderHero3D);
-  }
-}
-
-/* Movimiento de ratón SOLO desktop */
-if (!isTouch) {
-  heroEl.addEventListener('mousemove', e => {
-
-    if (window.scrollY > heroEl.offsetHeight * 0.45) return;
-
-    const rect = heroEl.getBoundingClientRect();
-
-    const x =
-      (e.clientX - (rect.left + rect.width / 2))
-      / (rect.width / 2);
-
-    const y =
-      (e.clientY - (rect.top + rect.height / 2))
-      / (rect.height / 2);
-
-    targetRotateY = x * 5.2;
-    targetRotateX = y * -3.4;
-    targetScale = 1.012;
-  });
-
-  heroEl.addEventListener('mouseleave', () => {
-    targetRotateX = 0;
-    targetRotateY = 0;
-    targetScale = 1;
-  });
-}
-
-/* Movimiento con scroll */
-window.addEventListener('scroll', () => {
-  const heroHeight = heroEl.offsetHeight;
-
-  scrollProgress = Math.min(
-    window.scrollY / (heroHeight * 0.72),
-    1
-  );
-}, { passive: true });
-
-/* Solo animamos mientras el HERO está visible */
-const heroObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-
-    heroVisible = entry.isIntersecting;
-
-    if (heroVisible) {
-      startHeroAnimation();
-    }
-
-  });
-}, {
-  threshold: 0
-});
-
-heroObserver.observe(heroEl);
-
-startHeroAnimation();
-
-
-/* =========================================
-   NEXT EVENT AUTOMÁTICO
-========================================= */
-
-const firstEvent = document.querySelector(
-  '#eventos .evento-card'
-);
-
-const heroNext = document.getElementById(
-  'heroNext'
-);
-
-const heroNextDate = document.getElementById(
-  'heroNextDate'
-);
-
-const heroNextVenue = document.getElementById(
-  'heroNextVenue'
-);
-
-if (firstEvent) {
-
-  const eventDate = firstEvent.querySelector(
-    '.evento-card-fecha'
-  );
-
-  const eventVenue = firstEvent.querySelector(
-    '.evento-card-venue'
-  );
-
-  const eventCTA = firstEvent.querySelector(
-    '.evento-card-cta'
-  );
-
-  if (eventDate) {
-    heroNextDate.textContent =
-      eventDate.textContent.trim();
-  }
-
-  if (eventVenue) {
-    heroNextVenue.innerHTML =
-      eventVenue.textContent.trim() +
-      ' <span class="hero-next-arrow">→</span>';
-  }
-
-  if (eventCTA && eventCTA.href) {
-    heroNext.href = eventCTA.href;
-
-    if (eventCTA.target) {
-      heroNext.target = eventCTA.target;
-      heroNext.rel = 'noopener';
-    }
-  }
-
-}', (e) => {
-        const gamma = Math.max(-12, Math.min(12, e.gamma || 0));
-        const beta = Math.max(-12, Math.min(12, e.beta || 0));
-
-        targetX = gamma * 0.28;
-        targetY = (beta - 4) * -0.16;
-        targetScale = 1.01;
-        targetZ = 4;
-      }, true);
-    }
-
-    const reveals = document.querySelectorAll('.reveal');
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
         }
-      });
-    }, { threshold: .08 });
+      );
 
-    reveals.forEach(el => obs.observe(el));
+
+      document
+        .querySelectorAll(
+          'a, button, .sound-tag, .identidad-card, .archivo-item, .archivo-hero, .evento-card'
+        )
+        .forEach(
+          el => {
+
+            el.addEventListener(
+              'mouseenter',
+              () =>
+                cursor.classList.add(
+                  'hover'
+                )
+            );
+
+            el.addEventListener(
+              'mouseleave',
+              () =>
+                cursor.classList.remove(
+                  'hover'
+                )
+            );
+
+          }
+        );
+
+    }
+
+
+    /* ====================================================
+       MOBILE MENU
+    ===================================================== */
+
+    const burger =
+      document.getElementById(
+        'burger'
+      );
+
+    const mobileMenu =
+      document.getElementById(
+        'mobileMenu'
+      );
+
+
+    burger.addEventListener(
+      'click',
+      () => {
+
+        burger.classList.toggle(
+          'open'
+        );
+
+        mobileMenu.classList.toggle(
+          'open'
+        );
+
+
+        document.body.style.overflow =
+          mobileMenu.classList.contains(
+            'open'
+          )
+          ? 'hidden'
+          : '';
+
+      }
+    );
+
+
+    document
+      .querySelectorAll(
+        '.menu-link'
+      )
+      .forEach(
+        link => {
+
+          link.addEventListener(
+            'click',
+            () => {
+
+              burger.classList.remove(
+                'open'
+              );
+
+              mobileMenu.classList.remove(
+                'open'
+              );
+
+              document.body.style.overflow =
+                '';
+
+            }
+          );
+
+        }
+      );
+
+
+    /* ====================================================
+       HERO 3D
+    ===================================================== */
+
+    const heroEl =
+      document.querySelector(
+        '.hero'
+      );
+
+    const heroBg =
+      document.getElementById(
+        'heroBg'
+      );
+
+    const logoInner =
+      document.getElementById(
+        'logo3dInner'
+      );
+
+
+    let currentRotateX = 0;
+    let currentRotateY = 0;
+    let currentScale = 1;
+
+    let targetRotateX = 0;
+    let targetRotateY = 0;
+    let targetScale = 1;
+
+    let scrollProgress = 0;
+
+    let heroVisible = true;
+
+    let heroAnimationFrame = null;
+
+
+    function renderHero3D() {
+
+      if (!heroVisible) {
+
+        heroAnimationFrame =
+          null;
+
+        return;
+      }
+
+
+      currentRotateX +=
+        (
+          targetRotateX -
+          currentRotateX
+        ) * .07;
+
+
+      currentRotateY +=
+        (
+          targetRotateY -
+          currentRotateY
+        ) * .07;
+
+
+      currentScale +=
+        (
+          targetScale -
+          currentScale
+        ) * .07;
+
+
+      const scrollRotateX =
+        scrollProgress * 6;
+
+
+      const scrollRotateY =
+        scrollProgress * -2.2;
+
+
+      const scrollScale =
+        1 -
+        scrollProgress * .035;
+
+
+      const scrollY =
+        scrollProgress * -9;
+
+
+      const finalRotateX =
+        currentRotateX +
+        scrollRotateX;
+
+
+      const finalRotateY =
+        currentRotateY +
+        scrollRotateY;
+
+
+      const finalScale =
+        currentScale *
+        scrollScale;
+
+
+      logoInner.style.transform =
+        `
+          translateY(${scrollY}px)
+          rotateX(${finalRotateX}deg)
+          rotateY(${finalRotateY}deg)
+          scale(${finalScale})
+        `;
+
+
+      if (!isTouch) {
+
+        heroBg.style.transform =
+          `
+            translate(
+              ${currentRotateY * .55}px,
+              ${currentRotateX * .4}px
+            )
+            scale(1.015)
+          `;
+
+      }
+
+
+      heroAnimationFrame =
+        requestAnimationFrame(
+          renderHero3D
+        );
+
+    }
+
+
+    function startHeroAnimation() {
+
+      if (!heroAnimationFrame) {
+
+        heroAnimationFrame =
+          requestAnimationFrame(
+            renderHero3D
+          );
+
+      }
+
+    }
+
+
+    /* ====================================================
+       HERO MOUSE PARALLAX
+    ===================================================== */
+
+    if (!isTouch) {
+
+      heroEl.addEventListener(
+        'mousemove',
+        e => {
+
+          if (
+            window.scrollY >
+            heroEl.offsetHeight * .48
+          ) {
+            return;
+          }
+
+
+          const rect =
+            heroEl.getBoundingClientRect();
+
+
+          const x =
+            (
+              e.clientX -
+              (
+                rect.left +
+                rect.width / 2
+              )
+            )
+            /
+            (
+              rect.width / 2
+            );
+
+
+          const y =
+            (
+              e.clientY -
+              (
+                rect.top +
+                rect.height / 2
+              )
+            )
+            /
+            (
+              rect.height / 2
+            );
+
+
+          targetRotateY =
+            x * 5;
+
+
+          targetRotateX =
+            y * -3.2;
+
+
+          targetScale =
+            1.012;
+
+        }
+      );
+
+
+      heroEl.addEventListener(
+        'mouseleave',
+        () => {
+
+          targetRotateX = 0;
+          targetRotateY = 0;
+          targetScale = 1;
+
+        }
+      );
+
+    }
+
+
+    /* ====================================================
+       HERO SCROLL
+    ===================================================== */
+
+    window.addEventListener(
+      'scroll',
+      () => {
+
+        const heroHeight =
+          heroEl.offsetHeight;
+
+
+        scrollProgress =
+          Math.min(
+            window.scrollY /
+            (
+              heroHeight * .72
+            ),
+            1
+          );
+
+      },
+      {
+        passive: true
+      }
+    );
+
+
+    /* ====================================================
+       DETENER ANIMACIÓN CUANDO NO SE VE
+    ===================================================== */
+
+    const heroObserver =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(
+            entry => {
+
+              heroVisible =
+                entry.isIntersecting;
+
+
+              if (heroVisible) {
+
+                startHeroAnimation();
+
+              }
+
+            }
+          );
+
+        },
+        {
+          threshold: 0
+        }
+      );
+
+
+    heroObserver.observe(
+      heroEl
+    );
+
+
+    startHeroAnimation();
+
+
+    /* ====================================================
+       NEXT EVENT AUTOMÁTICO
+
+       Lee siempre la primera card de #eventos.
+       Cuando elimines el evento pasado,
+       el siguiente pasa automáticamente al HERO.
+    ===================================================== */
+
+    const firstEvent =
+      document.querySelector(
+        '#eventos .evento-card'
+      );
+
+
+    const heroNext =
+      document.getElementById(
+        'heroNext'
+      );
+
+
+    const heroNextDate =
+      document.getElementById(
+        'heroNextDate'
+      );
+
+
+    const heroNextVenue =
+      document.getElementById(
+        'heroNextVenue'
+      );
+
+
+    if (
+      firstEvent &&
+      heroNext &&
+      heroNextDate &&
+      heroNextVenue
+    ) {
+
+      const eventDate =
+        firstEvent.querySelector(
+          '.evento-card-fecha'
+        );
+
+
+      const eventVenue =
+        firstEvent.querySelector(
+          '.evento-card-venue'
+        );
+
+
+      const eventCTA =
+        firstEvent.querySelector(
+          '.evento-card-cta'
+        );
+
+
+      if (eventDate) {
+
+        heroNextDate.textContent =
+          eventDate.textContent.trim();
+
+      }
+
+
+      if (eventVenue) {
+
+        heroNextVenue.innerHTML =
+          eventVenue.textContent.trim()
+          +
+          ' <span class="hero-next-arrow">→</span>';
+
+      }
+
+
+      if (
+        eventCTA &&
+        eventCTA.href
+      ) {
+
+        heroNext.href =
+          eventCTA.href;
+
+
+        if (
+          eventCTA.target
+        ) {
+
+          heroNext.target =
+            eventCTA.target;
+
+          heroNext.rel =
+            'noopener';
+
+        }
+
+      }
+
+    }
+
+
+    /* ====================================================
+       SCROLL REVEAL
+    ===================================================== */
+
+    const reveals =
+      document.querySelectorAll(
+        '.reveal'
+      );
+
+
+    const revealObserver =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(
+            entry => {
+
+              if (
+                entry.isIntersecting
+              ) {
+
+                entry.target
+                  .classList
+                  .add(
+                    'visible'
+                  );
+
+              }
+
+            }
+          );
+
+        },
+        {
+          threshold: .08
+        }
+      );
+
+
+    reveals.forEach(
+      element => {
+
+        revealObserver.observe(
+          element
+        );
+
+      }
+    );
+
   </script>
+
 </body>
 </html>
