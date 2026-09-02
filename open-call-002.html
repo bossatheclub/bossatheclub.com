@@ -245,48 +245,41 @@
     .prize-list { margin-top: 62px; border-top: 1px solid var(--gray-mid); }
 
     .prize-row {
-      display: grid;
-      grid-template-columns: 100px minmax(0,1fr);
-      gap: 32px;
-      align-items: center;
-      padding: 30px 0;
+      padding: 32px 0 34px;
       border-bottom: 1px solid var(--gray-mid);
     }
 
     .prize-num {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 30px;
+      font-size: 24px;
       color: var(--red);
-      letter-spacing: .08em;
+      letter-spacing: .1em;
+      margin-bottom: 10px;
     }
 
-    .prize-main {
-      display: grid;
-      gap: 12px;
+    .prize-description {
+      max-width: 960px;
+      color: var(--white);
+      font-size: clamp(18px, 2vw, 27px);
+      line-height: 1.45;
+      font-weight: 300;
     }
 
-    .performance {
-      display: grid;
-      grid-template-columns: 92px minmax(0,1fr);
-      gap: 22px;
-      align-items: baseline;
-    }
-
-    .performance-date {
-      font-size: 10px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
+    .prize-description .prize-date {
       color: var(--red);
+      font-weight: 500;
       white-space: nowrap;
     }
 
-    .performance strong {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(28px, 3vw, 44px);
-      letter-spacing: .035em;
-      line-height: 1;
+    .prize-description .prize-venue {
       color: var(--white);
-      font-weight: 400;
+      font-weight: 500;
+    }
+
+    .prize-description .prize-plus {
+      color: var(--red);
+      font-weight: 500;
+      padding: 0 .18em;
     }
 
     .prize-note {
@@ -620,10 +613,9 @@
       .hero-sub { margin-top: 28px; }
       .hero-data { grid-template-columns: 90px 1fr; gap: 14px; }
       section:not(.hero) { padding: 76px 24px; }
-      .prize-row { grid-template-columns: 42px 1fr; gap: 16px; padding: 24px 0; }
-      .performance { grid-template-columns: 76px minmax(0,1fr); gap: 14px; }
-      .performance strong { font-size: 27px; }
-      .performance-date { font-size: 9px; letter-spacing: .16em; }
+      .prize-row { padding: 25px 0 27px; }
+      .prize-num { font-size: 21px; margin-bottom: 8px; }
+      .prize-description { font-size: 18px; line-height: 1.5; }
       .criteria-grid { grid-template-columns: 1fr; }
       .criterion:last-child { grid-column: auto; }
       .criterion { min-height: 125px; }
@@ -692,22 +684,27 @@
         <div class="prize-list reveal">
           <div class="prize-row">
             <div class="prize-num">1º</div>
-            <div class="prize-main">
-              <div class="performance"><span class="performance-date">24 OCT</span><strong>ART · MADRID</strong></div>
-              <div class="performance"><span class="performance-date">08 NOV</span><strong>EL SÓTANO · MADRID</strong></div>
-            </div>
+            <p class="prize-description">
+              Actuación el día <strong class="prize-date">24 de octubre</strong> en
+              <strong class="prize-venue">ART, Madrid</strong>
+              <span class="prize-plus">+</span>
+              el día <strong class="prize-date">8 de noviembre</strong> en
+              <strong class="prize-venue">El Sótano.</strong>
+            </p>
           </div>
           <div class="prize-row">
             <div class="prize-num">2º</div>
-            <div class="prize-main">
-              <div class="performance"><span class="performance-date">15 NOV</span><strong>EL SÓTANO · MADRID</strong></div>
-            </div>
+            <p class="prize-description">
+              Actuación el día <strong class="prize-date">15 de noviembre</strong> en
+              <strong class="prize-venue">El Sótano.</strong>
+            </p>
           </div>
           <div class="prize-row">
             <div class="prize-num">3º</div>
-            <div class="prize-main">
-              <div class="performance"><span class="performance-date">22 NOV</span><strong>EL SÓTANO · MADRID</strong></div>
-            </div>
+            <p class="prize-description">
+              Actuación el día <strong class="prize-date">22 de noviembre</strong> en
+              <strong class="prize-venue">El Sótano.</strong>
+            </p>
           </div>
         </div>
 
