@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://bossatheclub.com/open-call-002" />
 
   <meta property="og:title" content="BOSSA Open Call 002 — De casa al escenario" />
-  <meta property="og:description" content="Buscamos DJs emergentes con identidad, criterio y sonido propio para formar parte de BOSSA." />
+  <meta property="og:description" content="BOSSA OPEN CALL 002. Seleccionaremos 3 DJs para actuar en ART y El Sótano, Madrid." />
   <meta property="og:image" content="https://bossatheclub.com/LG-RRSS.png" />
   <meta property="og:url" content="https://bossatheclub.com/open-call-002" />
   <meta property="og:type" content="website" />
@@ -246,53 +246,47 @@
 
     .prize-row {
       display: grid;
-      grid-template-columns: 100px minmax(0,1fr) 180px;
+      grid-template-columns: 100px minmax(0,1fr);
       gap: 32px;
       align-items: center;
-      padding: 28px 0;
+      padding: 30px 0;
       border-bottom: 1px solid var(--gray-mid);
     }
 
     .prize-num {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 28px;
+      font-size: 30px;
       color: var(--red);
       letter-spacing: .08em;
     }
 
     .prize-main {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(28px, 3vw, 44px);
-      letter-spacing: .03em;
-      line-height: 1;
+      display: grid;
+      gap: 12px;
     }
 
-    .prize-main span {
-      display: block;
-      margin-top: 9px;
-      font-family: 'Barlow', sans-serif;
-      font-size: 12px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--white);
-      opacity: 1;
+    .performance {
+      display: grid;
+      grid-template-columns: 92px minmax(0,1fr);
+      gap: 22px;
+      align-items: baseline;
     }
 
-    .prize-date {
-      text-align: right;
+    .performance-date {
       font-size: 10px;
-      line-height: 1.7;
       letter-spacing: .22em;
       text-transform: uppercase;
       color: var(--red);
+      white-space: nowrap;
     }
 
-    .prize-date span {
-      display: block;
-    }
-
-    .prize-date span + span {
-      margin-top: 9px;
+    .performance strong {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(28px, 3vw, 44px);
+      letter-spacing: .035em;
+      line-height: 1;
+      color: var(--white);
+      font-weight: 400;
     }
 
     .prize-note {
@@ -358,21 +352,50 @@
     }
 
     .apply-info p {
-      margin-top: 28px;
-      color: var(--muted);
-      line-height: 1.8;
+      margin-top: 0;
+      color: rgba(240,236,228,.72);
+      line-height: 1.75;
       font-size: 14px;
     }
 
+    .apply-info .apply-lead {
+      max-width: 430px;
+      font-size: 15px;
+    }
+
+    .apply-info .recommended-title {
+      margin-top: 24px;
+      color: rgba(240,236,228,.62);
+    }
+
+    .apply-info .recommended-title strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+
     .apply-info .deadline {
-      margin-top: 34px;
-      padding-top: 22px;
+      margin-top: 32px;
+      padding: 22px 0 4px;
       border-top: 1px solid var(--gray-mid);
-      font-size: 10px;
-      line-height: 1.8;
-      letter-spacing: .22em;
       text-transform: uppercase;
+    }
+
+    .apply-info .deadline span {
+      display: block;
+      font-size: 9px;
+      letter-spacing: .24em;
+      color: rgba(240,236,228,.56);
+      margin-bottom: 8px;
+    }
+
+    .apply-info .deadline strong {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(30px, 3vw, 42px);
+      line-height: 1;
+      letter-spacing: .05em;
       color: var(--red);
+      font-weight: 400;
     }
 
     .form-section { margin-bottom: 58px; }
@@ -398,7 +421,11 @@
       font-size: 9px;
       letter-spacing: .2em;
       text-transform: uppercase;
-      opacity: .3;
+      color: rgba(240,236,228,.48);
+    }
+
+    .form-section-head .form-note-strong {
+      color: rgba(240,236,228,.78);
     }
 
     .field { margin-bottom: 30px; }
@@ -419,7 +446,7 @@
       margin-top: 7px;
       font-size: 11px;
       line-height: 1.55;
-      color: rgba(240,236,228,.38);
+      color: rgba(240,236,228,.58);
     }
 
     input[type="text"],
@@ -441,7 +468,8 @@
       transition: border-color .2s ease, background .2s ease;
     }
 
-    textarea { min-height: 118px; resize: vertical; line-height: 1.6; }
+    textarea { min-height: 104px; resize: vertical; line-height: 1.6; }
+    textarea.compact-textarea { min-height: 84px; }
 
     input:focus,
     textarea:focus { border-color: var(--red); }
@@ -592,8 +620,10 @@
       .hero-sub { margin-top: 28px; }
       .hero-data { grid-template-columns: 90px 1fr; gap: 14px; }
       section:not(.hero) { padding: 76px 24px; }
-      .prize-row { grid-template-columns: 54px 1fr; gap: 18px; }
-      .prize-date { grid-column: 2; text-align: left; margin-top: -10px; }
+      .prize-row { grid-template-columns: 42px 1fr; gap: 16px; padding: 24px 0; }
+      .performance { grid-template-columns: 76px minmax(0,1fr); gap: 14px; }
+      .performance strong { font-size: 27px; }
+      .performance-date { font-size: 9px; letter-spacing: .16em; }
       .criteria-grid { grid-template-columns: 1fr; }
       .criterion:last-child { grid-column: auto; }
       .criterion { min-height: 125px; }
@@ -605,8 +635,8 @@
       input[type="email"],
       input[type="url"],
       textarea { font-size: 16px; }
+      textarea.compact-textarea { min-height: 78px; }
       .submit-btn { width: 100%; }
-      .prize-main span { font-size: 11px; line-height: 1.45; }
       footer { padding: 28px 24px; flex-direction: column; text-align: center; }
     }
 
@@ -645,11 +675,11 @@
         </div>
         <div class="hero-data">
           <dt>Selección</dt>
-          <dd>10 octubre 2026</dd>
+          <dd>09 octubre 2026</dd>
         </div>
         <div class="hero-data">
           <dt>Material</dt>
-          <dd>Sesión pública de SoundCloud · máximo 30 min</dd>
+          <dd>Sesión de SoundCloud · máximo 30 min</dd>
         </div>
       </dl>
     </section>
@@ -657,52 +687,32 @@
     <section class="prizes">
       <div class="wrap">
         <div class="section-label reveal">La oportunidad</div>
-        <h2 class="section-title reveal">Tres artistas.<br><em>Cuatro fechas.</em></h2>
-        <p class="section-intro reveal">
-          No buscamos números ni seguidores. Buscamos selección musical, personalidad
-          y una propuesta que tenga sentido dentro de nuestro sonido.
-        </p>
+        <h2 class="section-title reveal">Seleccionaremos<br><em>3 artistas.</em></h2>
 
         <div class="prize-list reveal">
           <div class="prize-row">
-            <div class="prize-num">01</div>
-            <div class="prize-main">ART · Madrid <span>+ El Sótano · Madrid</span></div>
-            <div class="prize-date"><span>24 OCT</span><span>08 NOV</span></div>
+            <div class="prize-num">1º</div>
+            <div class="prize-main">
+              <div class="performance"><span class="performance-date">24 OCT</span><strong>ART · MADRID</strong></div>
+              <div class="performance"><span class="performance-date">08 NOV</span><strong>EL SÓTANO · MADRID</strong></div>
+            </div>
           </div>
           <div class="prize-row">
-            <div class="prize-num">02</div>
-            <div class="prize-main">El Sótano · Madrid</div>
-            <div class="prize-date"><span>15 NOV</span></div>
+            <div class="prize-num">2º</div>
+            <div class="prize-main">
+              <div class="performance"><span class="performance-date">15 NOV</span><strong>EL SÓTANO · MADRID</strong></div>
+            </div>
           </div>
           <div class="prize-row">
-            <div class="prize-num">03</div>
-            <div class="prize-main">El Sótano · Madrid</div>
-            <div class="prize-date"><span>22 NOV</span></div>
+            <div class="prize-num">3º</div>
+            <div class="prize-main">
+              <div class="performance"><span class="performance-date">22 NOV</span><strong>EL SÓTANO · MADRID</strong></div>
+            </div>
           </div>
         </div>
 
         <p class="prize-note reveal">
-          Además, BOSSA podrá seleccionar otros perfiles participantes para formar parte
-          de próximas fechas.
-        </p>
-      </div>
-    </section>
-
-    <section class="criteria">
-      <div class="wrap">
-        <div class="section-label reveal">Qué buscamos</div>
-        <h2 class="section-title reveal">Identidad antes<br>que <em>fórmula.</em></h2>
-
-        <div class="criteria-grid reveal">
-          <div class="criterion"><span class="n">01</span><strong>Selección</strong></div>
-          <div class="criterion"><span class="n">02</span><strong>Identidad</strong></div>
-          <div class="criterion"><span class="n">03</span><strong>Criterio</strong></div>
-          <div class="criterion"><span class="n">04</span><strong>Coherencia</strong></div>
-          <div class="criterion"><span class="n">05</span><strong>Técnica</strong></div>
-        </div>
-
-        <p class="criteria-statement reveal">
-          Los seguidores y las interacciones <em>no forman parte</em> del criterio de selección.
+          Además, BOSSA podrá seleccionar más perfiles participantes para actuar en próximas fechas.
         </p>
       </div>
     </section>
@@ -711,13 +721,15 @@
       <div class="wrap apply-grid">
         <div class="apply-info reveal">
           <div class="section-label">Candidatura</div>
-          <h2 class="section-title">Tu sonido.<br><em>Tu propuesta.</em></h2>
-          <p>
+          <p class="apply-lead">
             Envíanos una sesión pública de SoundCloud de una duración máxima de 30 minutos
             que represente realmente cómo sonarías en BOSSA.
           </p>
-          <p><strong>Título recomendado:</strong><br>ARTIST NAME — BOSSA OPEN CALL 002</p>
-          <div class="deadline">Cierre de candidaturas<br>04.10.26 · 23:59 h</div>
+          <p class="recommended-title"><strong>Título recomendado:</strong><br>ARTIST NAME — BOSSA OPEN CALL 002</p>
+          <div class="deadline">
+            <span>Cierre de candidaturas</span>
+            <strong>04 OCT 2026 · 23:59 H</strong>
+          </div>
         </div>
 
         <div class="reveal">
@@ -774,7 +786,7 @@
 
               <div class="field">
                 <label for="sound">¿Cómo definirías tu sonido? *</label>
-                <textarea id="sound" name="sound" maxlength="500" required></textarea>
+                <textarea id="sound" class="compact-textarea" name="sound" maxlength="500" required></textarea>
               </div>
 
               <div class="field">
@@ -786,19 +798,19 @@
             <div class="form-section">
               <div class="form-section-head">
                 <h3>03 — Experiencia</h3>
-                <span>No tener experiencia no te elimina</span>
+                <span class="form-note-strong">No tener experiencia no te elimina</span>
               </div>
 
               <div class="field">
                 <label for="experience">Cuéntanos brevemente dónde has pinchado hasta ahora *</label>
-                <textarea id="experience" name="experience" maxlength="800" placeholder="Clubs, colectivos, eventos, radios, streams... Si todavía no has actuado públicamente, indícalo." required></textarea>
+                <textarea id="experience" class="compact-textarea" name="experience" maxlength="800" placeholder="Clubs, colectivos, eventos, radios, streams... Si todavía no has actuado públicamente, indícalo." required></textarea>
               </div>
             </div>
 
             <div class="form-section">
               <div class="form-section-head">
                 <h3>04 — Material</h3>
-                <span>Máximo 30 minutos</span>
+                <span class="form-note-strong">Máximo 30 minutos</span>
               </div>
 
               <div class="field">
