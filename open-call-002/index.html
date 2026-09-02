@@ -454,6 +454,56 @@
       font-weight: 400;
     }
 
+    .form-panel {
+      position: relative;
+      background: #0d0d0d;
+      border: 1px solid var(--gray-mid);
+      padding: clamp(30px, 4vw, 52px);
+      overflow: hidden;
+    }
+
+    .form-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--red);
+    }
+
+    .form-panel-head {
+      margin-bottom: 50px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--gray-mid);
+    }
+
+    .form-panel-kicker {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--red);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+    }
+
+    .form-panel-head h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(38px, 4.6vw, 60px);
+      line-height: .95;
+      letter-spacing: .025em;
+      font-weight: 400;
+    }
+
+    .form-panel-head p {
+      margin-top: 14px;
+      max-width: 560px;
+      color: rgba(240,236,228,.56);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
     .form-section { margin-bottom: 58px; }
 
     .form-section-head {
@@ -711,6 +761,19 @@
       .criteria-grid { grid-template-columns: 1fr; }
       .criterion:last-child { grid-column: auto; }
       .criterion { min-height: 125px; }
+      .form-panel {
+        padding: 28px 20px 30px;
+      }
+      .form-panel-head {
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+      }
+      .form-panel-head h2 {
+        font-size: 40px;
+      }
+      .form-panel-head p {
+        font-size: 12px;
+      }
       .form-section { margin-bottom: 48px; }
       .form-section-head { align-items: flex-start; flex-direction: column; gap: 7px; }
       .form-section-head span { line-height: 1.45; }
@@ -771,7 +834,7 @@
     <section class="prizes">
       <div class="wrap">
         <div class="section-label reveal">La oportunidad</div>
-        <h2 class="section-title reveal">Seleccionaremos<em> 3 DJs.</em></h2>
+        <h2 class="section-title reveal">Seleccionaremos<br><em>3 DJs.</em></h2>
 
         <div class="prize-list reveal">
 
@@ -836,7 +899,13 @@
           </div>
         </div>
 
-        <div class="reveal">
+        <div class="form-panel reveal">
+          <div class="form-panel-head">
+            <span class="form-panel-kicker">BOSSA OPEN CALL 002</span>
+            <h2>Formulario de candidatura</h2>
+            <p>Completa los siguientes campos para participar.</p>
+          </div>
+
           <!--
             IMPORTANTE:
             Sustituye PEGA_AQUI_LA_URL_DE_APPS_SCRIPT por la URL /exec
