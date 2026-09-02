@@ -242,51 +242,114 @@
     /* PRIZES */
     .prizes { border-bottom: 1px solid var(--gray-mid); }
 
-    .prize-list { margin-top: 62px; border-top: 1px solid var(--gray-mid); }
-
-    .prize-row {
-      padding: 32px 0 34px;
-      border-bottom: 1px solid var(--gray-mid);
+    .prize-list {
+      margin-top: 54px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
     }
 
-    .prize-num {
+    .prize-card {
+      position: relative;
+      min-height: 250px;
+      padding: 28px 28px 30px;
+      border: 1px solid var(--gray-mid);
+      background: #0d0d0d;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      transition:
+        border-color .25s ease,
+        background .25s ease,
+        transform .25s ease;
+    }
+
+    .prize-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--red);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s var(--transition);
+    }
+
+    .prize-card:hover {
+      border-color: rgba(220,20,60,.42);
+      background: #111;
+      transform: translateY(-3px);
+    }
+
+    .prize-card:hover::before,
+    .prize-card-featured::before {
+      transform: scaleX(1);
+    }
+
+    .prize-card-featured {
+      border-color: rgba(220,20,60,.48);
+      background:
+        linear-gradient(180deg, rgba(220,20,60,.075) 0%, rgba(220,20,60,0) 58%),
+        #0d0d0d;
+    }
+
+    .prize-rank {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 24px;
+      font-size: 19px;
+      line-height: 1;
+      letter-spacing: .12em;
       color: var(--red);
-      letter-spacing: .1em;
-      margin-bottom: 10px;
     }
 
-    .prize-description {
-      max-width: 960px;
+    .prize-content {
+      margin-top: 54px;
+    }
+
+    .prize-slot + .prize-slot {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(240,236,228,.12);
+    }
+
+    .prize-date {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(32px, 3.2vw, 46px);
+      line-height: .95;
+      letter-spacing: .025em;
       color: var(--white);
-      font-size: clamp(18px, 2vw, 27px);
+      font-weight: 400;
+    }
+
+    .prize-date em {
+      color: var(--red);
+      font-style: normal;
+    }
+
+    .prize-venue {
+      display: block;
+      margin-top: 8px;
+      font-size: 11px;
       line-height: 1.45;
-      font-weight: 300;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(240,236,228,.76);
+      font-weight: 400;
     }
 
-    .prize-description .prize-date {
-      color: var(--red);
-      font-weight: 500;
-      white-space: nowrap;
-    }
-
-    .prize-description .prize-venue {
+    .prize-card-featured .prize-venue {
       color: var(--white);
-      font-weight: 500;
-    }
-
-    .prize-description .prize-plus {
-      color: var(--red);
-      font-weight: 500;
-      padding: 0 .18em;
     }
 
     .prize-note {
-      margin-top: 26px;
-      color: var(--muted);
+      margin-top: 24px;
+      color: rgba(240,236,228,.62);
       font-size: 13px;
       line-height: 1.75;
+      max-width: 760px;
     }
 
     /* CRITERIA */
@@ -613,9 +676,20 @@
       .hero-sub { margin-top: 28px; }
       .hero-data { grid-template-columns: 90px 1fr; gap: 14px; }
       section:not(.hero) { padding: 76px 24px; }
-      .prize-row { padding: 25px 0 27px; }
-      .prize-num { font-size: 21px; margin-bottom: 8px; }
-      .prize-description { font-size: 18px; line-height: 1.5; }
+      .prize-list {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-top: 38px;
+      }
+      .prize-card {
+        min-height: 0;
+        padding: 22px 20px 24px;
+      }
+      .prize-content { margin-top: 34px; }
+      .prize-rank { font-size: 17px; }
+      .prize-date { font-size: 34px; }
+      .prize-venue { font-size: 10px; }
+      .prize-note { font-size: 12px; }
       .criteria-grid { grid-template-columns: 1fr; }
       .criterion:last-child { grid-column: auto; }
       .criterion { min-height: 125px; }
@@ -679,37 +753,52 @@
     <section class="prizes">
       <div class="wrap">
         <div class="section-label reveal">La oportunidad</div>
-        <h2 class="section-title reveal">Seleccionaremos<br><em>3 artistas.</em></h2>
+        <h2 class="section-title reveal">Seleccionaremos<br><em>3 DJs.</em></h2>
 
         <div class="prize-list reveal">
-          <div class="prize-row">
-            <div class="prize-num">1º</div>
-            <p class="prize-description">
-              Actuación el día <strong class="prize-date">24 de octubre</strong> en
-              <strong class="prize-venue">ART, Madrid</strong>
-              <span class="prize-plus">+</span>
-              el día <strong class="prize-date">8 de noviembre</strong> en
-              <strong class="prize-venue">El Sótano.</strong>
-            </p>
-          </div>
-          <div class="prize-row">
-            <div class="prize-num">2º</div>
-            <p class="prize-description">
-              Actuación el día <strong class="prize-date">15 de noviembre</strong> en
-              <strong class="prize-venue">El Sótano.</strong>
-            </p>
-          </div>
-          <div class="prize-row">
-            <div class="prize-num">3º</div>
-            <p class="prize-description">
-              Actuación el día <strong class="prize-date">22 de noviembre</strong> en
-              <strong class="prize-venue">El Sótano.</strong>
-            </p>
-          </div>
+
+          <article class="prize-card prize-card-featured">
+            <div class="prize-rank">1º SELECCIONADO</div>
+
+            <div class="prize-content">
+              <div class="prize-slot">
+                <span class="prize-date"><em>24 OCT</em> · ART</span>
+                <span class="prize-venue">Madrid</span>
+              </div>
+
+              <div class="prize-slot">
+                <span class="prize-date"><em>08 NOV</em> · EL SÓTANO</span>
+                <span class="prize-venue">Madrid</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="prize-card">
+            <div class="prize-rank">2º SELECCIONADO</div>
+
+            <div class="prize-content">
+              <div class="prize-slot">
+                <span class="prize-date"><em>15 NOV</em> · EL SÓTANO</span>
+                <span class="prize-venue">Madrid</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="prize-card">
+            <div class="prize-rank">3º SELECCIONADO</div>
+
+            <div class="prize-content">
+              <div class="prize-slot">
+                <span class="prize-date"><em>22 NOV</em> · EL SÓTANO</span>
+                <span class="prize-venue">Madrid</span>
+              </div>
+            </div>
+          </article>
+
         </div>
 
         <p class="prize-note reveal">
-          Además, BOSSA podrá seleccionar más perfiles participantes para actuar en próximas fechas.
+          Además, BOSSA podrá seleccionar otros perfiles participantes para actuar en próximas fechas.
         </p>
       </div>
     </section>
