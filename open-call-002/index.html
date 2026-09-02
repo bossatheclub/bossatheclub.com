@@ -572,6 +572,24 @@
     .check-item input:checked { border-color: var(--red); }
     .check-item input:checked::after { transform: scale(1); }
 
+    .bases-link {
+      display: inline-block;
+      margin-top: 18px;
+      color: rgba(240,236,228,.72);
+      font-size: 11px;
+      line-height: 1.5;
+      letter-spacing: .08em;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(220,20,60,.45);
+      padding-bottom: 2px;
+      transition: color .2s ease, border-color .2s ease;
+    }
+
+    .bases-link:hover {
+      color: var(--red);
+      border-color: var(--red);
+    }
+
     .submit-row {
       padding-top: 24px;
       border-top: 1px solid var(--gray-mid);
@@ -928,11 +946,20 @@
                   <span>Autorizo a BOSSA a compartir mi nombre artístico e imagen en caso de ser seleccionado como finalista. *</span>
                 </label>
               </div>
+
+              <a
+                class="bases-link"
+                href="/open-call-002/bases/"
+                target="_blank"
+                rel="noopener"
+              >
+                Consultar bases de participación →
+              </a>
             </div>
 
             <div class="submit-row">
               <button class="submit-btn" id="submitBtn" type="submit">Enviar candidatura</button>
-              <p class="legal-note">Al enviar tu candidatura declaras que los datos facilitados son veraces. Las condiciones completas se recogerán en las bases de BOSSA OPEN CALL 002.</p>
+              <p class="legal-note">Al enviar tu candidatura declaras que los datos facilitados son veraces y que has leído y aceptado las bases de BOSSA OPEN CALL 002.</p>
             </div>
           </form>
 
