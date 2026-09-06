@@ -1,7 +1,7 @@
 window.BOSSA_EVENTOS = [
 
   {
-    fecha: "Dom 04 · Oct 2026 · 18:00h",
+    fecha: "Dom 04 Oct 2026 · 18:00h",
     nombre: "BOSSA TARDEO",
     sala: "El Sótano · Madrid",
     cartel: "TBA.png",
