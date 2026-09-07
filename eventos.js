@@ -27,8 +27,8 @@ window.BOSSA_EVENTOS = [
   {
     fecha: "Sab 24 Oct 2026 · 00:00h",
     nombre: "BOSSA",
-    sala: "TBA · Madrid",
-    cartel: "TBA.png",
+    sala: "ART · Madrid",
+    cartel: "SAB24OCT.wepb",
     link: "https://es.ra.co/promoters/177842"
   }
 
