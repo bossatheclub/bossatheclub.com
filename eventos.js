@@ -4,7 +4,7 @@ window.BOSSA_EVENTOS = [
     fecha: "Dom 04 Oct 2026 · 18:00h",
     nombre: "BOSSA TARDEO",
     sala: "El Sótano · Madrid",
-    cartel: "TBA.png",
+    cartel: "DOM04OCT.webp",
     link: "https://es.ra.co/promoters/177842"
   },
 
@@ -12,7 +12,7 @@ window.BOSSA_EVENTOS = [
     fecha: "Dom 11 Oct 2026 · 18:00h",
     nombre: "BOSSA TARDEO",
     sala: "El Sótano · Madrid",
-    cartel: "TBA.png",
+    cartel: "DOM11OCT.webp",
     link: "https://es.ra.co/promoters/177842"
   },
 
@@ -20,7 +20,7 @@ window.BOSSA_EVENTOS = [
     fecha: "Dom 18 Oct 2026 · 18:00h",
     nombre: "BOSSA TARDEO",
     sala: "El Sótano · Madrid",
-    cartel: "TBA.png",
+    cartel: "DOM18OCT.webp",
     link: "https://es.ra.co/promoters/177842"
   },
 
