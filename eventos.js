@@ -29,7 +29,7 @@ window.BOSSA_EVENTOS = [
     nombre: "BOSSA",
     sala: "ART · Madrid",
     cartel: "SAB24OCT.webp",
-    link: "https://site.fourvenues.com/es/bossaevents-null/events/bossa--art-david-lowe-24-10-2026-YXIH"
+    link: "https://www.fourvenues.com/Sala-ART/YXIH"
   }
 
 ];
