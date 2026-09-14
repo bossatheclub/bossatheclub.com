@@ -5,7 +5,7 @@ window.BOSSA_EVENTOS = [
     nombre: "BOSSA TARDEO",
     sala: "El Sótano · Madrid",
     cartel: "DOM04OCT.webp",
-    link: "https://es.ra.co/promoters/177842"
+    link: "https://es.ra.co/events/2535913"
   },
 
   {
@@ -13,7 +13,7 @@ window.BOSSA_EVENTOS = [
     nombre: "BOSSA TARDEO",
     sala: "El Sótano · Madrid",
     cartel: "DOM11OCT.webp",
-    link: "https://es.ra.co/promoters/177842"
+    link: "https://es.ra.co/events/2535920"
   },
 
   {
@@ -21,7 +21,7 @@ window.BOSSA_EVENTOS = [
     nombre: "BOSSA TARDEO",
     sala: "El Sótano · Madrid",
     cartel: "DOM18OCT.webp",
-    link: "https://es.ra.co/promoters/177842"
+    link: "https://es.ra.co/events/2536427"
   },
 
   {
