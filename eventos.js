@@ -1,14 +1,6 @@
 window.BOSSA_EVENTOS = [
 
   {
-    fecha: "Dom 04 Oct 2026 · 18:00h",
-    nombre: "BOSSA TARDEO",
-    sala: "El Sótano · Madrid",
-    cartel: "DOM04OCT.webp",
-    link: "https://es.ra.co/events/2535913"
-  },
-
-  {
     fecha: "Dom 11 Oct 2026 · 18:00h",
     nombre: "BOSSA TARDEO",
     sala: "El Sótano · Madrid",
@@ -31,5 +23,13 @@ window.BOSSA_EVENTOS = [
     cartel: "SAB24OCT.webp",
     link: "https://www.fourvenues.com/Sala-ART/YXIH"
   }
+
+    {
+    fecha: "Dom 25 Oct 2026 · 18:00h",
+    nombre: "BOSSA TARDEO",
+    sala: "El Sótano · Madrid",
+    cartel: "DOM04OCT.webp",
+    link: "https://es.ra.co/events/2536461"
+  },
 
 ];
