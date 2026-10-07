@@ -1,5 +1,5 @@
 window.BOSSA_EVENTOS = [
-
+  
   {
     fecha: "Dom 11 Oct 2026 · 18:00h",
     nombre: "BOSSA TARDEO",
@@ -22,7 +22,7 @@ window.BOSSA_EVENTOS = [
     sala: "ART · Madrid",
     cartel: "SAB24OCT.webp",
     link: "https://www.fourvenues.com/Sala-ART/YXIH"
-  }
+  },
 
     {
     fecha: "Dom 25 Oct 2026 · 18:00h",
