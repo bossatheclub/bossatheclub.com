@@ -28,7 +28,7 @@ window.BOSSA_EVENTOS = [
     fecha: "Dom 25 Oct 2026 · 18:00h",
     nombre: "BOSSA TARDEO",
     sala: "El Sótano · Madrid",
-    cartel: "DOM04OCT.webp",
+    cartel: "DOM25OCT.webp",
     link: "https://es.ra.co/events/2536461"
   },
 
