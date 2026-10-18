@@ -1,22 +1,6 @@
 window.BOSSA_EVENTOS = [
   
-  {
-    fecha: "Dom 11 Oct 2026 · 18:00h",
-    nombre: "BOSSA TARDEO",
-    sala: "El Sótano · Madrid",
-    cartel: "DOM11OCT.webp",
-    link: "https://es.ra.co/events/2535920"
-  },
-
-  {
-    fecha: "Dom 18 Oct 2026 · 18:00h",
-    nombre: "BOSSA TARDEO",
-    sala: "El Sótano · Madrid",
-    cartel: "DOM18OCT.webp",
-    link: "https://es.ra.co/events/2536427"
-  },
-
-  {
+   {
     fecha: "Sab 24 Oct 2026 · 00:00h",
     nombre: "BOSSA",
     sala: "ART · Madrid",
@@ -30,6 +14,22 @@ window.BOSSA_EVENTOS = [
     sala: "El Sótano · Madrid",
     cartel: "DOM25OCT.webp",
     link: "https://es.ra.co/events/2536461"
+  },
+
+   {
+    fecha: "Dom 01 Nov 2026 · 18:00h",
+    nombre: "BOSSA TARDEO",
+    sala: "El Sótano · Madrid",
+    cartel: "DOM01NOV.webp",
+    link: "https://es.ra.co/events/2554261"
+  },
+
+  {
+    fecha: "Dom 08 Nov 2026 · 18:00h",
+    nombre: "BOSSA TARDEO",
+    sala: "El Sótano · Madrid",
+    cartel: "DOM08NOV.webp",
+    link: "https://es.ra.co/events/2554271"
   },
 
 ];
