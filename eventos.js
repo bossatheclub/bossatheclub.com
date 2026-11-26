@@ -21,7 +21,7 @@ window.BOSSA_EVENTOS = [
     nombre: "BOSSA",
     sala: "Goya Social Club · Madrid",
     cartel: "06DIC2.webp",
-    link: "https://es.ra.co/events/2577102"
+    link: "https://xceed.me/es/madrid/event/bossa-1/254196"
   },
 
   {
